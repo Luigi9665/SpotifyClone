@@ -4,3 +4,17 @@ body {
 h1 {
   font-size: 6rem;
 }
+.buttonlogo {
+  width: 30px;
+  height: 30px;
+  font-size: x-large;
+}
+#menuBtn {
+  display: flex;
+}
+.side-left {
+  background-color: black;
+}
+.card-body {
+  font-size: 12px;
+}
