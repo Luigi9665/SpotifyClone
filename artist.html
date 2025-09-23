@@ -17,14 +17,14 @@
   <body data-bs-theme="dark">
     <main class="d-flex">
       <!-- nav bar sx -->
-      <div class="side-left col col-lg-2 d-flex flex-column text-start vh-100">
+      <div class="side-left col col-lg-2 d-flex flex-column text-start vh-100 sticky-top">
         <div class="mt-4">
-          <button id="menuBtn" type="button" class="text-secondary align-items-center btn btn-dark bg-black border-0">
+          <button id="menuBtn" type="button" class="text-secondary d-flex align-items-center btn btn-dark bg-black border-0">
             <div class="buttonlogo"><i class="bi bi-three-dots"></i></div>
           </button>
         </div>
         <div class="mt-4">
-          <button id="menuBtn" type="button" class="text-secondary align-items-center btn btn-dark bg-black border-0 d-flex">
+          <button id="menuBtn" type="button" class="text-secondary d-flex align-items-center btn btn-dark bg-black border-0 d-flex">
             <div class="buttonlogo"><i class="bi bi-house-door"></i></div>
             Home
           </button>
@@ -64,21 +64,25 @@
         </div>
       </div>
       <!-- artist page -->
+      <!-- immagine artista bg + nome -->
       <div class="col col-lg-8" style="background-color: #121212">
         <div
           style="background-image: url(https://www.rollingstone.it/wp-content/uploads/2019/07/acdc-1200x763.jpg); height: 400px"
           class="w-100 d-flex flex-column justify-content-end"
         >
-          <!-- immagine artista bg + nome -->
           <div class="">
             <p>Artista verificato</p>
             <h1>AC/DC</h1>
             <h5>33.456.789 ascoltatori mensili</h5>
           </div>
         </div>
+        <!-- lista brani like & play -->
+        <div class="conatainer vh-100">
+          <div class="row bg-dark bg-gradient"></div>
+        </div>
       </div>
       <!-- nav bar dx -->
-      <div class="col col-lg-2 bg-black p-2">
+      <div class="col col-lg-2 bg-black p-2 vh-100 sticky-top">
         <div class="d-flex justify-content-between">
           <p>Attività amici</p>
           <div class="text-secondary">
