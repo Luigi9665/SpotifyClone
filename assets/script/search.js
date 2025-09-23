@@ -3,7 +3,8 @@ const form = document.getElementById("searchForm");
 const input = document.getElementById("searchInput");
 const colors = ["#FFB6C1", "#87CEFA", "#FFD700", "#90EE90", "#FFA07A", "#20B2AA"];
 const defaultGenres = ["rock", "pop", "jazz", "classical", "hip hop", "electronic", "blues", "reggae"];
-
+const buttonResearch = document.getElementById("buttonSearch");
+const buttonRandomGenres = document.getElementById("buttonRandomGenres");
 // Funzione per mescolare l'array
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -17,9 +18,21 @@ function shuffleArray(array) {
 document.addEventListener("DOMContentLoaded", () => {
   showDefaultGenres();
 });
+buttonRandomGenres.addEventListener("click", (e) => {
+  e.preventDefault(); // previene il reload della pagina
+  container.innerHTML = "";
+  showDefaultGenres();
+});
 
 // Gestione del submit del form
 form.addEventListener("submit", (e) => {
+  e.preventDefault(); // previene il reload della pagina
+  const query = input.value.trim();
+  if (!query) return; // se l'input è vuoto non fare nulla
+
+  performSearch(query);
+});
+buttonResearch.addEventListener("click", (e) => {
   e.preventDefault(); // previene il reload della pagina
   const query = input.value.trim();
   if (!query) return; // se l'input è vuoto non fare nulla

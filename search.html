@@ -13,7 +13,7 @@
     <title>Search</title>
   </head>
   <body>
-    <nav class="bg-black">
+    <!-- <nav class="bg-black">
       <div class="container py-2">
         <div class="d-flex justify-content-center align-items-center gap-2">
           <button class="btn btn-dark rounded-circle d-flex align-items-center justify-content-center">
@@ -39,6 +39,29 @@
               </span>
             </div>
           </form>
+        </div>
+      </div>
+    </nav> -->
+    <nav class="bg-black">
+      <div class="d-flex justify-content-center align-items-center gap-2">
+        <button class="btn btn-dark rounded-circle d-flex align-items-center justify-content-center">
+          <i class="bi bi-house-door fs-4"></i>
+        </button>
+        <div class="d-flex">
+          <button class="border-0 bg-dark rounded-start text-light border-dark" type="button" id="buttonSearch">
+            <i class="bi bi-search"></i>
+          </button>
+          <form id="searchForm">
+            <input
+              type="text"
+              id="searchInput"
+              class="bg-dark text-light border-0 p-2 pe-5"
+              placeholder="La tua ricerca"
+              aria-label="La tua ricerca"
+              aria-describedby="button-addon2"
+            />
+          </form>
+          <button class="border-0 bg-dark rounded-end text-light border-dark" type="button" id="buttonRandomGenres"><i class="bi bi-archive-fill"></i></button>
         </div>
       </div>
     </nav>
