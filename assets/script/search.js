@@ -5,6 +5,7 @@ const colors = ["#FFB6C1", "#87CEFA", "#FFD700", "#90EE90", "#FFA07A", "#20B2AA"
 const defaultGenres = ["rock", "pop", "jazz", "classical", "hip hop", "electronic", "blues", "reggae"];
 const buttonResearch = document.getElementById("buttonSearch");
 const buttonRandomGenres = document.getElementById("buttonRandomGenres");
+
 // Funzione per mescolare l'array
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -18,6 +19,7 @@ function shuffleArray(array) {
 document.addEventListener("DOMContentLoaded", () => {
   showDefaultGenres();
 });
+
 buttonRandomGenres.addEventListener("click", (e) => {
   e.preventDefault(); // previene il reload della pagina
   container.innerHTML = "";
@@ -29,14 +31,13 @@ form.addEventListener("submit", (e) => {
   e.preventDefault(); // previene il reload della pagina
   const query = input.value.trim();
   if (!query) return; // se l'input è vuoto non fare nulla
-
   performSearch(query);
 });
+
 buttonResearch.addEventListener("click", (e) => {
   e.preventDefault(); // previene il reload della pagina
   const query = input.value.trim();
   if (!query) return; // se l'input è vuoto non fare nulla
-
   performSearch(query);
 });
 
@@ -60,20 +61,19 @@ function performSearch(query) {
         console.error("Nessun risultato trovato", data);
         return;
       }
-
       console.log("Array originale:", data.data);
       console.log("Numero di elementi nell'array originale:", data.data.length);
 
       // Filtra solo titoli che contengono la query
-      const filteredData = data.data.filter((item) => item.title.toLowerCase().includes(query.toLowerCase()));
+      const filteredData = data.data.filter(
+        (item) => item.title.toLowerCase().includes(query.toLowerCase()) || item.artist.name.toLowerCase().includes(query.toLowerCase())
+      );
 
       console.log("Array filtrato:", filteredData);
       console.log("Numero di elementi filtrati:", filteredData.length);
 
       // Mescolo l'array filtrato
       const shuffledData = shuffleArray(filteredData);
-      console.log("Array filtrato e mescolato:", shuffledData);
-
       generateCard(shuffledData); //  messo all'inizio 12 cardi .slice (0,12) ma se si vuole il massimo lasciare slice()
     })
     .catch((err) => console.error("Errore:", err));
@@ -94,16 +94,28 @@ function generateCard(results) {
     col.className = "col-md-6 col-lg-3";
 
     const imgUrl = item.album ? item.album.cover_medium : item.artist.picture;
-    console.log("Oggetto:", item);
-    console.log("Titolo:", item.title, "Immagine:", imgUrl);
 
     col.innerHTML = `
-      <div class="d-flex align-items-start justify-content-between rounded shadow-sm p-3 h-100 overflow-hidden"
-           style="background-color: ${colors[index % colors.length]}">
-        <h2 class="h5 mb-auto">${item.title}</h2>
-        <img src="${imgUrl}" class="img-fluid w-50 ms-auto" alt="${item.title}" style="transform: rotate(25deg);" />
-      </div>
-    `;
+  <div class="d-flex flex-column rounded shadow-sm p-3 h-100 overflow-hidden"
+       style="background-color: ${colors[index % colors.length]}">
+
+    <!-- Titolo collegato all’album -->
+    <h2 class="h6 mb-1">
+      <a href="album.html?album=${item.album.id}" class="text-decoration-none text-dark fw-bold">
+        ${item.title}
+      </a>
+    </h2>
+
+    <!-- Nome artista collegato alla pagina artist -->
+    <p class="mb-auto">
+      <a href="artist.html?artist=${item.artist.id}" class="text-decoration-none text-dark">
+        ${item.artist.name}
+      </a>
+    </p>
+
+    <img src="${imgUrl}" class="img-fluid w-50 ms-auto" alt="${item.title}" style="transform: rotate(25deg);" />
+  </div>
+`;
 
     row.appendChild(col);
   });
@@ -112,7 +124,7 @@ function generateCard(results) {
 // Funzione per generare card di generi casuali
 function showDefaultGenres() {
   const shuffledGenres = shuffleArray([...defaultGenres]);
-  const selectedGenres = shuffledGenres.slice(); // prendi tutti i generi disponibili
+  const selectedGenres = shuffledGenres.slice();
 
   console.log("Generi selezionati per default:", selectedGenres);
 
@@ -130,7 +142,11 @@ function showDefaultGenres() {
     col.innerHTML = `
       <div class="d-flex align-items-start justify-content-between rounded shadow-sm p-3 h-100 overflow-hidden"
            style="background-color: ${colors[index % colors.length]}">
-        <h2 class="h5 mb-auto">${genre}</h2>
+        <h2 class="h5 mb-auto">
+          <a href="album.html?genre=${encodeURIComponent(genre)}" class="text-decoration-none text-dark fw-bold">
+            ${genre}
+          </a>
+        </h2>
       </div>
     `;
 
@@ -153,13 +169,6 @@ function showDefaultGenres() {
           const firstItem = data.data[0];
           const imgUrl = firstItem.album.cover_medium;
 
-          console.log("Risultati API per genere:", genre);
-          console.log("Array completo:", data.data);
-          console.log("Titolo:", firstItem.title);
-          console.log("Artista:", firstItem.artist.name);
-          console.log("Album:", firstItem.album.title);
-          console.log("Immagine:", imgUrl);
-
           const img = new Image();
           img.src = imgUrl;
           img.className = "img-fluid w-50 ms-auto";
@@ -169,8 +178,6 @@ function showDefaultGenres() {
           img.onload = () => {
             col.querySelector("div").appendChild(img);
           };
-        } else {
-          console.log("Nessuna immagine trovata per genere:", genre);
         }
       })
       .catch(() => {
