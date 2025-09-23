@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Album</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="./assets/css/circular-font.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body style="font-family: Circularns-serif; position: relative">
+    <main>
+      <!-- DIV CON IL LETTORE E I CONTROLLI AUDIO -->
+      <div
+        style="position: fixed; bottom: 0; left: 0; width: 100%; z-index: 1050; box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.5); background-color: rgb(15 15 15)"
+        id="navbarPlayes"
+      >
+        <div class="container-fluid">
+          <div class="row py-3">
+            <div class="col-2 d-flex align-items-center gap-3 flex-fill">
+              <div style="width: 60px; height: 60px">
+                <img src="https://cdn-images.dzcdn.net/images/cover/0f7f816a316d3303adea31ad037c6740/250x250-000000-80-0-0.jpg" alt="" class="w-100" />
+              </div>
+              <div>
+                <h4 class="text-white fs-6 m-0">Fat Funny Friend</h4>
+                <p style="font-size: 14px" class="text-white-50 m-0">Maddie Zahm</p>
+              </div>
+              <button class="btn text-white-50 fs-5 p-0"><i class="bi bi-heart"></i></button>
+            </div>
+            <div class="col-8 text-center">
+              <div>
+                <div class="d-flex gap-4 align-items-center justify-content-center">
+                  <i class="btn text-white-50 bi bi-shuffle fs-2 p-0"></i>
+                  <i class="btn text-white-50 bi bi-skip-start fs-2 p-0"></i>
+                  <i class="btn bi bi-play-circle-fill text-white fs-1 p-0"></i>
+                  <i class="btn text-white-50 bi bi-skip-end fs-2 p-0"></i>
+                  <i class="btn text-white-50 bi bi-repeat fs-2 p-0"></i>
+                </div>
+                <div></div>
+              </div>
+            </div>
+            <div class="col-2 d-flex align-items-center">
+              <div class="d-flex align-items-center gap-3 flex-fill">
+                <button class="btn p-0">
+                  <i class="bi bi-mic text-white-50"></i>
+                </button>
+                <button class="btn p-0">
+                  <svg
+                    class="icon text-white-50"
+                    role="img"
+                    aria-label="Coda"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M3 6h14v2H3V6zm0 5h14v2H3v-2zM3 16h10v2H3v-2zM20 7l3 2-3 2V7z" />
+                  </svg>
+                </button>
+                <button class="btn p-0">
+                  <svg
+                    class="text-white-50"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="28"
+                    height="28"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    role="img"
+                    aria-label="Connetti un dispositivo"
+                  >
+                    <path d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-7v2h3v2H8v-2h3v-2H4a2 2 0 0 1-2-2V6zM4 6v9h16V6H4z" />
+                    <path d="M7 18a5 5 0 0 1 5 5H9a3 3 0 0 0-3-3v-2z" />
+                  </svg>
+                </button>
+                <div class="d-flex align-items-center gap-2 volume-control text-white-50">
+                  <i class="bi bi-volume-up fs-3"></i>
+                  <input type="range" id="volume-slider" class="volume-slider" min="0" max="100" value="70" />
+                </div>
+                <button class="btn p-0">
+                  <svg
+                    class="icon-full text-white-50"
+                    role="img"
+                    aria-label="Entra in schermo intero"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M7 14H5v4h4v-2H7v-2zm10 0v2h-2v2h4v-4h-2zM7 6h2V4H5v4h2V6zm10 0v2h2V4h-4v2h2z" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- INIZIO CONTAINER PER I CONTNEUTI PRINCIPALI -->
+      <div class="container-fluid">
+        <div class="row">
+          <!-- SIDEBAR LEFT -->
+          <div class="col-2 bg-black">
+            <aside class="sidebar-left p-2 d-none d-md-block">
+              <div class="nav-block">
+                <a href="#" class="brand mb-2">
+                  <img src="" alt="" />
+                  <span>Spotify</span>
+                </a>
+                <a href="#"><i class="bi bi-house-door-fill"></i> Home</a>
+                <a href="#" class="muted"><i class="bi bi-search"></i> Cerca</a>
+                <a href="#" class="muted"><i class="bi bi-collection"></i> La tua libreria</a>
+              </div>
+
+              <div class="nav-block">
+                <a href="#"><i class="bi bi-plus-square"></i> Crea playlist</a>
+                <a href="#" class="muted"><i class="bi bi-heart-fill text-danger"></i> Brani che ti piacciono</a>
+                <a href="#" class="muted"><i class="bi bi-mic"></i> I tuoi episodi</a>
+              </div>
+
+              <div class="nav-block">
+                <div class="muted small">Playlist</div>
+                <a href="#" class="muted">early stage emily syndrome</a>
+                <a href="#" class="muted">Be The Young</a>
+                <a href="#" class="muted">saggio vibes</a>
+                <a href="#" class="muted">that f*cking mood</a>
+                <a href="#" class="muted">landing page (mar-apr 2022)</a>
+                <a href="#" class="muted">2021 lol</a>
+                <a href="#" class="muted">honey and glass</a>
+                <a href="#" class="muted">(Revenge) Training Arc</a>
+                <a href="#" class="muted">Culo 2021</a>
+              </div>
+            </aside>
+          </div>
+          <!-- CONTENUTO PRINCIPALI CON L'ALBUM SCELTO E I BRANI -->
+          <div class="col-9 p-0">
+            <div style="background-image: linear-gradient(to bottom, #e2c450, #c6ac46, #aa943d, #907c33, #76662a)">
+              <div class="container">
+                <div class="d-flex justify-content-between align-items-center py-3">
+                  <div class="d-flex align-items-center gap-3">
+                    <button class="btn rounded-circle bg-dark bg-opacity-75 text-white fs-5 px-2 py-1">
+                      <i class="bi bi-chevron-left"></i>
+                    </button>
+                    <button class="btn rounded-circle bg-dark bg-opacity-75 text-white fs-5 px-2 py-1">
+                      <i class="bi bi-chevron-right"></i>
+                    </button>
+                  </div>
+                  <div class="rounded-pill bg-dark bg-opacity-75 d-flex align-items-baseline gap-1 p-1">
+                    <div style="width: 30px; height: 30px" class="rounded-circle">
+                      <img
+                        src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cmFuZG9tJTIwcGVvcGxlfGVufDB8fDB8fHww"
+                        alt=""
+                        class="w-100 h-100 rounded-circle"
+                      />
+                    </div>
+                    <h6 class="text-white fw-semibold m-0">Lidia Nautilus ...</h6>
+                  </div>
+                </div>
+                <div class="row py-4">
+                  <div class="col-3">
+                    <div class="shadow-lg">
+                      <img
+                        src="https://cdn-images.dzcdn.net/images/cover/815f471dcf48c1de0b4866bad75c4d21/250x250-000000-80-0-0.jpg"
+                        alt="cover album"
+                        class="w-100"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-9 d-flex">
+                    <div class="flex-fill d-flex flex-column justify-content-end">
+                      <h4 class="text-white text-uppercase">album</h4>
+                      <h1 class="fw-bold text-white w-100" style="font-size: 6rem; font-family: Circular, sans-serif; letter-spacing: -5px">
+                        Gioventù brucata
+                      </h1>
+                      <div class="d-flex align-items-baseline gap-2">
+                        <div style="width: 30px; height: 30px" class="rounded-circle">
+                          <img
+                            src="https://cdn-images.dzcdn.net/images/artist/7a8659133c016871d391135c65d190c0/250x250-000000-80-0-0.jpg"
+                            alt="badge pinguini tattici nucleari"
+                            class="w-100 h-100 rounded-circle"
+                          />
+                        </div>
+                        <p class="text-white d-flex align-items-center gap-1">
+                          Pinguini Tattici Nucleari <spans style="font-size: 10px">•</spans> 2017 <spans style="font-size: 10px">•</spans> 12 brani,
+                          <span class="text-white-50">53 min 20 sec.</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div style="background-image: linear-gradient(to bottom, #76662a, #000, #000, #000000, #000000, #000000, #000000)">
+              <div class="bg-dark bg-opacity-25">
+                <div class="container">
+                  <div class="d-flex align-items-center gap-4 py-3">
+                    <button style="background-color: #1ed760" class="btn rounded-circle text-black fs-1 d-flex align-items-center justify-content-center py-0">
+                      <div class="d-flex align-items-center justify-content-center">
+                        <i class="bi bi-play-fill"></i>
+                      </div>
+                    </button>
+                    <button class="btn text-white-50 fs-2 p-0"><i class="bi bi-heart"></i></button>
+                    <button class="btn text-white-50 fs-2 p-0 fs-2"><i class="bi bi-arrow-down-circle"></i></button>
+                    <button class="btn text-white-50 fs-2 p-0 fs-2"><i class="bi bi-three-dots"></i></button>
+                  </div>
+                  <div class="row">
+                    <div class="col-1 text-center">
+                      <p class="text-white-50 m-1">#</p>
+                    </div>
+                    <div class="col-6">
+                      <h6 class="text-uppercase text-white-50 m-1">titolo</h6>
+                    </div>
+                    <div class="col-4">
+                      <h6 class="text-uppercase text-white-50 m-1">riproduzioni</h6>
+                    </div>
+                    <div class="col-1"><i class="bi bi-clock text-white-50 m-1"></i></div>
+                  </div>
+                  <div class="border-top border-white-50"></div>
+                  <div class="row my-2 align-items-center">
+                    <div class="col-1 text-center"><h4 class="text-white-50">1</h4></div>
+                    <div class="col-6">
+                      <div>
+                        <h2 class="text-white fs-5 mb-0">Montanelli - Intro</h2>
+                        <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <p class="text-white-50">694.578</p>
+                    </div>
+                    <div class="col-1">
+                      <p class="text-white-50">1:28</p>
+                    </div>
+                  </div>
+                  <div class="row my-2 align-items-center">
+                    <div class="col-1 text-center"><h4 class="text-white-50">1</h4></div>
+                    <div class="col-6">
+                      <div>
+                        <h2 class="text-white fs-5 mb-0">Montanelli - Intro</h2>
+                        <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <p class="text-white-50">694.578</p>
+                    </div>
+                    <div class="col-1">
+                      <p class="text-white-50">1:28</p>
+                    </div>
+                  </div>
+                  <div class="row my-2 align-items-center">
+                    <div class="col-1 text-center"><h4 class="text-white-50">1</h4></div>
+                    <div class="col-6">
+                      <div>
+                        <h2 class="text-white fs-5 mb-0">Montanelli - Intro</h2>
+                        <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <p class="text-white-50">694.578</p>
+                    </div>
+                    <div class="col-1">
+                      <p class="text-white-50">1:28</p>
+                    </div>
+                  </div>
+                  <div class="row my-2 align-items-center">
+                    <div class="col-1 text-center"><h4 class="text-white-50">1</h4></div>
+                    <div class="col-6">
+                      <div>
+                        <h2 class="text-white fs-5 mb-0">Montanelli - Intro</h2>
+                        <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <p class="text-white-50">694.578</p>
+                    </div>
+                    <div class="col-1">
+                      <p class="text-white-50">1:28</p>
+                    </div>
+                  </div>
+                  <div class="row my-2 align-items-center">
+                    <div class="col-1 text-center"><h4 class="text-white-50">1</h4></div>
+                    <div class="col-6">
+                      <div>
+                        <h2 class="text-white fs-5 mb-0">Ninnananna per i genitori disattenti</h2>
+                        <div class="d-flex align-items-center gap-1">
+                          <span style="font-size: 12px" class="btn bg-body-secondary text-center px-1 py-0">E</span>
+                          <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <p class="text-white-50">694.578</p>
+                    </div>
+                    <div class="col-1">
+                      <p class="text-white-50">1:28</p>
+                    </div>
+                  </div>
+                  <div class="row my-2 align-items-center">
+                    <div class="col-1 text-center"><h4 class="text-white-50">1</h4></div>
+                    <div class="col-6">
+                      <div>
+                        <h2 class="text-white fs-5 mb-0">Montanelli - Intro</h2>
+                        <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <p class="text-white-50">694.578</p>
+                    </div>
+                    <div class="col-1">
+                      <p class="text-white-50">1:28</p>
+                    </div>
+                  </div>
+                  <div class="row my-2 align-items-center">
+                    <div class="col-1 text-center"><h4 class="text-white-50">1</h4></div>
+                    <div class="col-6">
+                      <div>
+                        <h2 class="text-white fs-5 mb-0">Montanelli - Intro</h2>
+                        <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <p class="text-white-50">694.578</p>
+                    </div>
+                    <div class="col-1">
+                      <p class="text-white-50">1:28</p>
+                    </div>
+                  </div>
+                  <div class="row my-2 align-items-center">
+                    <div class="col-1 text-center"><h4 class="text-white-50">1</h4></div>
+                    <div class="col-6">
+                      <div>
+                        <h2 class="text-white fs-5 mb-0">Montanelli - Intro</h2>
+                        <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <p class="text-white-50">694.578</p>
+                    </div>
+                    <div class="col-1">
+                      <p class="text-white-50">1:28</p>
+                    </div>
+                  </div>
+                  <div class="row my-2 align-items-center">
+                    <div class="col-1 text-center"><h4 class="text-white-50">1</h4></div>
+                    <div class="col-6">
+                      <div>
+                        <h2 class="text-white fs-5 mb-0">Montanelli - Intro</h2>
+                        <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <p class="text-white-50">694.578</p>
+                    </div>
+                    <div class="col-1">
+                      <p class="text-white-50">1:28</p>
+                    </div>
+                  </div>
+                  <div class="row my-2 align-items-center">
+                    <div class="col-1 text-center"><h4 class="text-white-50">1</h4></div>
+                    <div class="col-6">
+                      <div>
+                        <h2 class="text-white fs-5 mb-0">Montanelli - Intro</h2>
+                        <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <p class="text-white-50">694.578</p>
+                    </div>
+                    <div class="col-1">
+                      <p class="text-white-50">1:28</p>
+                    </div>
+                  </div>
+                  <div class="row my-2 align-items-center">
+                    <div class="col-1 text-center"><h4 class="text-white-50">1</h4></div>
+                    <div class="col-6">
+                      <div>
+                        <h2 class="text-white fs-5 mb-0">Montanelli - Intro</h2>
+                        <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <p class="text-white-50">694.578</p>
+                    </div>
+                    <div class="col-1">
+                      <p class="text-white-50">1:28</p>
+                    </div>
+                  </div>
+                  <div class="row my-2 align-items-center">
+                    <div class="col-1 text-center"><h4 class="text-white-50">1</h4></div>
+                    <div class="col-6">
+                      <div>
+                        <h2 class="text-white fs-5 mb-0">Montanelli - Intro</h2>
+                        <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <p class="text-white-50">694.578</p>
+                    </div>
+                    <div class="col-1">
+                      <p class="text-white-50">1:28</p>
+                    </div>
+                  </div>
+                  <div class="row my-2 align-items-center">
+                    <div class="col-1 text-center"><h4 class="text-white-50">1</h4></div>
+                    <div class="col-6">
+                      <div>
+                        <h2 class="text-white fs-5 mb-0">Montanelli - Intro</h2>
+                        <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <p class="text-white-50">694.578</p>
+                    </div>
+                    <div class="col-1">
+                      <p class="text-white-50">1:28</p>
+                    </div>
+                  </div>
+                  <div class="row my-2 align-items-center">
+                    <div class="col-1 text-center"><h4 class="text-white-50">1</h4></div>
+                    <div class="col-6">
+                      <div>
+                        <h2 class="text-white fs-5 mb-0">Montanelli - Intro</h2>
+                        <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <p class="text-white-50">694.578</p>
+                    </div>
+                    <div class="col-1">
+                      <p class="text-white-50">1:28</p>
+                    </div>
+                  </div>
+                  <div class="row my-2 align-items-center">
+                    <div class="col-1 text-center"><h4 class="text-white-50">1</h4></div>
+                    <div class="col-6">
+                      <div>
+                        <h2 class="text-white fs-5 mb-0">Montanelli - Intro</h2>
+                        <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <p class="text-white-50">694.578</p>
+                    </div>
+                    <div class="col-1">
+                      <p class="text-white-50">1:28</p>
+                    </div>
+                  </div>
+                  <div class="row my-2 align-items-center">
+                    <div class="col-1 text-center"><h4 class="text-white-50">1</h4></div>
+                    <div class="col-6">
+                      <div>
+                        <h2 class="text-white fs-5 mb-0">Montanelli - Intro</h2>
+                        <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <p class="text-white-50">694.578</p>
+                    </div>
+                    <div class="col-1">
+                      <p class="text-white-50">1:28</p>
+                    </div>
+                  </div>
+                  <div class="row my-2 align-items-center">
+                    <div class="col-1 text-center"><h4 class="text-white-50">1</h4></div>
+                    <div class="col-6">
+                      <div>
+                        <h2 class="text-white fs-5 mb-0">Montanelli - Intro</h2>
+                        <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <p class="text-white-50">694.578</p>
+                    </div>
+                    <div class="col-1">
+                      <p class="text-white-50">1:28</p>
+                    </div>
+                  </div>
+                  <div class="row my-2 align-items-center">
+                    <div class="col-1 text-center"><h4 class="text-white-50">1</h4></div>
+                    <div class="col-6">
+                      <div>
+                        <h2 class="text-white fs-5 mb-0">Montanelli - Intro</h2>
+                        <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <p class="text-white-50">694.578</p>
+                    </div>
+                    <div class="col-1">
+                      <p class="text-white-50">1:28</p>
+                    </div>
+                  </div>
+                  <div class="row my-2 align-items-center">
+                    <div class="col-1 text-center"><h4 class="text-white-50">1</h4></div>
+                    <div class="col-6">
+                      <div>
+                        <h2 class="text-white fs-5 mb-0">Montanelli - Intro</h2>
+                        <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <p class="text-white-50">694.578</p>
+                    </div>
+                    <div class="col-1">
+                      <p class="text-white-50">1:28</p>
+                    </div>
+                  </div>
+                  <div class="row my-2 align-items-center">
+                    <div class="col-1 text-center"><h4 class="text-white-50">1</h4></div>
+                    <div class="col-6">
+                      <div>
+                        <h2 class="text-white fs-5 mb-0">Montanelli - Intro</h2>
+                        <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <p class="text-white-50">694.578</p>
+                    </div>
+                    <div class="col-1">
+                      <p class="text-white-50">1:28</p>
+                    </div>
+                  </div>
+                  <div class="row my-2 align-items-center">
+                    <div class="col-1 text-center"><h4 class="text-white-50">1</h4></div>
+                    <div class="col-6">
+                      <div>
+                        <h2 class="text-white fs-5 mb-0">Montanelli - Intro</h2>
+                        <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <p class="text-white-50">694.578</p>
+                    </div>
+                    <div class="col-1">
+                      <p class="text-white-50">1:28</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SIDEBAR RIGHT -->
+          <!-- <div class="col-1 bg-black"></div> -->
+          <aside class="col sidebar-right p-3 d-none d-xl-block">
+            <h6 class="text-uppercase text-muted-soft">Attività amici</h6>
+            <div class="friend mt-2">
+              <img src="./assets/imgs/main/image-11.jpg" alt="" />
+              <div>
+                <div>Charlie Hookham</div>
+                <div class="meta">EP III • 4 ore fa</div>
+              </div>
+            </div>
+            <div class="friend">
+              <img src="./assets/imgs/main/image-12.jpg" alt="" />
+              <div>
+                <div>lightdark02</div>
+                <div class="meta">Aimed to Kill • 3 ore fa</div>
+              </div>
+            </div>
+            <div class="friend">
+              <img src="./assets/imgs/main/image-13.jpg" alt="" />
+              <div>
+                <div>Valeria Traverso</div>
+                <div class="meta">New Kings • 3 giorni fa</div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </main>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
