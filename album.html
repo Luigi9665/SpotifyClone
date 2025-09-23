@@ -107,7 +107,7 @@
       <div class="container-fluid">
         <div class="row">
           <!-- SIDEBAR LEFT -->
-          <div class="col-2 d-none d-md-block bg-black h-100">
+          <div class="col-4 col-xl-2 d-none d-md-block bg-black h-100">
             <aside>
               <div class="d-flex flex-column align-items-start">
                 <button class="btn text-white-50 fs-5">
@@ -242,32 +242,16 @@
           </div>
 
           <!-- CONTENUTO PRINCIPALI CON L'ALBUM SCELTO E I BRANI -->
-          <div class="col-8 h-100 p-0">
+          <div class="col-12 col-md-8 h-100 p-0">
             <!-- START DIV BACKGROUND GRADIENT COLOR -->
-            <!-- <div
-              style="
-                background-image: linear-gradient(
-                  to bottom,
-                  #e2c450,
-                  #cdb149,
-                  #b89f41,
-                  #a48d3a,
-                  #907c33,
-                  #84692e,
-                  #000000,
-                  #000000,
-                  #000000,
-                  #000000,
-                  #000000,
-                  #000000
-                );
-              "
-            > -->
+
+            <!-- DIV PER GESTIONE DEL BACKGROUND GENERALE DEL NERO -->
             <div class="bg-black">
               <!-- START DIV SCROLL sotto -->
               <div class="scrollable">
                 <div style="background-image: linear-gradient(to bottom, #e2c450, #c6ac46, #aa943d, #907c33, #76662a)">
-                  <div class="container-fluid px-5">
+                  <!-- GESTIRE IL CONTAINER PER LE MEDIA QUERY -->
+                  <div class="container-fluid px-3 px-md-5">
                     <div class="d-flex justify-content-between align-items-center py-3">
                       <div class="d-flex align-items-center gap-3">
                         <button class="btn rounded-circle bg-dark bg-opacity-75 text-white fs-5 px-2 py-1">
@@ -285,11 +269,13 @@
                             class="w-100 h-100 rounded-circle"
                           />
                         </div>
-                        <h6 class="text-white fw-semibold m-0">Lidia Nautilus ...</h6>
+                        <h6 class="d-none d-md-block text-white fw-semibold m-0">Lidia Nautilus ...</h6>
                       </div>
                     </div>
+                    <!-- ROW PER IMMAGINE E TITOLO ALBUM -->
                     <div class="row py-4">
-                      <div class="col-3">
+                      <!-- DIV PER IMMAGINE ALBUM -->
+                      <div class="col-9 offset-2 col-md-3 offset-md-0">
                         <div class="shadow-lg">
                           <img
                             src="https://cdn-images.dzcdn.net/images/cover/815f471dcf48c1de0b4866bad75c4d21/250x250-000000-80-0-0.jpg"
@@ -298,10 +284,15 @@
                           />
                         </div>
                       </div>
-                      <div class="col-9 d-flex">
+                      <!-- DIV PER LA GESTIONE DEL TITOLO ALBUM E ARTISTI -->
+                      <div class="col-12 col-md-9 d-flex mt-5 mt-md-0">
                         <div class="flex-fill d-flex flex-column justify-content-end">
-                          <h4 class="text-white text-uppercase">album</h4>
-                          <h1 class="fw-bold text-white w-100" style="font-size: 6rem; font-family: Circular, sans-serif; letter-spacing: -5px">
+                          <h4 class="text-white text-uppercase d-none d-md-block">album</h4>
+                          <h1 class="d-md-none display-2 fw-bold text-white w-100" style="font-family: Circular, sans-serif">Gioventù brucata</h1>
+                          <h1
+                            class="d-none d-md-block fw-bold text-white w-100"
+                            style="font-size: 6rem; font-family: Circular, sans-serif; letter-spacing: -5px"
+                          >
                             Gioventù brucata
                           </h1>
                           <div class="d-flex align-items-baseline gap-2">
