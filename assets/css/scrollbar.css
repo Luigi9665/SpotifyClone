@@ -4,7 +4,7 @@
 }
 
 .scrollable2 {
-  max-height: 800px;
+  max-height: 65vh;
   overflow-y: auto;
 }
 .scrollable::-webkit-scrollbar,
