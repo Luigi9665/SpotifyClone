@@ -335,7 +335,26 @@
             <div class="bg-black">
               <!-- START DIV SCROLL sotto -->
               <div class="scrollable">
-                <div style="background-image: linear-gradient(to bottom, #e2c450, #c6ac46, #aa943d, #907c33, #76662a)">
+                <div
+                  style="
+                    background-image: linear-gradient(
+                      to bottom,
+                      #e2c450,
+                      #cdb149,
+                      #b89f41,
+                      #a48d3a,
+                      #907c33,
+                      #84692e,
+                      #76572a,
+                      #664626,
+                      #523223,
+                      #3a221e,
+                      #211515,
+                      #000000
+                    );
+                    padding-bottom: 10rem;
+                  "
+                >
                   <!-- GESTIRE IL CONTAINER PER LE MEDIA QUERY -->
                   <!-- inserire al container le classi bg-dark bg-opacity-25 tramite JS nella media query device e small, rimuoverle alla media query medium -->
                   <div class="container-fluid px-3 px-md-5">
@@ -403,7 +422,8 @@
                   </div>
                 </div>
 
-                <div style="background-image: linear-gradient(to bottom, #76662a, #000000, #000000, #000000, #000000, #000000)">
+                <!-- INSERIAMO IL MARGIN TOP IN NEGATIVO PER SALIRE SUL BACKGROUN COL GRADIENT -->
+                <div style="margin-top: -10rem">
                   <div class="bg-dark bg-opacity-25">
                     <div class="container-fluid px-5">
                       <div class="d-flex align-items-center gap-4 py-3">
