@@ -1,7 +1,11 @@
+//  VARIABILI GENERALI
 const volumeBar = document.getElementById("volume-bar");
 const volumeFill = document.getElementById("volume-fill");
 const volumeThumb = document.getElementById("volume-thumb");
 
+// FUNZIONI
+
+// SET BARRA VOLUME - BLOCCO ISTRUZIONI
 function setVolumeFromEvent(e) {
   const rect = volumeBar.getBoundingClientRect();
   let percent = (e.clientX - rect.left) / rect.width;
@@ -18,3 +22,7 @@ window.addEventListener("mouseup", () => (isDragging = false));
 window.addEventListener("mousemove", (e) => {
   if (isDragging) setVolumeFromEvent(e);
 });
+
+// FETCH
+
+// AL CARICAMENTO DELLA PAGINA
