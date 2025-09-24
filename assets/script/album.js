@@ -99,6 +99,8 @@ playMobile.addEventListener("click", () => {
   }
 });
 
+// -------------------------------------------------------------------------------
+
 // GENERAZIONE DELLA PAGINA
 
 // costruzione del background con il media color
