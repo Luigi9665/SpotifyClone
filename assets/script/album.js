@@ -2,11 +2,27 @@
 const volumeBar = document.getElementById("volume-bar");
 const volumeFill = document.getElementById("volume-fill");
 const volumeThumb = document.getElementById("volume-thumb");
-const URL = "https://deezerdevs-deezer.p.rapidapi.com/album/";
+const audio = document.getElementById("audio-player");
+// const URL = "https://deezerdevs-deezer.p.rapidapi.com/album/";
+// const appId = params.get("album");
+let URL = "";
+let appId = "";
+let condition;
 const params = new URLSearchParams(window.location.search);
-const appId = params.get("album");
 const rowTracks = document.getElementById("rowTracks");
 const rowAlbum = document.getElementById("rowAlbum");
+
+// manipolazione dell'indirizzo url per gestire le playlist e gli album
+console.log(params.toString());
+if (params.toString().includes("album")) {
+  appId = params.get("album");
+  URL = "https://deezerdevs-deezer.p.rapidapi.com/album/";
+  condition = true;
+} else {
+  appId = params.get("playlist");
+  URL = "https://deezerdevs-deezer.p.rapidapi.com/playlist/";
+  condition = false;
+}
 
 // FUNZIONI
 
@@ -17,6 +33,9 @@ function setVolumeFromEvent(e) {
   percent = Math.max(0, Math.min(1, percent));
   volumeFill.style.width = percent * 100 + "%";
   volumeThumb.style.left = percent * 100 + "%";
+
+  // Applicazione al player
+  audio.volume = percent;
 }
 
 volumeBar.addEventListener("click", setVolumeFromEvent);
@@ -55,7 +74,6 @@ const generateBackground = () => {
     const gradient = `linear-gradient(to bottom, 
       rgb(${palette[0].join(",")}), 
       rgb(${palette[1].join(",")}),
-      rgb(${palette[6].join(",")}),
       #000000
     )`;
 
@@ -64,14 +82,25 @@ const generateBackground = () => {
 };
 
 // generazione dei dettagli album con foto, titolo e cantante
-const generateAlbum = (album) => {
+const generateAlbum = (album, condition) => {
+  let imgAlbum;
+  let imgSinger;
+  let name;
+  let date;
   const type = album.type;
   const title = album.title;
   document.title = title;
-  const imgAlbum = album.cover_big;
-  const imgSinger = album.artist.picture;
-  const name = album.artist.name;
-  const date = album.release_date.split("-")[0];
+  if (condition) {
+    imgAlbum = album.cover_big;
+    imgSinger = album.artist.picture;
+    name = album.artist.name;
+    date = album.release_date.split("-")[0];
+  } else {
+    imgAlbum = album.picture_big;
+    imgSinger = album.picture_small;
+    name = album.creator.name;
+    date = album.creation_date.split("-")[0];
+  }
   const totalTracks = album.nb_tracks;
   const duration = formatTimeAlbum(album.duration);
 
@@ -148,6 +177,8 @@ const generateTracks = (track, index) => {
   const artist = track.artist.name;
   const riproduzioni = track.rank;
   const time = formatTime(track.duration);
+  const preview = track.preview;
+  const idSinger = track.artist.id;
 
   // crezione della row
   const row = document.createElement("div");
@@ -166,11 +197,24 @@ const generateTracks = (track, index) => {
   colTitle.className = "col-10 col-md-6";
   const divGenerics = document.createElement("div");
   const h2 = document.createElement("h2");
-  h2.className = "text-white fs-5 mb-0";
+  h2.className = "btn p-0 text-white fs-5 mb-0";
   h2.innerText = title;
-  const p = document.createElement("p");
-  p.className = "text-white-50 mb-0";
-  p.innerText = artist;
+
+  //   il Listener per mandare la traccia all'elemento audio
+  h2.addEventListener("click", () => {
+    audio.pause(); // stop eventuale brano in corso
+    audio.src = preview; // nuova traccia
+    audio.currentTime = 0;
+    audio
+      .play()
+      .then(() => console.log("Riproduzione avviata"))
+      .catch((err) => console.warn("Riproduzione bloccata:", err));
+  });
+
+  const linkArtist = document.createElement("a");
+  linkArtist.className = "text-decoration-none text-white-50 d-block";
+  linkArtist.href = "artist.html?artistID=" + idSinger;
+  linkArtist.innerText = artist;
   const divExplicit = document.createElement("div");
   divExplicit.className = "d-flex align-items-center gap-1";
   if (explicit) {
@@ -178,10 +222,10 @@ const generateTracks = (track, index) => {
     span.style.fontSize = "12px";
     span.className = "btn bg-body-secondary text-center px-1 py-0";
     span.innerText = "E";
-    divExplicit.append(span, p);
+    divExplicit.append(span, linkArtist);
     divGenerics.append(h2, divExplicit);
   } else {
-    divGenerics.append(h2, p);
+    divGenerics.append(h2, linkArtist);
   }
 
   colTitle.appendChild(divGenerics);
@@ -190,7 +234,7 @@ const generateTracks = (track, index) => {
   const colRipro = document.createElement("div");
   colRipro.className = "col-4 d-none d-md-block";
   const pRipro = document.createElement("p");
-  pRipro.className = "text-white-50";
+  pRipro.className = "text-white-50 text-center";
   pRipro.innerText = riproduzioni;
   colRipro.appendChild(pRipro);
 
@@ -246,15 +290,14 @@ window.addEventListener("DOMContentLoaded", () => {
       console.log(album);
 
       //   chiamo il generate Credenziali Album + cantante
-      generateAlbum(album);
-
-      console.log(album.tracks.data);
+      generateAlbum(album, condition);
 
       //   ciclo for per generazione delle tracce con rispettivi indici
       for (let i = 0; i < album.tracks.data.length; i++) {
         const track = album.tracks.data[i];
         generateTracks(track, i);
       }
+
       //   richiamo il generate background
       generateBackground();
     })
