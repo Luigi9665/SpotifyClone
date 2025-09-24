@@ -46,7 +46,7 @@
         <!-- MAIN CONTENT -->
         <main class="main flex-grow-1">
           <!-- Hero Album -->
-          <section class="hero mb-4">
+          <section class="hero mb-4 d-none d-md-block">
             <img class="cover" src="./assets/imgs/main/image-1.jpg" alt="" />
             <div class="flex-grow-1">
               <div class="text-uppercase text-muted-soft small fw-bold">Album</div>
@@ -60,8 +60,40 @@
             </div>
           </section>
 
-          <!-- Buonasera -->
-          <h2 class="section-title">Buonasera</h2>
+          <!-- Buonasera header / navbar -->
+          <header class="mb-3">
+            <!-- Title + icons aligned to the right -->
+            <div class="d-flex align-items-center justify-content-between">
+              <h2 class="h3 fw-bold mb-0">Buonasera</h2>
+
+              <div class="d-flex align-items-center gap-2">
+                <!-- bell with blue dot -->
+                <button type="button" class="ctrl-btn position-relative">
+                  <i class="bi bi-bell"></i>
+                  <span
+                    class="position-absolute top-0 start-100 translate-middle p-1 bg-primary rounded-circle border border-2 border-dark"
+                    style="--bs-border-opacity:.8"
+                    aria-hidden="true"
+                  ></span>
+                </button>
+                <button type="button" class="ctrl-btn"><i class="bi bi-clock-history"></i></button>
+                <button type="button" class="ctrl-btn"><i class="bi bi-gear"></i></button>
+              </div>
+            </div>
+
+            <!-- Pills -->
+            <ul class="nav nav-pills small gap-5 mt-3 mx-3">
+              <li class="nav-item">
+                <p> Musica</p>
+              </li>
+              <li class="nav-item">
+                <p>Podcast e show</p>
+              </li>
+            </ul>
+          </header>
+
+
+          
           <div class="row g-3 row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xxl-4 mb-4">
             <!-- tiles -->
             <div class="col">
@@ -92,8 +124,8 @@
 
           <!-- Altro di ciò che ti piace -->
           <div class="d-flex justify-content-between align-items-center">
-            <h2 class="section-title mb-2">Altro di ciò che ti piace</h2>
-            <a href="#" class="text-muted-soft small text-decoration-none">VISUALIZZA TUTTO</a>
+            <h2 class="section-title mb-2 d-none d-md-block">Altro di ciò che ti piace</h2>
+            <a href="#" class="text-muted-soft small text-decoration-none d-none d-md-block">VISUALIZZA TUTTO</a>
           </div>
           <div class="row g-3 row-cols-2 row-cols-md-3 row-cols-lg-5">
             <!-- albums/cards -->
@@ -204,6 +236,41 @@
         </div>
       </div>
     </footer>
+
+    <!-- FOOTER (mini-player + bottom tabs) -->
+<footer class="mobile-footer fixed-bottom d-md-none">
+  <div class="container px-3 pb-2">
+    <!-- Mini player -->
+    <div class="mini-player d-flex align-items-center justify-content-between rounded-pill px-3 py-2 mb-2">
+      <div class="d-flex align-items-center text-truncate">
+        <i class="bi bi-music-note-beamed me-2 text-muted"></i>
+        <span class="small text-truncate">rnatural Parody by The Hillywood Show</span>
+      </div>
+      <div class="d-flex align-items-center gap-2 fs-5">
+        <i class="bi bi-laptop text-muted"></i>
+        <i class="bi bi-heart"></i>
+        <i class="bi bi-play-fill"></i>
+      </div>
+    </div>
+
+    <!-- Bottom tab bar -->
+    <nav class="bottom-nav d-flex justify-content-around text-center pt-1 ">
+      <a href="#" class="nav-item flex-fill text-decoration-none text-white-50 active">
+        <i class="bi bi-house-door-fill fs-4 d-block"></i>
+        <small class="d-block">Home</small>
+      </a>
+      <a href="#" class="nav-item flex-fill text-decoration-none text-white-50">
+        <i class="bi bi-search fs-4 d-block"></i>
+        <small class="d-block">Cerca</small>
+      </a>
+      <a href="#" class="nav-item flex-fill text-decoration-none text-white-50">
+        <i class="bi bi-collection fs-4 d-block"></i>
+        <small class="d-block">La tua libreria</small>
+      </a>
+    </nav>
+  </div>
+</footer>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
   </body>

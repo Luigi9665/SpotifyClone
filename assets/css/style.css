@@ -146,3 +146,15 @@ body{
 /* Small helpers */
 .text-muted-soft{ color:var(--muted) }
 .hr-soft{ border-top:1px solid #2a2a2a; opacity:1 }
+
+.mobile-footer{
+  background: rgba(0,0,0,.92);
+  padding-bottom: max(env(safe-area-inset-bottom), .25rem);
+  color:#fff;
+}
+.mini-player{
+  background:#2a2a2a;
+  box-shadow:0 6px 20px rgba(0,0,0,.35);
+}
+.bottom-nav .nav-item.active,
+.bottom-nav .nav-item:hover{ color:#fff; }
