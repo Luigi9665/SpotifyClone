@@ -337,6 +337,7 @@
               <!-- START DIV SCROLL sotto -->
               <div class="scrollable">
                 <div
+                  id="background"
                   style="
                     background-image: linear-gradient(
                       to bottom,
@@ -380,7 +381,7 @@
                       </div>
                     </div>
                     <!-- ROW PER IMMAGINE E TITOLO ALBUM -->
-                    <div class="row py-4">
+                    <div id="rowAlbum" class="row py-4">
                       <!-- DIV PER IMMAGINE ALBUM -->
                       <div class="col-9 offset-2 col-md-3 offset-md-0">
                         <div class="shadow-lg">
@@ -447,10 +448,10 @@
                           <p class="text-white-50 m-1">#</p>
                         </div>
                         <div class="col-6">
-                          <h6 class="text-uppercase text-white-50 m-1">titolo</h6>
+                          <h6 class="text-uppercase text-white-50 my-1">titolo</h6>
                         </div>
                         <div class="col-4">
-                          <h6 class="text-uppercase text-white-50 m-1">riproduzioni</h6>
+                          <h6 class="text-uppercase text-white-50 my-1">riproduzioni</h6>
                         </div>
                         <div class="col-1"><i class="bi bi-clock text-white-50 m-1"></i></div>
                       </div>
@@ -460,50 +461,52 @@
                       <!-- SOPRA -->
 
                       <!-- INIZIO DELLE TRACCE  -->
-                      <div class="row my-2 align-items-center">
-                        <!-- INDICE DELLA TRACCIA, DA FAR SPARIRE AL DEVICE E ALLO SMALL, RICOMPARE AL MEDIUM -->
-                        <div class="col-1 d-none d-md-block text-center">
-                          <h4 class="text-white-50">1</h4>
-                        </div>
-                        <!-- TITOLO TRACCIA SEMPRE PRESENTE -->
-                        <div class="col-10 col-md-6">
-                          <div>
-                            <h2 class="text-white fs-5 mb-0">Montanelli - Intro</h2>
-                            <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
+                      <div id="rowTracks" class="paddingScroll">
+                        <div class="row my-2 align-items-center">
+                          <!-- INDICE DELLA TRACCIA, DA FAR SPARIRE AL DEVICE E ALLO SMALL, RICOMPARE AL MEDIUM -->
+                          <div class="col-1 d-none d-md-block text-center">
+                            <h4 class="text-white-50">1</h4>
                           </div>
-                        </div>
-                        <!-- NUMERO DI RIPRODUZIONE DA FAR RICOMPARIRE AL MEDIUM -->
-                        <div class="col-4 d-none d-md-block">
-                          <p class="text-white-50">694.578</p>
-                        </div>
-                        <!-- TEMPO DI RIPRODUZIONE DA FAR RICOMPARIRE AL MEDIUM -->
-                        <div class="col-1 d-none d-md-block">
-                          <p class="text-white-50">1:28</p>
-                        </div>
-                        <!-- DIV DA FAR SCOMPARIRE AL MEDIUM -->
-                        <div class="col-1 d-md-none">
-                          <button class="btn text-white-50 fs-3 p-0">
-                            <i class="bi bi-three-dots-vertical"></i>
-                          </button>
-                        </div>
-                      </div>
-                      <!-- ALTRO ESEMPIO DI TRACCIA CON AGGIUNTA DELL'ICONA E -->
-                      <div class="row my-2 align-items-center">
-                        <div class="col-1 text-center"><h4 class="text-white-50">2</h4></div>
-                        <div class="col-6">
-                          <div>
-                            <h2 class="text-white fs-5 mb-0">Ninnananna per i genitori disattenti</h2>
-                            <div class="d-flex align-items-center gap-1">
-                              <span style="font-size: 12px" class="btn bg-body-secondary text-center px-1 py-0">E</span>
+                          <!-- TITOLO TRACCIA SEMPRE PRESENTE -->
+                          <div class="col-10 col-md-6">
+                            <div>
+                              <h2 class="text-white fs-5 mb-0">Montanelli - Intro</h2>
                               <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
                             </div>
                           </div>
+                          <!-- NUMERO DI RIPRODUZIONE DA FAR RICOMPARIRE AL MEDIUM -->
+                          <div class="col-4 d-none d-md-block">
+                            <p class="text-white-50">694.578</p>
+                          </div>
+                          <!-- TEMPO DI RIPRODUZIONE DA FAR RICOMPARIRE AL MEDIUM -->
+                          <div class="col-1 d-none d-md-block">
+                            <p class="text-white-50">1:28</p>
+                          </div>
+                          <!-- DIV DA FAR SCOMPARIRE AL MEDIUM -->
+                          <div class="col-1 d-md-none">
+                            <button class="btn text-white-50 fs-3 p-0">
+                              <i class="bi bi-three-dots-vertical"></i>
+                            </button>
+                          </div>
                         </div>
-                        <div class="col-4">
-                          <p class="text-white-50">694.578</p>
-                        </div>
-                        <div class="col-1">
-                          <p class="text-white-50">1:28</p>
+                        <!-- ALTRO ESEMPIO DI TRACCIA CON AGGIUNTA DELL'ICONA E -->
+                        <div class="row my-2 align-items-center">
+                          <div class="col-1 text-center"><h4 class="text-white-50">2</h4></div>
+                          <div class="col-6">
+                            <div>
+                              <h2 class="text-white fs-5 mb-0">Ninnananna per i genitori disattenti</h2>
+                              <div class="d-flex align-items-center gap-1">
+                                <span style="font-size: 12px" class="btn bg-body-secondary text-center px-1 py-0">E</span>
+                                <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-4">
+                            <p class="text-white-50">694.578</p>
+                          </div>
+                          <div class="col-1">
+                            <p class="text-white-50">1:28</p>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -591,6 +594,7 @@
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.2/color-thief.umd.js"></script>
     <script src="./assets/script/album.js"></script>
   </body>
 </html>
