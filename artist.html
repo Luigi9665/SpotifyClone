@@ -1,161 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Spotify Clone - Artist page</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-      crossorigin="anonymous"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="./assets/css/artist.css" />
     <link rel="stylesheet" href="./assets/css/circular-font.css" />
     <link rel="stylesheet" href="./assets/css/scrollbar.css" />
-  </head>
-  <body data-bs-theme="dark">
+</head>
+
+<body data-bs-theme="dark">
     <main class="d-flex">
-      <!-- DIV COLLAPSE SIDEBAR PER VERSIONE MOBILE E SMALL -->
-      <div style="position: fixed; bottom: 0; left: 0; width: 100%; z-index: 1050; background-color: rgba(0, 0, 0, 1)" id="navbarPlayesSmall" class="d-md-none">
-        <div class="row">
-          <div class="col d-flex flex-column align-items-center justify-content-center py-1">
-            <a href="./index.html" class="btn text-decoration-none text-white text-center p-0">
-              <i class="fs-1 bi bi-house-door-fill"></i>
-            </a>
-            <p class="text-white fs-6 m-0">Home</p>
-          </div>
-          <div class="col d-flex flex-column align-items-center justify-content-center py-1">
-            <a href="./search.html" class="btn text-decoration-none text-white text-center p-0">
-              <i class="fs-1 bi bi-search"></i>
-            </a>
-            <p class="text-white fs-6 m-0">Cerca</p>
-          </div>
-          <div class="col d-flex flex-column align-items-center justify-content-center py-1">
-            <a href="" class="btn text-decoration-none text-white text-center p-0">
-              <i class="fs-1 bi bi-collection"></i>
-            </a>
-            <p class="text-white fs-6 m-0">Libreria</p>
-          </div>
-        </div>
-      </div>
-      <!-- DIV COLLAPSE PER IL PLAYER -->
-      <div style="position: fixed; bottom: 90px; left: 0; width: 100%; z-index: 1050" class="container-fluid d-md-none">
-        <div class="bg-dark rounded-1">
-          <div class="row align-items-center p-2">
-            <div class="col">
-              <img src="./assets/imgs/main/image-13.jpg" alt="copertina brano" style="width: 25px" class="rounded-circle" />
-            </div>
-            <div class="col-7">
-              <p class="text-white fw-semibold m-0">Traccia del brano</p>
-            </div>
-            <div class="col-3 d-flex gap-2">
-              <button class="btn p-0 text-white-50">
-                <i class="fs-4 bi bi-speaker"></i>
-              </button>
-              <button class="btn p-0 text-white-50">
-                <i class="fs-4 bi bi-heart"></i>
-              </button>
-              <button class="btn p-0 text-white-50">
-                <i class="fs-4 bi bi-play-fill"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- DIV CON IL LETTORE E I CONTROLLI AUDIO -->
-      <!-- Player fisso in basso -->
-      <div
-        style="position: fixed; bottom: 0; left: 0; width: 100%; z-index: 1050; box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.5); background-color: rgb(15 15 15)"
-        id="navbarPlayesMedium"
-        class="d-none d-md-block"
-      >
-        <div class="container-fluid">
-          <div class="row py-3">
-            <div class="col-3 col-xl-2 d-flex align-items-center gap-3 flex-fill">
-              <div style="width: 60px; height: 60px">
-                <img src="https://cdn-images.dzcdn.net/images/cover/0f7f816a316d3303adea31ad037c6740/250x250-000000-80-0-0.jpg" alt="Cover" class="w-100" />
-              </div>
-              <div>
-                <h4 class="text-white fs-6 m-0">Fat Funny Friend</h4>
-                <p style="font-size: 14px" class="text-white-50 m-0">Maddie Zahm</p>
-              </div>
-              <button class="btn text-white-50 fs-5 p-0"><i class="bi bi-heart"></i></button>
-            </div>
-            <!-- COLONNA CENTRALE FOOTER  -->
-            <div class="col-5 col-xl-6 col-xxl-7 text-center">
-              <div>
-                <div class="d-flex gap-1 gap-xl-4 align-items-center justify-content-center">
-                  <i class="btn text-white-50 bi bi-shuffle fs-2 p-0"></i>
-                  <i class="btn text-white-50 bi bi-skip-start fs-2 p-0"></i>
-                  <i class="btn bi bi-play-circle-fill text-white fs-1 p-0"></i>
-                  <i class="btn text-white-50 bi bi-skip-end fs-2 p-0"></i>
-                  <i class="btn text-white-50 bi bi-repeat fs-2 p-0"></i>
+        <!-- DIV COLLAPSE SIDEBAR PER VERSIONE MOBILE E SMALL -->
+        <div style="position: fixed; bottom: 0; left: 0; width: 100%; z-index: 1050; background-color: rgba(0, 0, 0, 1)"
+            id="navbarPlayesSmall" class="d-md-none">
+            <div class="row">
+                <div class="col d-flex flex-column align-items-center justify-content-center py-1">
+                    <a href="./index.html" class="btn text-decoration-none text-white text-center p-0">
+                        <i class="fs-1 bi bi-house-door-fill"></i>
+                    </a>
+                    <p class="text-white fs-6 m-0">Home</p>
                 </div>
-                <!-- Barra avanzamento brano -->
-                <div class="w-100 d-flex justify-content-center">
-                  <div class="progress w-75" style="height: 4px; background: #222">
-                    <div class="progress-bar bg-white" role="progressbar" style="width: 40%"></div>
-                  </div>
+                <div class="col d-flex flex-column align-items-center justify-content-center py-1">
+                    <a href="./search.html" class="btn text-decoration-none text-white text-center p-0">
+                        <i class="fs-1 bi bi-search"></i>
+                    </a>
+                    <p class="text-white fs-6 m-0">Cerca</p>
                 </div>
-              </div>
+                <div class="col d-flex flex-column align-items-center justify-content-center py-1">
+                    <a href="" class="btn text-decoration-none text-white text-center p-0">
+                        <i class="fs-1 bi bi-collection"></i>
+                    </a>
+                    <p class="text-white fs-6 m-0">Libreria</p>
+                </div>
             </div>
+        </div>
+        <!-- DIV COLLAPSE PER IL PLAYER -->
+        <div style="position: fixed; bottom: 90px; left: 0; width: 100%; z-index: 1050"
+            class="container-fluid d-md-none">
+            <div class="bg-dark rounded-1">
+                <div class="row align-items-center p-2">
+                    <div class="col">
+                        <img src="./assets/imgs/main/image-13.jpg" alt="copertina brano" style="width: 25px"
+                            class="rounded-circle" />
+                    </div>
+                    <div class="col-7">
+                        <p class="text-white fw-semibold m-0">Traccia del brano</p>
+                    </div>
+                    <div class="col-3 d-flex gap-2">
+                        <button class="btn p-0 text-white-50">
+                            <i class="fs-4 bi bi-speaker"></i>
+                        </button>
+                        <button class="btn p-0 text-white-50">
+                            <i class="fs-4 bi bi-heart"></i>
+                        </button>
+                        <button class="btn p-0 text-white-50">
+                            <i class="fs-4 bi bi-play-fill"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-            <!-- Colonna destra -->
-            <div class="col-4 col-xl-3 col-xxl-3 d-flex align-items-center">
-              <div class="d-flex align-items-center gap-0 gap-xxl-2 flex-fill">
-                <button class="d-none d-xl-block btn p-0">
-                  <i class="bi bi-mic text-white-50"></i>
-                </button>
-                <button class="btn p-0">
-                  <svg
-                    class="icon text-white-50"
-                    role="img"
-                    aria-label="Coda"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M3 6h14v2H3V6zm0 5h14v2H3v-2zM3 16h10v2H3v-2zM20 7l3 2-3 2V7z" />
-                  </svg>
-                </button>
-                <button class="btn p-0">
-                  <svg
-                    class="text-white-50"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="28"
-                    height="28"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                    role="img"
-                    aria-label="Connetti un dispositivo"
-                  >
-                    <path d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-7v2h3v2H8v-2h3v-2H4a2 2 0 0 1-2-2V6zM4 6v9h16V6H4z" />
-                    <path d="M7 18a5 5 0 0 1 5 5H9a3 3 0 0 0-3-3v-2z" />
-                  </svg>
-                </button>
+        <!-- DIV CON IL LETTORE E I CONTROLLI AUDIO -->
+        <!-- Player fisso in basso -->
+        <div style="position: fixed; bottom: 0; left: 0; width: 100%; z-index: 1050; box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.5); background-color: rgb(15 15 15)"
+            id="navbarPlayesMedium" class="d-none d-md-block">
+            <div class="container-fluid">
+                <div class="row py-3">
+                    <div class="col-3 col-xl-2 d-flex align-items-center gap-3 flex-fill">
+                        <div style="width: 60px; height: 60px">
+                            <img src="https://cdn-images.dzcdn.net/images/cover/0f7f816a316d3303adea31ad037c6740/250x250-000000-80-0-0.jpg"
+                                alt="Cover" class="w-100" />
+                        </div>
+                        <div>
+                            <h4 class="text-white fs-6 m-0">Fat Funny Friend</h4>
+                            <p style="font-size: 14px" class="text-white-50 m-0">Maddie Zahm</p>
+                        </div>
+                        <button class="btn text-white-50 fs-5 p-0"><i class="bi bi-heart"></i></button>
+                    </div>
+                    <!-- COLONNA CENTRALE FOOTER  -->
+                    <div class="col-5 col-xl-6 col-xxl-7 text-center">
+                        <div>
+                            <div class="d-flex gap-1 gap-xl-4 align-items-center justify-content-center">
+                                <i class="btn text-white-50 bi bi-shuffle fs-2 p-0"></i>
+                                <i class="btn text-white-50 bi bi-skip-start fs-2 p-0"></i>
+                                <i class="btn bi bi-play-circle-fill text-white fs-1 p-0"></i>
+                                <i class="btn text-white-50 bi bi-skip-end fs-2 p-0"></i>
+                                <i class="btn text-white-50 bi bi-repeat fs-2 p-0"></i>
+                            </div>
+                            <!-- Barra avanzamento brano -->
+                            <div class="w-100 d-flex justify-content-center">
+                                <div class="progress w-75" style="height: 4px; background: #222">
+                                    <div class="progress-bar bg-white" role="progressbar" style="width: 40%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                <!-- Barra volume con span + thumb(il pallino) -->
-                <div class="d-flex align-items-center gap-2">
-                  <i class="bi bi-volume-up fs-3 text-white-50"></i>
-                  <div
-                    id="volume-bar"
-                    class="volume-progress"
-                    style="width: 100px; height: 8px; background: black; border-radius: 999px; position: relative; cursor: pointer"
-                  >
-                    <span
-                      id="volume-fill"
-                      style="display: block; position: absolute; top: 0; left: 0; height: 100%; width: 70%; background: white; border-radius: 999px"
-                    ></span>
-                    <div
-                      id="volume-thumb"
-                      class="volume-thumb"
-                      style="
+                    <!-- Colonna destra -->
+                    <div class="col-4 col-xl-3 col-xxl-3 d-flex align-items-center">
+                        <div class="d-flex align-items-center gap-0 gap-xxl-2 flex-fill">
+                            <button class="d-none d-xl-block btn p-0">
+                                <i class="bi bi-mic text-white-50"></i>
+                            </button>
+                            <button class="btn p-0">
+                                <svg class="icon text-white-50" role="img" aria-label="Coda"
+                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path d="M3 6h14v2H3V6zm0 5h14v2H3v-2zM3 16h10v2H3v-2zM20 7l3 2-3 2V7z" />
+                                </svg>
+                            </button>
+                            <button class="btn p-0">
+                                <svg class="text-white-50" xmlns="http://www.w3.org/2000/svg" width="28" height="28"
+                                    fill="currentColor" viewBox="0 0 24 24" role="img"
+                                    aria-label="Connetti un dispositivo">
+                                    <path
+                                        d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-7v2h3v2H8v-2h3v-2H4a2 2 0 0 1-2-2V6zM4 6v9h16V6H4z" />
+                                    <path d="M7 18a5 5 0 0 1 5 5H9a3 3 0 0 0-3-3v-2z" />
+                                </svg>
+                            </button>
+
+                            <!-- Barra volume con span + thumb(il pallino) -->
+                            <div class="d-flex align-items-center gap-2">
+                                <i class="bi bi-volume-up fs-3 text-white-50"></i>
+                                <div id="volume-bar" class="volume-progress"
+                                    style="width: 100px; height: 8px; background: black; border-radius: 999px; position: relative; cursor: pointer">
+                                    <span id="volume-fill"
+                                        style="display: block; position: absolute; top: 0; left: 0; height: 100%; width: 70%; background: white; border-radius: 999px"></span>
+                                    <div id="volume-thumb" class="volume-thumb" style="
                         position: absolute;
                         top: 50%;
                         left: 70%;
@@ -165,417 +143,523 @@
                         background: white;
                         border-radius: 50%;
                         pointer-events: none;
-                      "
-                    ></div>
-                  </div>
-                </div>
+                      "></div>
+                                </div>
+                            </div>
 
-                <button class="d-none d-xl-block btn p-0">
-                  <svg
-                    class="icon-full text-white-50"
-                    role="img"
-                    aria-label="Entra in schermo intero"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M7 14H5v4h4v-2H7v-2zm10 0v2h-2v2h4v-4h-2zM7 6h2V4H5v4h2V6zm10 0v2h2V4h-4v2h2z" />
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- side-bar sx -->
-      <div class="col-4 col-xl-2 d-none d-md-block bg-black h-100">
-        <aside>
-          <div class="d-flex flex-column align-items-start">
-            <button class="btn text-white-50 fs-5">
-              <i class="fs-4 bi me-2 bi-three-dots"></i>
-            </button>
-            <a href="./index.html">
-              <button style="font-family: Circular, sans-serif" class="btn text-white-50 fs-5"><i class="fs-4 bi me-2 bi-house-door-fill"></i> Home</button>
-            </a>
-            <a href="./search.html">
-              <button style="font-family: Circular, sans-serif" class="btn text-white-50 fs-5"><i class="fs-4 bi me-2 bi-search"></i> Cerca</button>
-            </a>
-            <button style="font-family: Circular, sans-serif" class="btn text-start text-white-50 fs-5">
-              <i class="fs-4 bi me-2 bi-collection"></i> La tua libreria
-            </button>
-          </div>
-
-          <div class="d-flex flex-column align-items-start mt-3">
-            <button style="font-family: Circular, sans-serif" class="btn text-white-50 fs-5">
-              <i class="fs-4 bi bi-plus-square-fill me-2"></i>Crea playlist
-            </button>
-            <button style="font-family: Circular, sans-serif" class="btn text-start text-white-50 fs-5">
-              <i class="fs-4 bi bi-bookmark-heart-fill me-2"></i>Brani che ti piacciono
-            </button>
-
-            <button style="font-family: Circular, sans-serif" class="btn text-white-50 fs-5">
-              <i class="fs-4 bi bi-bookmark-fill me-2"></i>I tuoi episodi
-            </button>
-          </div>
-          <div class="border-top border-dark"></div>
-          <div class="scrollable2 d-flex flex-column align-items-start">
-            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">early stage emily syndrome (sett-ott 2022)</a>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Be The Young</a>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">"..." cit. Kimiko (lug-ago 2022)</a>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">saggio vibes 💃 &#xF483; 🩰</a>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">that fucking mood 🔪☠</a>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 text-uppercase my-1">vee,carlotta e giacomo vanno a bosio</a>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">An Emily Winchester kind of mood 🔪🖕</a>
-            <div class="w-100 d-flex align-items-center justify-content-between">
-              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">landing page (mar-apr 2022)</a>
-              <button class="btn p-0">
-                <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
-              </button>
-            </div>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">2021 lol</a>
-            <div class="w-100 d-flex align-items-center justify-content-between">
-              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">cosa cazzo cuol dire questa affermazione (g..</a>
-              <button class="btn p-0">
-                <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
-              </button>
-            </div>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">honey and glass (nov-dic 2021)</a>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">(Revenge) Training Arc1F412 🦍</a>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Lidia & Emily</a>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">minecraft e nintendo switch</a>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Silvano d'orba? i hardly know her</a>
-            <div class="w-100 d-flex align-items-center justify-content-between">
-              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Culo 2021</a>
-              <button class="btn p-0">
-                <i class="bi bi-people text-white-50"></i>
-              </button>
-            </div>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Frah Quintale Mix</a>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Francesco Guccini Mix</a>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">early stage emily syndrome (sett-ott 2022)</a>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Be The Young</a>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">"..." cit. Kimiko (lug-ago 2022)</a>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">saggio vibes 💃 &#xF483; 🩰</a>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">that fucking mood 🔪☠</a>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 text-uppercase my-1">vee,carlotta e giacomo vanno a bosio</a>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">An Emily Winchester kind of mood 🔪🖕</a>
-            <div class="w-100 d-flex align-items-center justify-content-between">
-              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">landing page (mar-apr 2022)</a>
-              <button class="btn p-0">
-                <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
-              </button>
-            </div>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">2021 lol</a>
-            <div class="w-100 d-flex align-items-center justify-content-between">
-              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">cosa cazzo cuol dire questa affermazione (g..</a>
-              <button class="btn p-0">
-                <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
-              </button>
-            </div>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">honey and glass (nov-dic 2021)</a>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">(Revenge) Training Arc1F412 🦍</a>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Lidia & Emily</a>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">minecraft e nintendo switch</a>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Silvano d'orba? i hardly know her</a>
-            <div class="w-100 d-flex align-items-center justify-content-between">
-              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Culo 2021</a>
-              <button class="btn p-0">
-                <i class="bi bi-people text-white-50"></i>
-              </button>
-            </div>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Frah Quintale Mix</a>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Francesco Guccini Mix</a>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">early stage emily syndrome (sett-ott 2022)</a>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Be The Young</a>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">"..." cit. Kimiko (lug-ago 2022)</a>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">saggio vibes 💃 &#xF483; 🩰</a>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">that fucking mood 🔪☠</a>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 text-uppercase my-1">vee,carlotta e giacomo vanno a bosio</a>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">An Emily Winchester kind of mood 🔪🖕</a>
-            <div class="w-100 d-flex align-items-center justify-content-between">
-              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">landing page (mar-apr 2022)</a>
-              <button class="btn p-0">
-                <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
-              </button>
-            </div>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">2021 lol</a>
-            <div class="w-100 d-flex align-items-center justify-content-between">
-              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">cosa cazzo cuol dire questa affermazione (g..</a>
-              <button class="btn p-0">
-                <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
-              </button>
-            </div>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">honey and glass (nov-dic 2021)</a>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">(Revenge) Training Arc1F412 🦍</a>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Lidia & Emily</a>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">minecraft e nintendo switch</a>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Silvano d'orba? i hardly know her</a>
-            <div class="w-100 d-flex align-items-center justify-content-between">
-              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Culo 2021</a>
-              <button class="btn p-0">
-                <i class="bi bi-people text-white-50"></i>
-              </button>
-            </div>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Frah Quintale Mix</a>
-            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Francesco Guccini Mix</a>
-          </div>
-        </aside>
-      </div>
-      <!-- artist page -->
-      <div class="col-lg-8">
-        <!-- immagine artista bg + nome -->
-        <div class="d-flex flex-column justify-content-end position-relative" style="max-height: 400px; overflow: hidden">
-          <img
-            id="heroImage"
-            src="https://www.rollingstone.it/wp-content/uploads/2019/07/acdc-1200x763.jpg"
-            alt="AC/DC band"
-            class="img-fluid w-100 object-fit-cover"
-            style="max-height: 400px"
-          />
-          <div class="position-absolute text-white p-3 p-md-4" style="bottom: 10%; left: 0">
-            <p class="mb-1"><i class="bi bi-patch-check-fill text-info"></i> Artista verificato</p>
-            <h1 class="fw-bold">AC/DC</h1>
-            <h6 class="mb-0">33.456.789 ascoltatori mensili</h6>
-          </div>
-        </div>
-
-        <!-- following & play -->
-        <div class="conatainer-fluid bg-black bg-gradient vh-100">
-          <div class="row m-0 w-100">
-            <div class="d-flex align-items-center mb-2" style="height: 120px">
-              <div class="d-flex align-items-center justify-content-center bg-success rounded-circle mt-4 mx-3" style="width: 3rem; height: 3rem">
-                <button class="bg-transparent border-0 p-0 d-flex align-items-center justify-content-center">
-                  <i class="bi bi-play-fill text-black fs-3"></i>
-                </button>
-              </div>
-              <div><button class="btn btn-outline-light mt-4 mx-3">FOLLOWING</button></div>
-              <div class="mt-4 mx-3">
-                <button id="menuBtn" type="button" class="text-secondary d-flex align-items-center btn btn-dark bg-transparent border-0">
-                  <div class="buttonlogo"><i class="bi bi-three-dots"></i></div>
-                </button>
-              </div>
-            </div>
-            <!-- lista brani like -->
-            <div class="row">
-              <div class="col-12 col-lg-4 m-0 p-0 order-1 order-lg-2 text-center text-lg-start">
-                <h4 class="m-4 fs-4 fs-md-2">Brani che ti piacciono</h4>
-                <div class="card mb-3 bg-transparent border-0 mx-auto" style="max-width: 540px">
-                  <div class="row g-0 align-items-center mt-4">
-                    <div class="col-2 text-center position-relative">
-                      <img src="./assets/imgs/main/image-14.jpg" style="width: 80px" class="img-fluid rounded-circle" alt="Brani che ti piacciono" />
-                      <span class="p-2 bg-success rounded-circle" style="width: 25px; height: 25px; position: absolute; top: 70%; left: 70%">
-                        <i class="bi bi-heart-fill" style="position: absolute; top: 10%; left: 20%"></i>
-                      </span>
-                    </div>
-                    <div class="col-10">
-                      <div class="card-body d-flex justify-content-between lh-sm">
-                        <div>
-                          <h6 class="card-title">Hai messo mi piace a 11 brani</h6>
-                          <p class="card-text text-secondary">di AC/DC</p>
+                            <button class="d-none d-xl-block btn p-0">
+                                <svg class="icon-full text-white-50" role="img" aria-label="Entra in schermo intero"
+                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path
+                                        d="M7 14H5v4h4v-2H7v-2zm10 0v2h-2v2h4v-4h-2zM7 6h2V4H5v4h2V6zm10 0v2h2V4h-4v2h2z" />
+                                </svg>
+                            </button>
                         </div>
-                      </div>
                     </div>
-                  </div>
                 </div>
-              </div>
-              <div class="col-12 col-lg-8 m-0 p-0 order-2 order-lg-1 text-center text-lg-start">
-                <h2 class="m-4 fs-4 fs-lg-2">Popolari</h2>
-                <div id="trackList" class="w-100 row col-12 col-md-4 d-flex flex-wrap align-items-center justify-content-center mb-3">
-                  <div class="col-1 p-0 text-center">1</div>
-                  <div class="col-1 p-0">
-                    <img
-                      class="rounded img-fluid"
-                      style="width: 40px; height: 40px"
-                      src="data:image/jpeg;base64,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"
-                      alt="logoLp"
-                    />
-                  </div>
-                  <div class="col-4 p-0">Thunderstruck</div>
-                  <div class="col-4 d-none d-md-block p-0">1.970.656.713</div>
-                  <div class="col-2 d-none d-md-block p-0">4:52</div>
-                  <div class="col-2">
-                    <button
-                      id="menuBtn"
-                      type="button"
-                      class="d-block d-md-none text-secondary d-flex align-items-center mx-auto btn btn-dark bg-transparent border-0"
-                    >
-                      <div class="buttonlogo"><i class="bi bi-three-dots"></i></div>
-                    </button>
-                  </div>
-                </div>
-                <div id="trackList" class="w-100 row col-12 col-md-4 d-flex flex-wrap align-items-center mb-3 justify-content-center">
-                  <div class="col-1 p-0 text-center">2</div>
-                  <div class="col-1 p-0">
-                    <img
-                      class="rounded img-fluid"
-                      style="width: 40px; height: 40px"
-                      src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMSEhUTExMVFRUXFx0YGBcXFxgXGBcYGBcXFxgYFxcaHSggGBolHRcXIjEhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OGhAQGy8lHyUtLS0tLS0tLS0vLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAOEA4QMBIgACEQEDEQH/xAAbAAABBQEBAAAAAAAAAAAAAAAEAQIDBQYAB//EAEMQAAEDAQYCCAMFBQcEAwAAAAEAAhEDBAUSITFBUWEGEyIycYGRoVKx0RQjQsHwFWKisuEzU3KCksLxc4OT0hYkQ//EABsBAAMBAQEBAQAAAAAAAAAAAAABAgMEBQYH/8QALhEAAgIBAwMBBwQDAQAAAAAAAAECEQMSITEEQVETBRQiYXGBkSMyobFS4fDB/9oADAMBAAIRAxEAPwD0ANHAei7AOA9E1rlJK6qOcZgHAeiY+mOA9FKkdmikALA4D0UraQOwSPYuovzQ0gSELANgmMDSSBEjXkrRlIESfJVVusZB6ynk8aj4xwPEpKhtE7GDgFL1II0HohbJag9sjIjUbhG0HZpNDQHVYGiSBkmNa1wBEEHQq2tDGnYKiqs6l0t/szqPhPLkmqYPYIbSB2TCwDYImkQ4ZH+qR1LEIjMI2A6kGnIgJalADYIQVgDEgHhKt7HVa9meaTVDW5XdnlHkuIacxCLtNFh1a2PAKjrUzQdibnScZI+Ancck0kyXsWVIjQgJK1mAzAEeChFSYIMhWVi7Qz0TpICsc5oIaYk6BNfTHAKztljY4EEDPQjUcCCqUVS1+B5E/hds7lydyVKmS9h8ck9oHBI9NDk9KCyRwB2CAr04KNJUdYSE0kJlW5DvRVQIV4VaURZHK5LPJKjShm1hIFCyopmrM1HFI0pr8k1r0gJiJQFrqFkc3Aep1RgenPoCoBxBB9CkFFd0jtBbZ34ScXZg7zibmhLlvzHFOoe2Br8UcefzRHSaiepf5fzAqqu6yNPVOA7WKPHMhNLYL3J73tHVPbVZqXYXCYBEEyR5K1u+qHkumcMZTl5jjqq2/bHLGz8R/kcrG4rEWsdOpM/NJ8AuSt6QXs6lWZhOrcwdDnvyiUQbwZUp45AGhB2J25ztxVd0oofes/w/7kK+6HY8LT2CQZOoicvHMoSC2WFy20jGYIpjSTJHmtN1jXNDiACROfNA2a72PYGRAETzAgmfH80XaqaTpspKkZmucdqyjs5DyzPvl5K1u9zg+oNoaY5nED8gqS7Wlj3vqAjnBiCS45nRaS6rRTrBxYQSIB8pj81UiIlLfl71KdVjQcokiNcyPyRbKuMYhmDqNfI8VX33RDrVTB4N/mdkVc3fd+AP4F0gf5QEdhrkoBX6io5jTLS3EAc4OenLL9QtDY6hDGmScQB8JzACpb1sk1sv3QfA4vqtDRs/3VMcGN/lCH2EuWZGx389rnNObMREbjM5t+n6JN4WhmCXGQdBuTy4EIWxWEPfUaRxPMHFqn2W5z1n3ndb/FO3LRUid2W10Pc+kC7XY8Rz4+KfUbCJEAZCBwUdTNFlUQhyQuTXthMLlQiKu1AvRr3ISqFRDIZXLoSoA0zCiKbkMFKwrNmhOSoXap2JMcUhjsaloWiCOeSFe1BXhWLQw/vtRQWX9oDXCCAQVAyiwGQBKpL5vF7abi0wdjwkgKss1vr/AHbnPlryRGU5eXFKhakXXSS0htMcyR/A76I7o7ag6g3lI9ysj0kru6oT8X+16I6O2twZUAOj/qhrsC5sK6XVh19EcR8pVi0hZq/6xdVpuc06QDwzkq5vJrm9oHEI7g4EZzxcj5DDLmvJvbe5zRJhoJHdG8bTkrRtta4SCCDwWKF1UnUw6mScRAAJEYiQIOW35I28q/2enr2z2WD5ujl9EqQ9TF6R3iKjxQpiYPaO2LYeWvjHAo7o3SbSNQN4Nk8T2iT7qpuywFjMR75zz23z5qe7ap6yu2dCz3aqrYhPcffFcG0s/wAvs531WhsFsDgeRj0WKvNp+1U/AfzH6FWlhxgPOxqEjwgR8knuhp0ya9rSG2kSd6fpLlozWbA8AvOukFV/Wk/ut9Ri+qvqFpeWN17rfkEVYJgl0WmatXkXD0crTHvus5cjC2u5ruy55MZcSPZWNR7qT8NR0tOj4gA8OQVIRaCqnB6CD07GihphZQ1WnGac2qnF0oWwVYE5QuU9cQhnPzVkMZHJcnY0idiL9rpUzShaZU9NyzZqTuUbTsnykISGKVX1K1Oq40nAhzSCNsRGeWSPlAXhZC7tt749+XLxSQMfb7MHU3YjhEZu4Rvmqbo9aqb4pO1aZpu0xTM6rqvXWkim7stb3ubpOZ8BGXFF2i5GwDT7zeP4voU9yQu+bAHUXFxDQM5Onn6ws3c9rNM4sywntAjKdjOx/Xgf9nr2twY8kMYc+Z4u4ujJXIsLWNwYezuOPMpfUfO6JadNlRoIAI1z2I/NQ3xbadBgLs3nut3P0HNVtV1SzHEzt088vkD57802wXY6q7r6/aJ0B4bZbN5foqh2V9lDmPFWocLSetcBl3dCG8zkNyjrnsxtNU2ir3Rkxuw3H1SXpYn1awByZlntDZmfM6K7ptDQA0QANExDbYMLSQJI24oawNbVGNrMDiBiB1kb+COL5VRajUokPpmWTJbrE6+RTEwmtdc1WVJIw8ORkZ7bqa9bc2k3ERLj3W7k/kBuVW/t+p/c/wAR/wDVQXbZH16hq1piYAzH+Ucv1ukH0IKF2VK2KpUdE6cPIbBWF0WsM+7qZEZZ7cM/h57eEK/DARAVZed2B4yycNDx5FMKaDhY2kgwJGh3z1Wf6QWsF32ej2nTD3Rij91o3d8vHSIXnXYw0QDjnCHbtbw8ZOX/AAre4rqbRaCYL49P680uOSueCKz2UtY1pzICeBsjK4QdV0JphQ1zYTHFL1yhqVUxDXVdkM9dVKiNVVZNDsS5QdbySosKNE1TsKhAUjCkxoJZmlhRsKfiUlCuamAqQulD1CpQ2K5oXNdCi6xMqVlVEhYrQnPfKq3Vt5+nqup29pMYm+oSodhL+BzCcKqCq3hTEy9ojmqi1dImtJDQCBud0P5gr7GhfUXdYsbaelLiOzDfCZ9Toq433U2e71Kj1IlrHJ9j0JzoQ9S2tBgugrAOvd/xO9T9UjbeeKFkixPHJHoVK1SAdlP9plYax3wWEcOGxVzZr7pu1OE89PVWmmRTRoWWqFKK0qnFWRIII4gyPVd9qDdXAeJA806QJssnluLEQMURKY61QqatfFIavB8O18tEBU6QU57rj5gfkUm0Pc077VKGfUlUtLpPSb/+frDj7wiKPSVhzAY0+hTTQNMMfTfPdMcTkPUoa1PDO+4N55n/AJQN59IzETJI01Hms7aLa54hxJA0G2amWRRHHHKXCLy0XswGG4nDjGGfLMoGtertslTmo48lE5pWLz+DoXTPuW37Wfx9guVN1ZSqfWZXux6016UFQSnseu04Qhr0ofBUMJxKmh2Eh6ZVKHD11SrAzSodg1prhoJOgWavS+8WQyH61Q1+3x1jsDD2B/EePgs/VqFxWc8iXBcMbb3DKtucTDfJROrVBrI8lJYG9l7pgAQTy1I84CR1pH4WQObs1l2ts3Sp0o2Q9e7imhhPEqzbU+7xaZExPBR2etiMFp01Jn2Q4cK+RrJs2o8AbqRGREH6rqdEuMD14c0VaIBgNz1Jz9ImERQd2TkBltyURx3PSayyVjU0uStc0SYMicjET5bJuFHWayDACTmduA4k+uSid1c7xxAMJaHyP1I3XIMJCUvKmrtGIRphBy8x+SZhSbcXQ444zVpEJqFJjcd/RENoKZtBS8hrDpL7AIDuJSimVY9QlFFR6h0x6IrxTTsCO6hcaKWsv3NoEwJcCJ6lKKKWsa6Z+AXAu6lGtppDTS1mq6byCdUuRmAclyNTH7vHwbhzkjXJgKkheyfJ0TtcnBDtcnMJJy/XikBMGTnMAak7LH9IL3LyabCQwGCd3f05K/ve2gU3AaAE83HbyXntarO+e6zyy0o0xx1MY98mApWUUtlpgaifOFfWKx03tEMJM/EZ8CB+s1yJOb2PRWnErkmUzGwCNiQT5LuqVxSpUJwznMZ4onSJiFY1ejxw9YOzTHfJzw+QGYOniplCVWb48mJuqa+q5KBtmJpnwP5pLDTBIEGSNZ/KFrmXfiAc0QHCQA0gRtAiUBdVjb1ha0Ym4TBIOQOhEx68Ct51FwOTEnOOTbyUNSi0VIMnIbwPkijZoZMEQDO86q5tHRx7nl2YyEZf1VvY+j7nUyx4gwYd47Jx/fJ1sRNL0oq9/BkX0h1ZkEtwzA1iEIKlOP7N3r/Vbil0cczJxkDeIjgJ3QNpuOm0FxbAEkxPyH5Kp3JJqvuThcYScZN18jI0rOHvMAxrAygHkdDKk+ykagjxWkrXY6o1vVFgp4ciJl/KQ355oL9gvAkNE8NPcrlyRdbJ3/B6PSzjdykkvD5+vyKtlJPDEfRsLjULHdkjve2nE5qe1Nswfg7bYgEiXAHmY18NFgscpKz1J9RhxSUeXzsr2KnCuwo68LOKZDQJnPFMyMtIyjNCALOScXTOvBKGWGuPAyF2FSYV2FTZroRHhXYVIGk5ASeW6sLLdbiQanYb7ny281cIyk6Rz5suPErm6K+hZXPMNE8eA8SrajdbG69o89PT6qwqV2U2w2ABsP1mVn7ffjQSBmeS78fTxgrlyfOdT7RyZXUNl/Ja4G8Gf6QuWa/bL/h91y2+A4fUyeX+TZErmPVRVvaJDNeJA9hn6qqtNpL+8STzK0c0jFKzTWi3UmTiePAZlA1r+p6YoHgT65LL1LTGSHdUJ/osnno2j07kWt8Xm17SGGc9dFTUaakZRRNKiubJl1Ozv6fpWtiaz0lr+iFn1fGQcB7Ss1Ratj0Ip96dMQ+Sywy/UPR63Eo9K/t/ZV0Oi1Ykh2FrZJLpBESTMDNaKlXY9zLJSLamIzVOTmspt1kj8RyA5lUfRW9hS+7qZ0nEjPRpJP8ACdx58VpLuu+lYhWqA9g9rm1gE4Ad85/hWkKp6fucXUPItKydl8NLngPtjmCsykAO6SDwIiGx4SfJZ7Ky16rBEntUSRkA8yZ5BwIS2zpEzDSeyk0VanafuWYCBruTtylEdKaYqU6dobo3Of3HxPoY91M5ak65W6DFj9NrUmlLZ/X/AL/0ubro9eJeXZHQEiDuMtkTfThTp5akgDfzKb0dcRRaSIkZDfDtPM/RJeRNZuHC4EZgwVVtQvuYSinmp8JhT2YqUTmW5HyWTum7qrKtQuxdWAZxEkTIOU+aIdedaysmqAWkwwEkOJ1OecNAnUcEzpPfLxRZDmNNXuhhxEt3JLgIEEbTJ2hGtOm+xpHFONwST1bJiXbSabC/q2xBrBscnPgj2Wa6P2WuarMHWRIxSXFuH8UzlMac1pujlU07H2ciA9wkZSJjxGSguPpK+tNKqQ1zh2KjGxBjdpkTwOiHK9Lui4Y3D1YqOqtr8c7g96CnTtLA8gYmkk8ACMOLgD20Pb+jZJNSi4EOOLCdJOuFw+Xuqi8aNRlVwqkueTJcfxiYDhyy02iFa9GKlRhcQC6noY0a4kQY2/XBT6inLRJHQumlgxLqMU9638P5FJaA4Qxwgskc8zMfrioledLgBVYd3MM+ThB9z6KjXNlTjJo9fosqyYVJKufz3GlGWG7X1cwIb8R08uKZY7KajoAMDNx4D6rQvvFjRhIgAQI8Ftgwa93wcntD2h7v8EP3f0MslkbQ0hzviOvgOCCvG9AJkIO873a0ZTKzlSo+ocyY4L0EowVI+ZyZJ5ZapsltVvdUJDch7plKycUVZ7LCLp00KN8mbdcAX2ULkfhSK9JNlK61CVC+qTpklZQRNGguGWU9TF0lsHpWeUWyzIplFTNYueWQ9nD0SXIM2gnimiMK6FnqZ2rBFCU2ra3DbCKIp0qZrVG5kjsU2ye6arsiRO07rGhXVyXs6lTqtxGA3GBwgjFHkZ8lphlUjk9o4XLDt23Kxlpa55e6k3CSewwuaNcyCZ+Uclu7DZaVosoYMZpOEQ50ubBmJ5ECF5/Y2NAAcSBGrQHGfAkfNeldFrMxtmAY/G0lxxYcOuRBbMiIV4HcmcvtGKhhhu7VefBmrbZbvo1cFR1QOES3C85HMZhuY8OaubJbrPVbTpUi19N2JhGeUMLoc055gHVVQsdntVOlSZaw+vTENe5j2l7AO0wg96IkRmI3zkXozZmi2shzXgBxDmnUYXDMag8jmrT0y2XJyyg82NuU3qVun/aNRaXWgGKQpFuwc5zXegaQq+0Xxaqc42MAbqA4zGk5tz+SqenzB9pZ/wBIHw7blf8ARCqa1mLavawksl2ZLSBkTvEkK3kuTijFdNpxRzPdXv5Km3CtbOra4BrQS5r9ZEEHswOWfJQWu7rIwtZVtcPaCA0xDZJdBju5mcytReNJtlslRzNWUzBOsxAPrmsZS6K2gsa5rQ4OaHTiEmROc54lnkVcq2dHSy1WlPRFPbjn7lxXtFWi2kwV7OGPhlP7p7pHiH6Z681XN6Mtp/21oYwHJuWHPYDE7OFBZuj1qxMBpuDGukAlsNxFuIjPlotL0yuxtZrCatOngfM1DhaZBETxVbTjuuCW5YMi05F8V21TK+13eysxjXVmVKg7rmloccvEyY14wOEqNlez2IObiLqhjEwHE4nUAgZNGe6Dp9F3AOqU6lJ4YMTTTOIkjMRGh81I11K2FhqksqDsl7YzBOWIHUTvsTzCSlb/AG79rKljqL/UuF/FS4+3go7da31nmo+AYgAaNaCYbO+pMqGjSL3BrRJJgBSWiMbsIgBzgByBIHsFadFmjrnPI7rD6kgfKVzRi5zpnsSyR6fptUFslsH2mk2y0Wgak9o8TGvgsxeFs1z0mM+MK16VXhLSAZWRDS45r1a0pJHx+SbyScpMbhLjJ3VlZ7OlstlVlTpKoxM3IgbTUjWqbq0mFaEEeS5SQlRQFDTpImnTTmU1JC8OUj7nFhSOCVIuUWdVCrlyVACBOxkBwH4hh8iRPskhTULM5/dbManQDxJTV3sZ5NOl6uCIKxsV92qiG06RaKZOeJs6kyQfBRfs90TIme6A4+chsIivYbRUDWgBrWiG5OJ45kjiTsujDCUZW0/weT7Rz48uNQhJN35RW2TGwtwyHNMiJkFpRlmdWY91dgDXAlwkfETo06jPyU7brtTfx6f4h5ZBRWixVJJIzw74yMUxllmI2O7jyVxxU73/AAYZesco6KjdVeqxLXUr2l4qVCwnDhkQ2AHExhmTqlo31XsoLaLm4Zl2JsjFuRwERly5wgnseNakeDI/2rnUBl95i30cADEaRE81bpNyUXZzpyljjhnkiorw9ywtXSK1WhhY4t6t/ZcAztcwT+ajH2kkHrqk7OFQgCOQMDTSEELOZxNdB4jhzBGaMbQqOA+8E7mIPuSPZNrVFak0/kSmsM3olGUX57Ettv8AtT4pPIwFzZcG4S6DnJ4GB6plutlptWFtUs7LsQAGGTBGpPAqQWCrnNbFkcnSROkwIjU6KF11v1NoA8AB+Spq07T3MY/BKLUo7OyCzWao14NMPY/4my31OkeOSWscBjV+Zc4d2JIgDnnPtzK6x9OP/stcBs5g48RBVeXUwZLnEkkmG8TkASc8ljLC4x2u/n2PRxddGeX4qSrerd/LgbGvMk+pJhX11tFGkXuMF40I2Ex4zr6Kno0jUeGsESchMwOJPurbpDaQykWg6NgHwEaJ9JC5OTH7Wz6cUcUe/wDXb/vkZC32o1KjjsTp4Kaw0JQlnZJV9ZKUBdqVnzzZLRpIkU06lTUoatSCHAo3MRJamQmALC5FYEiBUVAC5cuK+fP0M5cuXIA6EpXBKUAdTIBBIkbjSeU7J9qtL6necQBkGN7LWjgANfEyowlTUmuDOeKE2nJWRCzt4e5+qXq40Lh/mP1T1xRqfkXoY/8AFfhCDF8b/wDW76pwqP8A7yr/AOR/1TUqeuXkXu+L/Ffg4vfvVqn/ALjvqrG13a1rRU6yvgwY5LwcjsMtZy8VXhGWq24rMyifw1RH+CHOj/UPda4svOo4Ot6NNReNJb09lwyubTPxvHmlFN3xu9vopQpqNBzjDQSTpCy9Wfk6n0nTpbxQNgf/AHjvb6JOqd8Z82tP5LR2fovUObiG+5RLujzGDPE72+X1W8Y55eTgy5PZ8Oyf0Rl6XWzDXSeHVsJ+SOp3RWecT8v3nQ2ByaNPRXlGu2kCGMA4xqfE6rP3v0lgkUtd3bDwG66Vgk1+pI8yfXY4yvBjS+ZdWZ9GzNMHE7d3EcBwErLX5ay/LiZjkqmpVc8mSSp6NFx1W8aSqKPPyTlOWqbtk930pIV/TpIK7rPnKuGtWiMyMCFyeU1yskQKN+qllIaaYEeHkuUnklQIpRTJEgGOIBhNAWy6/KOSfRr5Lyvc35Ppl7bXeH8/6MVC5bQ06dTJzWn5+uqBqdHabs2vLeRGL6LKXSzXG504va2GX7tv5M1CSFqh0XZH9o/xgR6f1QVq6M1B3CH/AMJ98vdZvDkXY6Ie0Onk61fnYoguKN/ZVaSOrdlyn3UFag5hhzS08wQs2muTpjkhJ7NP7kKQp8LoSLGEJQjLDdlWt3GEj4tGjxOiv6HR2lRb1lodij8IyBPDifZaQxTnwjmz9Zhw/ue/juZWEVQsNR4lrCRx29VpuppFpd1LGt2ykqe32llKmxohow6ZAccl0x6N38TPMy+2o6fgjv8AMisHR6k1gc8dYd8zhHKBr5oyk+nSybTa3/DqgbLezWmcbS0jPtD9BPtlVp7pBB0IzC64YYx4R42bq8uW9UixNsB7pTTeEd4SFmLRasJj338OaBvS93NYQHZnTittKRy6yPpZfLXPLKQgDJzuJ3A4Dmss1spznSUVYqElZu2O6DLtsOJaGzXeOClu6xBrdFYspwtVsTyCNs4C4iEc5igqU0JjaAXqGEW9igc1VZNCNKWc0xOTsVD4SJmIpUBQtO2AhOpWqMisnQvIDUlp9R5o8XoA2Xg+LSCD5FQpIbs0T6h7zMyNQp6FqL+7rqW7rEV75ee6S0e5+iFNqfrjdPifmk5oas9Np2zE2NxsmuvRrRD3BsaEn2Xn9O+K4HfJ5mCfU5oR73OMuJJ4nNTaKtnoDukNEdoVGzwz9NM0P/8AKqTiQW9n96CPAjgsPhPBODCp57DU2j0ijWs5b2GU+MYQiatdjsJwMPi0GCvM6dZ7e6SJ4Kxsd9Obk+TwP1G6WiPg09fJ5PRmXgMHAD9QAqnpMZp03bNdLh4qnoXtjA4cfyTb6vkNYWiCTlHzKtJIzlKya9r2a0ajLadgsneFvfWcXuJz04AbAKHNxk5qzsN2l2yOSSnwFOBdGvktO25AkqXIjSFmfbbHgQSSOfshKzy8yf8AhXloupw2Qn2OEUwsCpU5WguSzSdEDRsy010WeAmkTdlrQZClhc0JSUFjJUdQKYhROKBgr2qCo0otwULwrRAIAmQpimOTERYv1C5O9FyAMrVsMId1kK0wpjdI6yg7KNCJUmZptmKmFlVv9lU9OyhGgeopWWZSNs6vWWVvBTMsLdUaUFspKNkJ2RH7NdwV9SoAKcU0bDSMpVsBGyGq2c8FszR5KCrZAdglsOjH0XOZppw58Uzqy4yVpa91A6KBt2EHNFBYBYrGSRktPYrOABkks1lDRkEZTCOARK2mFxppzCnFKygd1AHZCVrvadlZhI4J2JopmXYAVZUacQpYSJ2JIdKQlI5MLkh2TtcmOCaCU7EgZA9QVEQ9D1AVSIZCUwhKVG55TENwnilTesXJgDjVSsXLkCGHVO+q5ckMlp/r1RTNly5JjRI3VT01y5SykO2TFy5IojKY7ZcuVEE9LVOXLlKKJGqZqVcgBQkeuXIAjemhIuQSK9RuXLlQM5ie1cuSBDSoH6LlyAB3qHguXKyRFy5ckB//2Q=="
-                      alt="logoLp"
-                    />
-                  </div>
-                  <div class="col-4 p-0">Thunderstruck</div>
-                  <div class="col-4 d-none d-md-block p-0">1.970.656.713</div>
-                  <div class="col-2 d-none d-md-block p-0">4:52</div>
-                  <div class="col-2">
-                    <button
-                      id="menuBtn"
-                      type="button"
-                      class="d-block d-md-none text-secondary d-flex align-items-center mx-auto btn btn-dark bg-transparent border-0"
-                    >
-                      <div class="buttonlogo"><i class="bi bi-three-dots"></i></div>
-                    </button>
-                  </div>
-                </div>
-                <div id="trackList" class="w-100 row col-12 col-md-4 d-flex flex-wrap align-items-center mb-3 justify-content-center">
-                  <div class="col-1 p-0 text-center">3</div>
-                  <div class="col-1 p-0">
-                    <img
-                      class="rounded img-fluid"
-                      style="width: 40px; height: 40px"
-                      src="data:image/jpeg;base64,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"
-                      alt="logoLp"
-                    />
-                  </div>
-                  <div class="col-4 p-0">Thunderstruck</div>
-                  <div class="col-4 d-none d-md-block p-0">1.970.656.713</div>
-                  <div class="col-2 d-none d-md-block p-0">4:52</div>
-                  <div class="col-2">
-                    <button
-                      id="menuBtn"
-                      type="button"
-                      class="d-block d-md-none text-secondary d-flex align-items-center mx-auto btn btn-dark bg-transparent border-0"
-                    >
-                      <div class="buttonlogo"><i class="bi bi-three-dots"></i></div>
-                    </button>
-                  </div>
-                </div>
-                <div id="trackList" class="w-100 row col-12 col-md-4 d-flex flex-wrap align-items-center mb-3 justify-content-center">
-                  <div class="col-1 p-0 text-center">4</div>
-                  <div class="col-1 p-0">
-                    <img
-                      class="rounded img-fluid"
-                      style="width: 40px; height: 40px"
-                      src="data:image/jpeg;base64,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"
-                      alt="logoLp"
-                    />
-                  </div>
-                  <div class="col-4 p-0">Thunderstruck</div>
-                  <div class="col-4 d-none d-md-block p-0">1.970.656.713</div>
-                  <div class="col-2 d-none d-md-block p-0">4:52</div>
-                  <div class="col-2">
-                    <button
-                      id="menuBtn"
-                      type="button"
-                      class="d-block d-md-none text-secondary d-flex align-items-center mx-auto btn btn-dark bg-transparent border-0"
-                    >
-                      <div class="buttonlogo"><i class="bi bi-three-dots"></i></div>
-                    </button>
-                  </div>
-                </div>
-                <div id="trackList" class="w-100 row col-12 col-md-4 d-flex flex-wrap align-items-center mb-3 justify-content-center">
-                  <div class="col-1 p-0 text-center">5</div>
-                  <div class="col-1 p-0">
-                    <img
-                      class="rounded img-fluid"
-                      style="width: 40px; height: 40px"
-                      src="data:image/jpeg;base64,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"
-                      alt="logoLp"
-                    />
-                  </div>
-                  <div class="col-4 p-0">Thunderstruck</div>
-                  <div class="col-4 d-none d-md-block p-0">1.970.656.713</div>
-                  <div class="col-2 d-none d-md-block p-0">4:52</div>
-                  <div class="col-2">
-                    <button
-                      id="menuBtn"
-                      type="button"
-                      class="d-block d-md-none text-secondary d-flex align-items-center mx-auto btn btn-dark bg-transparent border-0"
-                    >
-                      <div class="buttonlogo"><i class="bi bi-three-dots"></i></div>
-                    </button>
-                  </div>
-                </div>
-                <p class="text-secondary m-4" style="font-size: 0.85rem">VISUALIZZA ALTRO</p>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
-      <!-- nav bar dx -->
-      <div class="col-2 d-none d-xl-block bg-black">
-        <aside>
-          <div class="d-flex justify-content-end gap-3">
-            <button class="btn text-white p-0">
-              <i class="fs-4 bi bi-dash-lg"></i>
-            </button>
-            <button class="btn text-white p-0">
-              <i class="bi bi-window-stack"></i>
-            </button>
-            <button class="btn text-white p-0">
-              <i class="fs-4 bi bi-x"></i>
-            </button>
-          </div>
-          <div class="d-flex justify-content-between align-items-center">
-            <h6 class="text-white fs-5 m-0">Attività amici</h6>
-            <div>
-              <button class="btn p-0">
-                <i class="text-white-50 fs-5 bi bi-person-fill-add"></i>
-              </button>
-              <button class="btn p-0">
-                <i class="text-white-50 fs-5 bi bi-x"></i>
-              </button>
+        <!-- side-bar sx -->
+        <div class="col-4 col-xl-2 d-none d-md-block bg-black h-100 px-1">
+            <aside>
+                <div class="d-flex flex-column align-items-start">
+                    <button class="btn text-white-50 fs-5">
+                        <i class="fs-4 bi me-2 bi-three-dots"></i>
+                    </button>
+                    <a href="./index.html">
+                        <button style="font-family: Circular, sans-serif" class="btn text-white-50 fs-5"><i
+                                class="fs-4 bi me-2 bi-house-door-fill"></i> Home</button>
+                    </a>
+                    <a href="./search.html">
+                        <button style="font-family: Circular, sans-serif" class="btn text-white-50 fs-5"><i
+                                class="fs-4 bi me-2 bi-search"></i> Cerca</button>
+                    </a>
+                    <button style="font-family: Circular, sans-serif" class="btn text-start text-white-50 fs-5">
+                        <i class="fs-4 bi me-2 bi-collection"></i> La tua libreria
+                    </button>
+                </div>
+
+                <div class="d-flex flex-column align-items-start mt-3">
+                    <button style="font-family: Circular, sans-serif" class="btn text-white-50 fs-5">
+                        <i class="fs-4 bi bi-plus-square-fill me-2"></i>Crea playlist
+                    </button>
+                    <button style="font-family: Circular, sans-serif" class="btn text-start text-white-50 fs-5">
+                        <i class="fs-4 bi bi-bookmark-heart-fill me-2"></i>Brani che ti piacciono
+                    </button>
+
+                    <button style="font-family: Circular, sans-serif" class="btn text-white-50 fs-5">
+                        <i class="fs-4 bi bi-bookmark-fill me-2"></i>I tuoi episodi
+                    </button>
+                </div>
+                <div class="border-top border-dark"></div>
+                <div class="scrollable2 d-flex flex-column align-items-start h-100">
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">early stage emily syndrome
+                        (sett-ott 2022)</a>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Be The Young</a>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">"..." cit. Kimiko (lug-ago
+                        2022)</a>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">saggio vibes 💃 &#xF483; 🩰</a>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">that fucking mood 🔪☠</a>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 text-uppercase my-1">vee,carlotta e
+                        giacomo vanno a bosio</a>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">An Emily Winchester kind of mood
+                        🔪🖕</a>
+                    <div class="w-100 d-flex align-items-center justify-content-between">
+                        <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">landing page (mar-apr 2022)</a>
+                        <button class="btn p-0">
+                            <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
+                        </button>
+                    </div>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">2021 lol</a>
+                    <div class="w-100 d-flex align-items-center justify-content-between">
+                        <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">cosa cazzo cuol dire questa
+                            affermazione (g..</a>
+                        <button class="btn p-0">
+                            <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
+                        </button>
+                    </div>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">honey and glass (nov-dic 2021)</a>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">(Revenge) Training Arc1F412 🦍</a>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Lidia & Emily</a>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">minecraft e nintendo switch</a>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Silvano d'orba? i hardly know
+                        her</a>
+                    <div class="w-100 d-flex align-items-center justify-content-between">
+                        <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Culo 2021</a>
+                        <button class="btn p-0">
+                            <i class="bi bi-people text-white-50"></i>
+                        </button>
+                    </div>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Frah Quintale Mix</a>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Francesco Guccini Mix</a>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">early stage emily syndrome
+                        (sett-ott 2022)</a>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Be The Young</a>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">"..." cit. Kimiko (lug-ago
+                        2022)</a>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">saggio vibes 💃 &#xF483; 🩰</a>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">that fucking mood 🔪☠</a>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 text-uppercase my-1">vee,carlotta e
+                        giacomo vanno a bosio</a>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">An Emily Winchester kind of mood
+                        🔪🖕</a>
+                    <div class="w-100 d-flex align-items-center justify-content-between">
+                        <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">landing page (mar-apr 2022)</a>
+                        <button class="btn p-0">
+                            <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
+                        </button>
+                    </div>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">2021 lol</a>
+                    <div class="w-100 d-flex align-items-center justify-content-between">
+                        <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">cosa cazzo cuol dire questa
+                            affermazione (g..</a>
+                        <button class="btn p-0">
+                            <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
+                        </button>
+                    </div>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">honey and glass (nov-dic 2021)</a>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">(Revenge) Training Arc1F412 🦍</a>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Lidia & Emily</a>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">minecraft e nintendo switch</a>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Silvano d'orba? i hardly know
+                        her</a>
+                    <div class="w-100 d-flex align-items-center justify-content-between">
+                        <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Culo 2021</a>
+                        <button class="btn p-0">
+                            <i class="bi bi-people text-white-50"></i>
+                        </button>
+                    </div>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Frah Quintale Mix</a>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Francesco Guccini Mix</a>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">early stage emily syndrome
+                        (sett-ott 2022)</a>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Be The Young</a>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">"..." cit. Kimiko (lug-ago
+                        2022)</a>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">saggio vibes 💃 &#xF483; 🩰</a>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">that fucking mood 🔪☠</a>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 text-uppercase my-1">vee,carlotta e
+                        giacomo vanno a bosio</a>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">An Emily Winchester kind of mood
+                        🔪🖕</a>
+                    <div class="w-100 d-flex align-items-center justify-content-between">
+                        <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">landing page (mar-apr 2022)</a>
+                        <button class="btn p-0">
+                            <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
+                        </button>
+                    </div>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">2021 lol</a>
+                    <div class="w-100 d-flex align-items-center justify-content-between">
+                        <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">cosa cazzo cuol dire questa
+                            affermazione (g..</a>
+                        <button class="btn p-0">
+                            <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
+                        </button>
+                    </div>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">honey and glass (nov-dic 2021)</a>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">(Revenge) Training Arc1F412 🦍</a>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Lidia & Emily</a>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">minecraft e nintendo switch</a>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Silvano d'orba? i hardly know
+                        her</a>
+                    <div class="w-100 d-flex align-items-center justify-content-between">
+                        <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Culo 2021</a>
+                        <button class="btn p-0">
+                            <i class="bi bi-people text-white-50"></i>
+                        </button>
+                    </div>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Frah Quintale Mix</a>
+                    <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Francesco Guccini Mix</a>
+                </div>
+            </aside>
+        </div>
+        <!-- artist page -->
+
+        <div class="col-lg-8 h-100 overflow-y">
+            <!-- immagine artista bg + nome -->
+            <div class="d-flex flex-column justify-content-end position-relative"
+                style="max-height: 400px; overflow: hidden">
+                <img id="heroImage" src="https://www.rollingstone.it/wp-content/uploads/2019/07/acdc-1200x763.jpg"
+                    alt="AC/DC band" class="img-fluid w-100 object-fit-cover" style="max-height: 400px" />
+                <div class="position-absolute text-white p-3 p-md-4" style="bottom: 10%; left: 0">
+                    <p class="mb-1"><i class="bi bi-patch-check-fill text-info"></i> Artista verificato</p>
+                    <h1 class="fw-bold">AC/DC</h1>
+                    <h6 class="mb-0">33.456.789 ascoltatori mensili</h6>
+                </div>
             </div>
-          </div>
-          <div class="row mt-5">
-            <div class="col-2">
-              <img src="./assets/imgs/main/image-11.jpg" alt="" class="w-100 rounded-circle" />
+
+            <!-- following & play -->
+            <div class="conatainer-fluid bg-black bg-gradient h-100">
+                <div class="row m-0 w-100">
+                    <div class="d-flex align-items-center mb-2" style="height: 120px">
+                        <div class="d-flex align-items-center justify-content-center bg-success rounded-circle mt-4 mx-3"
+                            style="width: 3rem; height: 3rem">
+                            <button
+                                class="bg-transparent border-0 p-0 d-flex align-items-center justify-content-center">
+                                <i class="bi bi-play-fill text-black fs-3"></i>
+                            </button>
+                        </div>
+                        <div><button class="btn btn-outline-light mt-4 mx-3">FOLLOWING</button></div>
+                        <div class="mt-4 mx-3">
+                            <button id="menuBtn" type="button"
+                                class="text-secondary d-flex align-items-center btn btn-dark bg-transparent border-0">
+                                <div class="buttonlogo"><i class="bi bi-three-dots"></i></div>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- lista brani like -->
+                    <div class="row">
+                        <div class="col-12 col-lg-4 m-0 p-0 order-1 order-lg-2 text-center text-lg-start">
+                            <h4 class="m-4 fs-4 fs-md-2">Brani che ti piacciono</h4>
+                            <div class="card mb-3 bg-transparent border-0 mx-auto" style="max-width: 540px">
+                                <div class="row g-0 align-items-center mt-4">
+                                    <div class="col-2 text-center position-relative">
+                                        <img src="./assets/imgs/main/image-14.jpg" style="width: 80px"
+                                            class="img-fluid rounded-circle" alt="Brani che ti piacciono" />
+                                        <span class="p-2 bg-success rounded-circle"
+                                            style="width: 25px; height: 25px; position: absolute; top: 70%; left: 70%">
+                                            <i class="bi bi-heart-fill"
+                                                style="position: absolute; top: 10%; left: 20%"></i>
+                                        </span>
+                                    </div>
+                                    <div class="col-10">
+                                        <div class="card-body d-flex justify-content-between lh-sm">
+                                            <div>
+                                                <h6 class="card-title">Hai messo mi piace a 11 brani</h6>
+                                                <p class="card-text text-secondary">di AC/DC</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-8 m-0 p-0 order-2 order-lg-1 text-center text-lg-start">
+                            <h2 class="m-4 fs-4 fs-lg-2">Popolari</h2>
+                            <div id="trackList"
+                                class="w-100 row col-12 col-md-4 d-flex flex-wrap align-items-center justify-content-center mb-3">
+                                <div class="col-1 p-0 text-center">1</div>
+                                <div class="col-1 p-0">
+                                    <img class="rounded img-fluid" style="width: 40px; height: 40px"
+                                        src="https://upload.wikimedia.org/wikipedia/en/a/a8/Razorsedge.jpg"
+                                        alt="logoLp" />
+                                </div>
+                                <div class="col-4 p-0">Thunderstruck</div>
+                                <div class="col-4 d-none d-md-block p-0">1.970.656.713</div>
+                                <div class="col-2 d-none d-md-block p-0">4:52</div>
+                                <div class="col-2">
+                                    <button id="menuBtn" type="button"
+                                        class="d-block d-md-none text-secondary d-flex align-items-center mx-auto btn btn-dark bg-transparent border-0">
+                                        <div class="buttonlogo"><i class="bi bi-three-dots"></i></div>
+                                    </button>
+                                </div>
+                            </div>
+                            <div id="trackList"
+                                class="w-100 row col-12 col-md-4 d-flex flex-wrap align-items-center mb-3 justify-content-center">
+                                <div class="col-1 p-0 text-center">2</div>
+                                <div class="col-1 p-0">
+                                    <img class="rounded img-fluid" style="width: 40px; height: 40px"
+                                        src="https://upload.wikimedia.org/wikipedia/en/a/a8/Razorsedge.jpg"
+                                        alt="logoLp" />
+                                </div>
+                                <div class="col-4 p-0">Thunderstruck</div>
+                                <div class="col-4 d-none d-md-block p-0">1.970.656.713</div>
+                                <div class="col-2 d-none d-md-block p-0">4:52</div>
+                                <div class="col-2">
+                                    <button id="menuBtn" type="button"
+                                        class="d-block d-md-none text-secondary d-flex align-items-center mx-auto btn btn-dark bg-transparent border-0">
+                                        <div class="buttonlogo"><i class="bi bi-three-dots"></i></div>
+                                    </button>
+                                </div>
+                            </div>
+                            <div id="trackList"
+                                class="w-100 row col-12 col-md-4 d-flex flex-wrap align-items-center mb-3 justify-content-center">
+                                <div class="col-1 p-0 text-center">3</div>
+                                <div class="col-1 p-0">
+                                    <img class="rounded img-fluid" style="width: 40px; height: 40px"
+                                        src="https://upload.wikimedia.org/wikipedia/en/a/a8/Razorsedge.jpg"
+                                        alt="logoLp" />
+                                </div>
+                                <div class="col-4 p-0">Thunderstruck</div>
+                                <div class="col-4 d-none d-md-block p-0">1.970.656.713</div>
+                                <div class="col-2 d-none d-md-block p-0">4:52</div>
+                                <div class="col-2">
+                                    <button id="menuBtn" type="button"
+                                        class="d-block d-md-none text-secondary d-flex align-items-center mx-auto btn btn-dark bg-transparent border-0">
+                                        <div class="buttonlogo"><i class="bi bi-three-dots"></i></div>
+                                    </button>
+                                </div>
+                            </div>
+                            <div id="trackList"
+                                class="w-100 row col-12 col-md-4 d-flex flex-wrap align-items-center mb-3 justify-content-center">
+                                <div class="col-1 p-0 text-center">4</div>
+                                <div class="col-1 p-0">
+                                    <img class="rounded img-fluid" style="width: 40px; height: 40px"
+                                        src="https://upload.wikimedia.org/wikipedia/en/a/a8/Razorsedge.jpg"
+                                        alt="logoLp" />
+                                </div>
+                                <div class="col-4 p-0">Thunderstruck</div>
+                                <div class="col-4 d-none d-md-block p-0">1.970.656.713</div>
+                                <div class="col-2 d-none d-md-block p-0">4:52</div>
+                                <div class="col-2">
+                                    <button id="menuBtn" type="button"
+                                        class="d-block d-md-none text-secondary d-flex align-items-center mx-auto btn btn-dark bg-transparent border-0">
+                                        <div class="buttonlogo"><i class="bi bi-three-dots"></i></div>
+                                    </button>
+                                </div>
+                            </div>
+                            <div id="trackList"
+                                class="w-100 row col-12 col-md-4 d-flex flex-wrap align-items-center mb-3 justify-content-center">
+                                <div class="col-1 p-0 text-center">5</div>
+                                <div class="col-1 p-0">
+                                    <img class="rounded img-fluid" style="width: 40px; height: 40px"
+                                        src="https://upload.wikimedia.org/wikipedia/en/a/a8/Razorsedge.jpg"
+                                        alt="logoLp" />
+                                </div>
+                                <div class="col-4 p-0">Thunderstruck</div>
+                                <div class="col-4 d-none d-md-block p-0">1.970.656.713</div>
+                                <div class="col-2 d-none d-md-block p-0">4:52</div>
+                                <div class="col-2">
+                                    <button id="menuBtn" type="button"
+                                        class="d-block d-md-none text-secondary d-flex align-items-center mx-auto btn btn-dark bg-transparent border-0">
+                                        <div class="buttonlogo"><i class="bi bi-three-dots"></i></div>
+                                    </button>
+                                </div>
+                            </div>
+                            <p class="text-secondary m-4" style="font-size: 0.85rem">VISUALIZZA ALTRO</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <h4>Discografia</h4>
+                        <div class="col-6 col-md-4 col-xl-2">
+                            <div class="card border-0 bg-transparent" style="width: 150p; font-size: 16px">
+                                <img src="https://www.rollingstone.com/wp-content/uploads/2018/06/rs-145700-d82f03255cb32502f72976338ff13cd9fa1067f4.jpg?w=301&h=300&crop=1"
+                                    class="card-img-top rounded" alt="albumImg" />
+                                <div class="card-body text-center pt-0">
+                                    <p class="card-text">Album Name</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-xl-2">
+                            <div class="card border-0 bg-transparent" style="width: 150p; font-size: 16px">
+                                <img src="https://www.rollingstone.com/wp-content/uploads/2018/06/rs-145700-d82f03255cb32502f72976338ff13cd9fa1067f4.jpg?w=301&h=300&crop=1"
+                                    class="card-img-top rounded" alt="albumImg" />
+                                <div class="card-body text-center pt-0">
+                                    <p class="card-text">Album Name</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-xl-2">
+                            <div class="card border-0 bg-transparent" style="width: 150p; font-size: 16px">
+                                <img src="https://www.rollingstone.com/wp-content/uploads/2018/06/rs-145700-d82f03255cb32502f72976338ff13cd9fa1067f4.jpg?w=301&h=300&crop=1"
+                                    class="card-img-top rounded" alt="albumImg" />
+                                <div class="card-body text-center pt-0">
+                                    <p class="card-text">Album Name</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-xl-2">
+                            <div class="card border-0 bg-transparent" style="width: 150p; font-size: 16px">
+                                <img src="https://www.rollingstone.com/wp-content/uploads/2018/06/rs-145700-d82f03255cb32502f72976338ff13cd9fa1067f4.jpg?w=301&h=300&crop=1"
+                                    class="card-img-top rounded" alt="albumImg" />
+                                <div class="card-body text-center pt-0">
+                                    <p class="card-text">Album Name</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-xl-2">
+                            <div class="card border-0 bg-transparent" style="width: 150p; font-size: 16px">
+                                <img src="https://www.rollingstone.com/wp-content/uploads/2018/06/rs-145700-d82f03255cb32502f72976338ff13cd9fa1067f4.jpg?w=301&h=300&crop=1"
+                                    class="card-img-top rounded" alt="albumImg" />
+                                <div class="card-body text-center pt-0">
+                                    <p class="card-text">Album Name</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-xl-2">
+                            <div class="card border-0 bg-transparent" style="width: 150p; font-size: 16px">
+                                <img src="https://www.rollingstone.com/wp-content/uploads/2018/06/rs-145700-d82f03255cb32502f72976338ff13cd9fa1067f4.jpg?w=301&h=300&crop=1"
+                                    class="card-img-top rounded" alt="albumImg" />
+                                <div class="card-body text-center pt-0">
+                                    <p class="card-text">Album Name</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-xl-2">
+                            <div class="card border-0 bg-transparent" style="width: 150p; font-size: 16px">
+                                <img src="https://www.rollingstone.com/wp-content/uploads/2018/06/rs-145700-d82f03255cb32502f72976338ff13cd9fa1067f4.jpg?w=301&h=300&crop=1"
+                                    class="card-img-top rounded" alt="albumImg" />
+                                <div class="card-body text-center pt-0">
+                                    <p class="card-text">Album Name</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-xl-2">
+                            <div class="card border-0 bg-transparent" style="width: 150p; font-size: 16px">
+                                <img src="https://www.rollingstone.com/wp-content/uploads/2018/06/rs-145700-d82f03255cb32502f72976338ff13cd9fa1067f4.jpg?w=301&h=300&crop=1"
+                                    class="card-img-top rounded" alt="albumImg" />
+                                <div class="card-body text-center pt-0">
+                                    <p class="card-text">Album Name</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-xl-2">
+                            <div class="card border-0 bg-transparent" style="width: 150p; font-size: 16px">
+                                <img src="https://www.rollingstone.com/wp-content/uploads/2018/06/rs-145700-d82f03255cb32502f72976338ff13cd9fa1067f4.jpg?w=301&h=300&crop=1"
+                                    class="card-img-top rounded" alt="albumImg" />
+                                <div class="card-body text-center pt-0">
+                                    <p class="card-text">Album Name</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-xl-2">
+                            <div class="card border-0 bg-transparent" style="width: 150p; font-size: 16px">
+                                <img src="https://www.rollingstone.com/wp-content/uploads/2018/06/rs-145700-d82f03255cb32502f72976338ff13cd9fa1067f4.jpg?w=301&h=300&crop=1"
+                                    class="card-img-top rounded" alt="albumImg" />
+                                <div class="card-body text-center pt-0">
+                                    <p class="card-text">Album Name</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-xl-2">
+                            <div class="card border-0 bg-transparent" style="width: 150p; font-size: 16px">
+                                <img src="https://www.rollingstone.com/wp-content/uploads/2018/06/rs-145700-d82f03255cb32502f72976338ff13cd9fa1067f4.jpg?w=301&h=300&crop=1"
+                                    class="card-img-top rounded" alt="albumImg" />
+                                <div class="card-body text-center pt-0">
+                                    <p class="card-text">Album Name</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-xl-2">
+                            <div class="card border-0 bg-transparent" style="width: 150p; font-size: 16px">
+                                <img src="https://www.rollingstone.com/wp-content/uploads/2018/06/rs-145700-d82f03255cb32502f72976338ff13cd9fa1067f4.jpg?w=301&h=300&crop=1"
+                                    class="card-img-top rounded" alt="albumImg" />
+                                <div class="card-body text-center pt-0">
+                                    <p class="card-text">Album Name</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
-            <div class="col">
-              <div class="d-flex justify-content-between align-items-center">
-                <h5 class="text-white-50 fw-bold m-0">Charlie Hookham</h5>
-                <span class="text-white-50">4 ore</span>
-              </div>
-              <p class="text-white-50 m-0">In camera <span style="font-size: 10px" class="text-white">•</span> Yumi Zouma</p>
-              <p class="text-white-50"><i class="bi bi-record-circle me-2"></i>EP III</p>
-            </div>
-          </div>
-          <div class="row mt-5">
-            <div class="col-2">
-              <img src="./assets/imgs/main/image-12.jpg" alt="" class="w-100 rounded-circle" />
-            </div>
-            <div class="col">
-              <div class="d-flex justify-content-between align-items-center">
-                <h5 class="text-white-50 fw-bold m-0">lightdark02</h5>
-                <span class="text-white-50">8 ore</span>
-              </div>
-              <p class="text-white-50 m-0">Aimed to Kill <span style="font-size: 10px" class="text-white">•</span> Jade LeMac</p>
-              <p class="text-white-50"><i class="bi bi-record-circle me-2"></i>Aimed to Kill</p>
-            </div>
-          </div>
-          <div class="row mt-5">
-            <div class="col-2">
-              <img src="./assets/imgs/main/image-13.jpg" alt="" class="w-100 rounded-circle" />
-            </div>
-            <div class="col">
-              <div class="d-flex justify-content-between align-items-center">
-                <h5 class="text-white-50 fw-bold m-0">Valeria Traverso</h5>
-                <span class="text-white-50">3 giorni</span>
-              </div>
-              <p class="text-white-50 m-0">New Kings <span style="font-size: 10px" class="text-white">•</span> Sleeping Wolf</p>
-              <p class="text-white-50"><i class="bi bi-earbuds me-2"></i>ETwint Badass mood</p>
-            </div>
-          </div>
-        </aside>
-      </div>
+        </div>
+
+        <!-- nav bar dx -->
+        <div class="col-2 d-none d-xl-block bg-black px-1">
+            <aside>
+                <div class="d-flex justify-content-end gap-3">
+                    <button class="btn text-white p-0">
+                        <i class="fs-4 bi bi-dash-lg"></i>
+                    </button>
+                    <button class="btn text-white p-0">
+                        <i class="bi bi-window-stack"></i>
+                    </button>
+                    <button class="btn text-white p-0">
+                        <i class="fs-4 bi bi-x"></i>
+                    </button>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <h6 class="text-white fs-5 m-0">Attività amici</h6>
+                    <div>
+                        <button class="btn p-0">
+                            <i class="text-white-50 fs-5 bi bi-person-fill-add"></i>
+                        </button>
+                        <button class="btn p-0">
+                            <i class="text-white-50 fs-5 bi bi-x"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-2">
+                        <img src="./assets/imgs/main/image-11.jpg" alt="" class="w-100 rounded-circle" />
+                    </div>
+                    <div class="col">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="text-white-50 fw-bold m-0">Charlie Hookham</h5>
+                            <span class="text-white-50">4 ore</span>
+                        </div>
+                        <p class="text-white-50 m-0">In camera <span style="font-size: 10px" class="text-white">•</span>
+                            Yumi Zouma</p>
+                        <p class="text-white-50"><i class="bi bi-record-circle me-2"></i>EP III</p>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-2">
+                        <img src="./assets/imgs/main/image-12.jpg" alt="" class="w-100 rounded-circle" />
+                    </div>
+                    <div class="col">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="text-white-50 fw-bold m-0">lightdark02</h5>
+                            <span class="text-white-50">8 ore</span>
+                        </div>
+                        <p class="text-white-50 m-0">Aimed to Kill <span style="font-size: 10px"
+                                class="text-white">•</span> Jade LeMac</p>
+                        <p class="text-white-50"><i class="bi bi-record-circle me-2"></i>Aimed to Kill</p>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-2">
+                        <img src="./assets/imgs/main/image-13.jpg" alt="" class="w-100 rounded-circle" />
+                    </div>
+                    <div class="col">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="text-white-50 fw-bold m-0">Valeria Traverso</h5>
+                            <span class="text-white-50">3 giorni</span>
+                        </div>
+                        <p class="text-white-50 m-0">New Kings <span style="font-size: 10px" class="text-white">•</span>
+                            Sleeping Wolf</p>
+                        <p class="text-white-50"><i class="bi bi-earbuds me-2"></i>ETwint Badass mood</p>
+                    </div>
+                </div>
+            </aside>
+        </div>
     </main>
 
     <script src="./assets/script/artist.js"></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
 </html>
