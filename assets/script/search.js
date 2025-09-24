@@ -91,7 +91,7 @@ function generateCard(results) {
     }
 
     const col = document.createElement("div");
-    col.className = "col-md-6 col-lg-3";
+    col.className = "col-6 col-lg-3";
 
     const imgUrl = item.album ? item.album.cover_medium : item.artist.picture;
 
@@ -137,7 +137,7 @@ function showDefaultGenres() {
     }
 
     const col = document.createElement("div");
-    col.className = "col-md-6 col-lg-3";
+    col.className = "col-6 col-lg-3";
 
     col.innerHTML = `
       <div class="d-flex align-items-start justify-content-between rounded shadow-sm p-3 h-100 overflow-hidden"
