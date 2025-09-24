@@ -9,8 +9,7 @@ centerFeed.addEventListener("scroll", function () {
   if (opacity < 0) opacity = 0;
   heroImage.style.opacity = opacity;
 });
-
-const url = "https://deezerdevs-deezer.p.rapidapi.com/search?q=${encodeURIComponent(query)}";
+const url = "https://deezerdevs-deezer.p.rapidapi.com/artist/11";
 const options = {
   method: "GET",
   headers: {
@@ -25,9 +24,10 @@ async function getArtist() {
     const data = await response.json();
     console.log(data);
 
+    // 🔹 Inserisco i dati negli elementi HTML già esistenti
     document.getElementById("artist-name").textContent = data.name;
-    document.getElementById("heroImage").src = data.picture_xl;
-    document.getElementById("artist-playlist").textContent = data.tracklist;
+    document.getElementById("heroImage").src = data.picture_big;
+    document.getElementById("artist-fan").textContent = data.nb_fan + " ascoltatori mensili";
   } catch (error) {
     console.error("Errore:", error);
   }
