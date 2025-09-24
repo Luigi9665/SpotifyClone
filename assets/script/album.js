@@ -12,6 +12,22 @@ const params = new URLSearchParams(window.location.search);
 const rowTracks = document.getElementById("rowTracks");
 const rowAlbum = document.getElementById("rowAlbum");
 
+// -------------------------------------------------------------------------------
+// VARIABILI UTILI PER IL PLAYER
+// variabili player mobile
+const tracciaMobile = document.getElementById("tracciaMobile");
+const playMobile = document.getElementById("playMobile");
+const iconPlayMobile = document.getElementById("iconPlayMobile");
+const imgTrackMobile = document.getElementById("imgTrackMobile");
+
+// variabili player medium
+const imgTrackMedium = document.getElementById("imgTrackMedium");
+const titleTrackPlayer = document.getElementById("titleTrackPlayer");
+const singerPlayer = document.getElementById("singerPlayer");
+const iconPlayMedium = document.getElementById("iconPlayMedium");
+const progressBarMedium = document.getElementById("progressBarMedium");
+
+// -------------------------------------------------------------------------------
 // manipolazione dell'indirizzo url per gestire le playlist e gli album
 console.log(params.toString());
 if (params.toString().includes("album")) {
@@ -26,6 +42,7 @@ if (params.toString().includes("album")) {
 
 // FUNZIONI
 
+// -------------------------------------------------------------------------------
 // SET BARRA VOLUME - BLOCCO ISTRUZIONI
 function setVolumeFromEvent(e) {
   const rect = volumeBar.getBoundingClientRect();
@@ -58,6 +75,29 @@ function formatTimeAlbum(time) {
   const secs = time % 60;
   return `${minutes}min ${secs.toString().padStart(2, "0")}sec.`;
 }
+
+// -------------------------------------------------------------------------------
+
+// MANIPOLAZIONE DEL PLAYER
+// modifiche al player mobile
+const startMobile = (traccia, img) => {
+  iconPlayMobile.classList.remove("bi-play-fill");
+  iconPlayMobile.classList.add("bi-pause-fill");
+  tracciaMobile.innerText = traccia;
+  imgTrackMobile.src = img;
+};
+
+playMobile.addEventListener("click", () => {
+  if (audio.paused) {
+    audio.play();
+    iconPlayMobile.classList.remove("bi-play-fill");
+    iconPlayMobile.classList.add("bi-pause-fill");
+  } else {
+    audio.pause();
+    iconPlayMobile.classList.remove("bi-pause-fill");
+    iconPlayMobile.classList.add("bi-play-fill");
+  }
+});
 
 // GENERAZIONE DELLA PAGINA
 
@@ -179,6 +219,7 @@ const generateTracks = (track, index) => {
   const time = formatTime(track.duration);
   const preview = track.preview;
   const idSinger = track.artist.id;
+  const linkImgTrack = `https://cdn-images.dzcdn.net/images/cover/${track.md5_image}/500x500.jpg`;
 
   // crezione della row
   const row = document.createElement("div");
@@ -197,7 +238,7 @@ const generateTracks = (track, index) => {
   colTitle.className = "col-10 col-md-6";
   const divGenerics = document.createElement("div");
   const h2 = document.createElement("h2");
-  h2.className = "btn p-0 text-white fs-5 mb-0";
+  h2.className = "btn p-0 text-white text-start fs-5 mb-0";
   h2.innerText = title;
 
   //   il Listener per mandare la traccia all'elemento audio
@@ -207,7 +248,10 @@ const generateTracks = (track, index) => {
     audio.currentTime = 0;
     audio
       .play()
-      .then(() => console.log("Riproduzione avviata"))
+      .then(() => {
+        console.log("Riproduzione avviata");
+        startMobile(title, linkImgTrack);
+      })
       .catch((err) => console.warn("Riproduzione bloccata:", err));
   });
 
