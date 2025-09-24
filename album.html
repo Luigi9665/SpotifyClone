@@ -12,18 +12,68 @@
     />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
     <link rel="stylesheet" href="./assets/css/circular-font.css" />
-    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/scrollbar.css" />
   </head>
   <body style="font-family: Circularns-serif; position: relative">
     <main>
+      <!-- DIV COLLAPSE SIDEBAR PER VERSIONE MOBILE E SMALL -->
+      <div style="position: fixed; bottom: 0; left: 0; width: 100%; z-index: 1050; background-color: rgba(0, 0, 0, 1)" id="navbarPlayesSmall" class="d-md-none">
+        <div class="row">
+          <div class="col d-flex flex-column align-items-center justify-content-center py-1">
+            <a href="./index.html" class="btn text-white text-center p-0">
+              <i class="fs-1 bi bi-house-door-fill"></i>
+            </a>
+            <p class="text-white fs-6 m-0">Home</p>
+          </div>
+          <div class="col d-flex flex-column align-items-center justify-content-center py-1">
+            <a href="./search.html" class="btn text-white text-center p-0">
+              <i class="fs-1 bi bi-search"></i>
+            </a>
+            <p class="text-white fs-6 m-0">Cerca</p>
+          </div>
+          <div class="col d-flex flex-column align-items-center justify-content-center py-1">
+            <a href="" class="btn text-white text-center p-0">
+              <i class="fs-1 bi bi-collection"></i>
+            </a>
+            <p class="text-white fs-6 m-0">Libreria</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIV COLLAPSE PER IL PLAYER -->
+      <div style="position: fixed; bottom: 80px; left: 0; width: 100%; z-index: 1050" class="container-fluid d-md-none">
+        <div class="bg-dark rounded-1">
+          <div class="row align-items-center p-2">
+            <div class="col">
+              <img src="./assets/imgs/main/image-13.jpg" alt="copertina brano" style="width: 25px" class="rounded-circle" />
+            </div>
+            <div class="col-7">
+              <p class="text-white fw-semibold m-0">Traccia del brano</p>
+            </div>
+            <div class="col-3 d-flex gap-2">
+              <button class="btn p-0 text-white-50">
+                <i class="fs-4 bi bi-speaker"></i>
+              </button>
+              <button class="btn p-0 text-white-50">
+                <i class="fs-4 bi bi-heart"></i>
+              </button>
+              <button class="btn p-0 text-white-50">
+                <i class="fs-4 bi bi-play-fill"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- DIV CON IL LETTORE E I CONTROLLI AUDIO -->
       <div
         style="position: fixed; bottom: 0; left: 0; width: 100%; z-index: 1050; box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.5); background-color: rgb(15 15 15)"
-        id="navbarPlayes"
+        id="navbarPlayesMedium"
+        class="d-none d-md-block"
       >
         <div class="container-fluid">
           <div class="row py-3">
-            <div class="col-2 d-flex align-items-center gap-3 flex-fill">
+            <div class="col-3 col-xl-2 d-flex align-items-center gap-3 flex-fill">
               <div style="width: 60px; height: 60px">
                 <img src="https://cdn-images.dzcdn.net/images/cover/0f7f816a316d3303adea31ad037c6740/250x250-000000-80-0-0.jpg" alt="" class="w-100" />
               </div>
@@ -33,9 +83,9 @@
               </div>
               <button class="btn text-white-50 fs-5 p-0"><i class="bi bi-heart"></i></button>
             </div>
-            <div class="col-8 text-center">
+            <div class="col-5 col-xl-6 col-xxl-7 text-center">
               <div>
-                <div class="d-flex gap-4 align-items-center justify-content-center">
+                <div class="d-flex gap-1 gap-xl-4 align-items-center justify-content-center">
                   <i class="btn text-white-50 bi bi-shuffle fs-2 p-0"></i>
                   <i class="btn text-white-50 bi bi-skip-start fs-2 p-0"></i>
                   <i class="btn bi bi-play-circle-fill text-white fs-1 p-0"></i>
@@ -45,9 +95,9 @@
                 <div></div>
               </div>
             </div>
-            <div class="col-2 d-flex align-items-center">
-              <div class="d-flex align-items-center gap-3 flex-fill">
-                <button class="btn p-0">
+            <div class="col-4 col-xl-3 col-xxl-3 d-flex align-items-center">
+              <div class="d-flex align-items-center gap-0 gap-xxl-2 flex-fill">
+                <button class="d-none d-xl-block btn p-0">
                   <i class="bi bi-mic text-white-50"></i>
                 </button>
                 <button class="btn p-0">
@@ -83,7 +133,7 @@
                   <i class="bi bi-volume-up fs-3"></i>
                   <input type="range" id="volume-slider" class="volume-slider" min="0" max="100" value="70" />
                 </div>
-                <button class="btn p-0">
+                <button class="d-none d-xl-block btn p-0">
                   <svg
                     class="icon-full text-white-50"
                     role="img"
@@ -107,471 +157,375 @@
       <div class="container-fluid">
         <div class="row">
           <!-- SIDEBAR LEFT -->
-          <div class="col-2 bg-black">
-            <aside class="sidebar-left p-2 d-none d-md-block">
-              <div class="nav-block">
-                <a href="#" class="brand mb-2">
-                  <img src="" alt="" />
-                  <span>Spotify</span>
+          <div class="col-4 col-xl-2 d-none d-md-block bg-black h-100">
+            <aside>
+              <div class="d-flex flex-column align-items-start">
+                <button class="btn text-white-50 fs-5">
+                  <i class="fs-4 bi me-2 bi-three-dots"></i>
+                </button>
+                <a href="./index.html">
+                  <button style="font-family: Circular, sans-serif" class="btn text-white-50 fs-5"><i class="fs-4 bi me-2 bi-house-door-fill"></i> Home</button>
                 </a>
-                <a href="#"><i class="bi bi-house-door-fill"></i> Home</a>
-                <a href="#" class="muted"><i class="bi bi-search"></i> Cerca</a>
-                <a href="#" class="muted"><i class="bi bi-collection"></i> La tua libreria</a>
+                <a href="./search.html">
+                  <button style="font-family: Circular, sans-serif" class="btn text-white-50 fs-5"><i class="fs-4 bi me-2 bi-search"></i> Cerca</button>
+                </a>
+                <button style="font-family: Circular, sans-serif" class="btn text-start text-white-50 fs-5">
+                  <i class="fs-4 bi me-2 bi-collection"></i> La tua libreria
+                </button>
               </div>
 
-              <div class="nav-block">
-                <a href="#"><i class="bi bi-plus-square"></i> Crea playlist</a>
-                <a href="#" class="muted"><i class="bi bi-heart-fill text-danger"></i> Brani che ti piacciono</a>
-                <a href="#" class="muted"><i class="bi bi-mic"></i> I tuoi episodi</a>
-              </div>
+              <div class="d-flex flex-column align-items-start mt-3">
+                <button style="font-family: Circular, sans-serif" class="btn text-white-50 fs-5">
+                  <i class="fs-4 bi bi-plus-square-fill me-2"></i>Crea playlist
+                </button>
+                <button style="font-family: Circular, sans-serif" class="btn text-start text-white-50 fs-5">
+                  <i class="fs-4 bi bi-bookmark-heart-fill me-2"></i>Brani che ti piacciono
+                </button>
 
-              <div class="nav-block">
-                <div class="muted small">Playlist</div>
-                <a href="#" class="muted">early stage emily syndrome</a>
-                <a href="#" class="muted">Be The Young</a>
-                <a href="#" class="muted">saggio vibes</a>
-                <a href="#" class="muted">that f*cking mood</a>
-                <a href="#" class="muted">landing page (mar-apr 2022)</a>
-                <a href="#" class="muted">2021 lol</a>
-                <a href="#" class="muted">honey and glass</a>
-                <a href="#" class="muted">(Revenge) Training Arc</a>
-                <a href="#" class="muted">Culo 2021</a>
+                <button style="font-family: Circular, sans-serif" class="btn text-white-50 fs-5">
+                  <i class="fs-4 bi bi-bookmark-fill me-2"></i>I tuoi episodi
+                </button>
+              </div>
+              <div class="border-top border-dark"></div>
+              <div class="scrollable2 d-flex flex-column align-items-start">
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">early stage emily syndrome (sett-ott 2022)</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Be The Young</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">"..." cit. Kimiko (lug-ago 2022)</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">saggio vibes 💃 &#xF483; 🩰</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">that fucking mood 🔪☠</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 text-uppercase my-1">vee,carlotta e giacomo vanno a bosio</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">An Emily Winchester kind of mood 🔪🖕</a>
+                <div class="w-100 d-flex align-items-center justify-content-between">
+                  <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">landing page (mar-apr 2022)</a>
+                  <button class="btn p-0">
+                    <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
+                  </button>
+                </div>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">2021 lol</a>
+                <div class="w-100 d-flex align-items-center justify-content-between">
+                  <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">cosa cazzo cuol dire questa affermazione (g..</a>
+                  <button class="btn p-0">
+                    <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
+                  </button>
+                </div>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">honey and glass (nov-dic 2021)</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">(Revenge) Training Arc1F412 🦍</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Lidia & Emily</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">minecraft e nintendo switch</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Silvano d'orba? i hardly know her</a>
+                <div class="w-100 d-flex align-items-center justify-content-between">
+                  <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Culo 2021</a>
+                  <button class="btn p-0">
+                    <i class="bi bi-people text-white-50"></i>
+                  </button>
+                </div>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Frah Quintale Mix</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Francesco Guccini Mix</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">early stage emily syndrome (sett-ott 2022)</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Be The Young</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">"..." cit. Kimiko (lug-ago 2022)</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">saggio vibes 💃 &#xF483; 🩰</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">that fucking mood 🔪☠</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 text-uppercase my-1">vee,carlotta e giacomo vanno a bosio</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">An Emily Winchester kind of mood 🔪🖕</a>
+                <div class="w-100 d-flex align-items-center justify-content-between">
+                  <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">landing page (mar-apr 2022)</a>
+                  <button class="btn p-0">
+                    <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
+                  </button>
+                </div>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">2021 lol</a>
+                <div class="w-100 d-flex align-items-center justify-content-between">
+                  <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">cosa cazzo cuol dire questa affermazione (g..</a>
+                  <button class="btn p-0">
+                    <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
+                  </button>
+                </div>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">honey and glass (nov-dic 2021)</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">(Revenge) Training Arc1F412 🦍</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Lidia & Emily</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">minecraft e nintendo switch</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Silvano d'orba? i hardly know her</a>
+                <div class="w-100 d-flex align-items-center justify-content-between">
+                  <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Culo 2021</a>
+                  <button class="btn p-0">
+                    <i class="bi bi-people text-white-50"></i>
+                  </button>
+                </div>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Frah Quintale Mix</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Francesco Guccini Mix</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">early stage emily syndrome (sett-ott 2022)</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Be The Young</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">"..." cit. Kimiko (lug-ago 2022)</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">saggio vibes 💃 &#xF483; 🩰</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">that fucking mood 🔪☠</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 text-uppercase my-1">vee,carlotta e giacomo vanno a bosio</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">An Emily Winchester kind of mood 🔪🖕</a>
+                <div class="w-100 d-flex align-items-center justify-content-between">
+                  <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">landing page (mar-apr 2022)</a>
+                  <button class="btn p-0">
+                    <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
+                  </button>
+                </div>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">2021 lol</a>
+                <div class="w-100 d-flex align-items-center justify-content-between">
+                  <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">cosa cazzo cuol dire questa affermazione (g..</a>
+                  <button class="btn p-0">
+                    <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
+                  </button>
+                </div>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">honey and glass (nov-dic 2021)</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">(Revenge) Training Arc1F412 🦍</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Lidia & Emily</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">minecraft e nintendo switch</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Silvano d'orba? i hardly know her</a>
+                <div class="w-100 d-flex align-items-center justify-content-between">
+                  <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Culo 2021</a>
+                  <button class="btn p-0">
+                    <i class="bi bi-people text-white-50"></i>
+                  </button>
+                </div>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Frah Quintale Mix</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Francesco Guccini Mix</a>
               </div>
             </aside>
           </div>
+
           <!-- CONTENUTO PRINCIPALI CON L'ALBUM SCELTO E I BRANI -->
-          <div class="col-9 p-0">
-            <div style="background-image: linear-gradient(to bottom, #e2c450, #c6ac46, #aa943d, #907c33, #76662a)">
-              <div class="container">
-                <div class="d-flex justify-content-between align-items-center py-3">
-                  <div class="d-flex align-items-center gap-3">
-                    <button class="btn rounded-circle bg-dark bg-opacity-75 text-white fs-5 px-2 py-1">
-                      <i class="bi bi-chevron-left"></i>
-                    </button>
-                    <button class="btn rounded-circle bg-dark bg-opacity-75 text-white fs-5 px-2 py-1">
-                      <i class="bi bi-chevron-right"></i>
-                    </button>
-                  </div>
-                  <div class="rounded-pill bg-dark bg-opacity-75 d-flex align-items-baseline gap-1 p-1">
-                    <div style="width: 30px; height: 30px" class="rounded-circle">
-                      <img
-                        src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cmFuZG9tJTIwcGVvcGxlfGVufDB8fDB8fHww"
-                        alt=""
-                        class="w-100 h-100 rounded-circle"
-                      />
-                    </div>
-                    <h6 class="text-white fw-semibold m-0">Lidia Nautilus ...</h6>
-                  </div>
-                </div>
-                <div class="row py-4">
-                  <div class="col-3">
-                    <div class="shadow-lg">
-                      <img
-                        src="https://cdn-images.dzcdn.net/images/cover/815f471dcf48c1de0b4866bad75c4d21/250x250-000000-80-0-0.jpg"
-                        alt="cover album"
-                        class="w-100"
-                      />
-                    </div>
-                  </div>
-                  <div class="col-9 d-flex">
-                    <div class="flex-fill d-flex flex-column justify-content-end">
-                      <h4 class="text-white text-uppercase">album</h4>
-                      <h1 class="fw-bold text-white w-100" style="font-size: 6rem; font-family: Circular, sans-serif; letter-spacing: -5px">
-                        Gioventù brucata
-                      </h1>
-                      <div class="d-flex align-items-baseline gap-2">
+          <div class="col-12 col-md-8 h-100 p-0">
+            <!-- START DIV BACKGROUND GRADIENT COLOR -->
+
+            <!-- DIV PER GESTIONE DEL BACKGROUND GENERALE DEL NERO -->
+            <div class="bg-black">
+              <!-- START DIV SCROLL sotto -->
+              <div class="scrollable">
+                <div style="background-image: linear-gradient(to bottom, #e2c450, #c6ac46, #aa943d, #907c33, #76662a)">
+                  <!-- GESTIRE IL CONTAINER PER LE MEDIA QUERY -->
+                  <!-- inserire al container le classi bg-dark bg-opacity-25 tramite JS nella media query device e small, rimuoverle alla media query medium -->
+                  <div class="container-fluid px-3 px-md-5">
+                    <div class="d-flex justify-content-between align-items-center py-3">
+                      <div class="d-flex align-items-center gap-3">
+                        <button class="btn rounded-circle bg-dark bg-opacity-75 text-white fs-5 px-2 py-1">
+                          <i class="bi bi-chevron-left"></i>
+                        </button>
+                        <button class="btn rounded-circle bg-dark bg-opacity-75 text-white fs-5 px-2 py-1">
+                          <i class="bi bi-chevron-right"></i>
+                        </button>
+                      </div>
+                      <div class="rounded-pill bg-dark bg-opacity-75 d-flex align-items-baseline gap-1 p-1">
                         <div style="width: 30px; height: 30px" class="rounded-circle">
                           <img
-                            src="https://cdn-images.dzcdn.net/images/artist/7a8659133c016871d391135c65d190c0/250x250-000000-80-0-0.jpg"
-                            alt="badge pinguini tattici nucleari"
+                            src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cmFuZG9tJTIwcGVvcGxlfGVufDB8fDB8fHww"
+                            alt=""
                             class="w-100 h-100 rounded-circle"
                           />
                         </div>
-                        <p class="text-white d-flex align-items-center gap-1">
-                          Pinguini Tattici Nucleari <spans style="font-size: 10px">•</spans> 2017 <spans style="font-size: 10px">•</spans> 12 brani,
-                          <span class="text-white-50">53 min 20 sec.</span>
-                        </p>
+                        <h6 class="d-none d-md-block text-white fw-semibold m-0">Lidia Nautilus ...</h6>
                       </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div style="background-image: linear-gradient(to bottom, #76662a, #000, #000, #000000, #000000, #000000, #000000)">
-              <div class="bg-dark bg-opacity-25">
-                <div class="container">
-                  <div class="d-flex align-items-center gap-4 py-3">
-                    <button style="background-color: #1ed760" class="btn rounded-circle text-black fs-1 d-flex align-items-center justify-content-center py-0">
-                      <div class="d-flex align-items-center justify-content-center">
-                        <i class="bi bi-play-fill"></i>
+                    <!-- ROW PER IMMAGINE E TITOLO ALBUM -->
+                    <div class="row py-4">
+                      <!-- DIV PER IMMAGINE ALBUM -->
+                      <div class="col-9 offset-2 col-md-3 offset-md-0">
+                        <div class="shadow-lg">
+                          <img
+                            src="https://cdn-images.dzcdn.net/images/cover/815f471dcf48c1de0b4866bad75c4d21/250x250-000000-80-0-0.jpg"
+                            alt="cover album"
+                            class="w-100"
+                          />
+                        </div>
                       </div>
-                    </button>
-                    <button class="btn text-white-50 fs-2 p-0"><i class="bi bi-heart"></i></button>
-                    <button class="btn text-white-50 fs-2 p-0 fs-2"><i class="bi bi-arrow-down-circle"></i></button>
-                    <button class="btn text-white-50 fs-2 p-0 fs-2"><i class="bi bi-three-dots"></i></button>
-                  </div>
-                  <div class="row">
-                    <div class="col-1 text-center">
-                      <p class="text-white-50 m-1">#</p>
-                    </div>
-                    <div class="col-6">
-                      <h6 class="text-uppercase text-white-50 m-1">titolo</h6>
-                    </div>
-                    <div class="col-4">
-                      <h6 class="text-uppercase text-white-50 m-1">riproduzioni</h6>
-                    </div>
-                    <div class="col-1"><i class="bi bi-clock text-white-50 m-1"></i></div>
-                  </div>
-                  <div class="border-top border-white-50"></div>
-                  <div class="row my-2 align-items-center">
-                    <div class="col-1 text-center"><h4 class="text-white-50">1</h4></div>
-                    <div class="col-6">
-                      <div>
-                        <h2 class="text-white fs-5 mb-0">Montanelli - Intro</h2>
-                        <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
-                      </div>
-                    </div>
-                    <div class="col-4">
-                      <p class="text-white-50">694.578</p>
-                    </div>
-                    <div class="col-1">
-                      <p class="text-white-50">1:28</p>
-                    </div>
-                  </div>
-                  <div class="row my-2 align-items-center">
-                    <div class="col-1 text-center"><h4 class="text-white-50">1</h4></div>
-                    <div class="col-6">
-                      <div>
-                        <h2 class="text-white fs-5 mb-0">Montanelli - Intro</h2>
-                        <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
-                      </div>
-                    </div>
-                    <div class="col-4">
-                      <p class="text-white-50">694.578</p>
-                    </div>
-                    <div class="col-1">
-                      <p class="text-white-50">1:28</p>
-                    </div>
-                  </div>
-                  <div class="row my-2 align-items-center">
-                    <div class="col-1 text-center"><h4 class="text-white-50">1</h4></div>
-                    <div class="col-6">
-                      <div>
-                        <h2 class="text-white fs-5 mb-0">Montanelli - Intro</h2>
-                        <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
-                      </div>
-                    </div>
-                    <div class="col-4">
-                      <p class="text-white-50">694.578</p>
-                    </div>
-                    <div class="col-1">
-                      <p class="text-white-50">1:28</p>
-                    </div>
-                  </div>
-                  <div class="row my-2 align-items-center">
-                    <div class="col-1 text-center"><h4 class="text-white-50">1</h4></div>
-                    <div class="col-6">
-                      <div>
-                        <h2 class="text-white fs-5 mb-0">Montanelli - Intro</h2>
-                        <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
-                      </div>
-                    </div>
-                    <div class="col-4">
-                      <p class="text-white-50">694.578</p>
-                    </div>
-                    <div class="col-1">
-                      <p class="text-white-50">1:28</p>
-                    </div>
-                  </div>
-                  <div class="row my-2 align-items-center">
-                    <div class="col-1 text-center"><h4 class="text-white-50">1</h4></div>
-                    <div class="col-6">
-                      <div>
-                        <h2 class="text-white fs-5 mb-0">Ninnananna per i genitori disattenti</h2>
-                        <div class="d-flex align-items-center gap-1">
-                          <span style="font-size: 12px" class="btn bg-body-secondary text-center px-1 py-0">E</span>
-                          <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
+                      <!-- DIV PER LA GESTIONE DEL TITOLO ALBUM E ARTISTI -->
+                      <div class="col-12 col-md-9 d-flex mt-5 mt-md-0">
+                        <div class="flex-fill d-flex flex-column justify-content-end">
+                          <h4 class="text-white text-uppercase d-none d-md-block">album</h4>
+                          <h1 class="d-md-none display-2 fw-bold text-white w-100" style="font-family: Circular, sans-serif; letter-spacing: -1px">
+                            Gioventù brucata
+                          </h1>
+                          <h1
+                            class="d-none d-md-block fw-bold text-white w-100"
+                            style="font-size: 6rem; font-family: Circular, sans-serif; letter-spacing: -5px"
+                          >
+                            Gioventù brucata
+                          </h1>
+                          <div class="d-flex align-items-baseline gap-2">
+                            <div style="width: 30px; height: 30px" class="rounded-circle">
+                              <img
+                                src="https://cdn-images.dzcdn.net/images/artist/7a8659133c016871d391135c65d190c0/250x250-000000-80-0-0.jpg"
+                                alt="badge pinguini tattici nucleari"
+                                class="w-100 h-100 rounded-circle"
+                              />
+                            </div>
+                            <p class="text-white d-flex align-items-center gap-1">
+                              Pinguini Tattici Nucleari <span style="font-size: 10px">•</span> 2017 <span style="font-size: 10px">•</span> 12 brani,
+                              <span class="text-white-50">53 min 20 sec.</span>
+                            </p>
+                          </div>
                         </div>
                       </div>
                     </div>
-                    <div class="col-4">
-                      <p class="text-white-50">694.578</p>
-                    </div>
-                    <div class="col-1">
-                      <p class="text-white-50">1:28</p>
-                    </div>
                   </div>
-                  <div class="row my-2 align-items-center">
-                    <div class="col-1 text-center"><h4 class="text-white-50">1</h4></div>
-                    <div class="col-6">
-                      <div>
-                        <h2 class="text-white fs-5 mb-0">Montanelli - Intro</h2>
-                        <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
+                </div>
+
+                <div style="background-image: linear-gradient(to bottom, #76662a, #000000, #000000, #000000, #000000, #000000)">
+                  <div class="bg-dark bg-opacity-25">
+                    <div class="container-fluid px-5">
+                      <div class="d-flex align-items-center gap-4 py-3">
+                        <button
+                          style="background-color: #1ed760"
+                          class="btn rounded-circle text-black fs-1 d-flex align-items-center justify-content-center py-0"
+                        >
+                          <div class="d-flex align-items-center justify-content-center">
+                            <i class="bi bi-play-fill"></i>
+                          </div>
+                        </button>
+                        <button class="btn text-white-50 fs-2 p-0"><i class="bi bi-heart"></i></button>
+                        <button class="btn text-white-50 fs-2 p-0 fs-2"><i class="bi bi-arrow-down-circle"></i></button>
+                        <button class="btn text-white-50 fs-2 p-0 fs-2"><i class="bi bi-three-dots"></i></button>
                       </div>
-                    </div>
-                    <div class="col-4">
-                      <p class="text-white-50">694.578</p>
-                    </div>
-                    <div class="col-1">
-                      <p class="text-white-50">1:28</p>
-                    </div>
-                  </div>
-                  <div class="row my-2 align-items-center">
-                    <div class="col-1 text-center"><h4 class="text-white-50">1</h4></div>
-                    <div class="col-6">
-                      <div>
-                        <h2 class="text-white fs-5 mb-0">Montanelli - Intro</h2>
-                        <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
+
+                      <!-- ROW PER INTESTAZIONI DI INDICE TITOLO RIPRODUZIONI E TIME DA FAR RIAPPARIRE A MEDIUM COME UN D-FLEX -->
+                      <div class="row d-none d-md-flex">
+                        <div class="col-1 text-center">
+                          <p class="text-white-50 m-1">#</p>
+                        </div>
+                        <div class="col-6">
+                          <h6 class="text-uppercase text-white-50 m-1">titolo</h6>
+                        </div>
+                        <div class="col-4">
+                          <h6 class="text-uppercase text-white-50 m-1">riproduzioni</h6>
+                        </div>
+                        <div class="col-1"><i class="bi bi-clock text-white-50 m-1"></i></div>
                       </div>
-                    </div>
-                    <div class="col-4">
-                      <p class="text-white-50">694.578</p>
-                    </div>
-                    <div class="col-1">
-                      <p class="text-white-50">1:28</p>
-                    </div>
-                  </div>
-                  <div class="row my-2 align-items-center">
-                    <div class="col-1 text-center"><h4 class="text-white-50">1</h4></div>
-                    <div class="col-6">
-                      <div>
-                        <h2 class="text-white fs-5 mb-0">Montanelli - Intro</h2>
-                        <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
+
+                      <!-- DIV PER IL BORDO FI LIMITAZIONE TRA I BUTTON E LE TRACCE -->
+                      <div class="d-none d-md-block border-top border-white-50"></div>
+                      <!-- SOPRA -->
+
+                      <!-- INIZIO DELLE TRACCE  -->
+                      <div class="row my-2 align-items-center">
+                        <!-- INDICE DELLA TRACCIA, DA FAR SPARIRE AL DEVICE E ALLO SMALL, RICOMPARE AL MEDIUM -->
+                        <div class="col-1 d-none d-md-block text-center">
+                          <h4 class="text-white-50">1</h4>
+                        </div>
+                        <!-- TITOLO TRACCIA SEMPRE PRESENTE -->
+                        <div class="col-10 col-md-6">
+                          <div>
+                            <h2 class="text-white fs-5 mb-0">Montanelli - Intro</h2>
+                            <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
+                          </div>
+                        </div>
+                        <!-- NUMERO DI RIPRODUZIONE DA FAR RICOMPARIRE AL MEDIUM -->
+                        <div class="col-4 d-none d-md-block">
+                          <p class="text-white-50">694.578</p>
+                        </div>
+                        <!-- TEMPO DI RIPRODUZIONE DA FAR RICOMPARIRE AL MEDIUM -->
+                        <div class="col-1 d-none d-md-block">
+                          <p class="text-white-50">1:28</p>
+                        </div>
+                        <!-- DIV DA FAR SCOMPARIRE AL MEDIUM -->
+                        <div class="col-1 d-md-none">
+                          <button class="btn text-white-50 fs-3 p-0">
+                            <i class="bi bi-three-dots-vertical"></i>
+                          </button>
+                        </div>
                       </div>
-                    </div>
-                    <div class="col-4">
-                      <p class="text-white-50">694.578</p>
-                    </div>
-                    <div class="col-1">
-                      <p class="text-white-50">1:28</p>
-                    </div>
-                  </div>
-                  <div class="row my-2 align-items-center">
-                    <div class="col-1 text-center"><h4 class="text-white-50">1</h4></div>
-                    <div class="col-6">
-                      <div>
-                        <h2 class="text-white fs-5 mb-0">Montanelli - Intro</h2>
-                        <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
+                      <!-- ALTRO ESEMPIO DI TRACCIA CON AGGIUNTA DELL'ICONA E -->
+                      <div class="row my-2 align-items-center">
+                        <div class="col-1 text-center"><h4 class="text-white-50">2</h4></div>
+                        <div class="col-6">
+                          <div>
+                            <h2 class="text-white fs-5 mb-0">Ninnananna per i genitori disattenti</h2>
+                            <div class="d-flex align-items-center gap-1">
+                              <span style="font-size: 12px" class="btn bg-body-secondary text-center px-1 py-0">E</span>
+                              <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-4">
+                          <p class="text-white-50">694.578</p>
+                        </div>
+                        <div class="col-1">
+                          <p class="text-white-50">1:28</p>
+                        </div>
                       </div>
-                    </div>
-                    <div class="col-4">
-                      <p class="text-white-50">694.578</p>
-                    </div>
-                    <div class="col-1">
-                      <p class="text-white-50">1:28</p>
-                    </div>
-                  </div>
-                  <div class="row my-2 align-items-center">
-                    <div class="col-1 text-center"><h4 class="text-white-50">1</h4></div>
-                    <div class="col-6">
-                      <div>
-                        <h2 class="text-white fs-5 mb-0">Montanelli - Intro</h2>
-                        <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
-                      </div>
-                    </div>
-                    <div class="col-4">
-                      <p class="text-white-50">694.578</p>
-                    </div>
-                    <div class="col-1">
-                      <p class="text-white-50">1:28</p>
-                    </div>
-                  </div>
-                  <div class="row my-2 align-items-center">
-                    <div class="col-1 text-center"><h4 class="text-white-50">1</h4></div>
-                    <div class="col-6">
-                      <div>
-                        <h2 class="text-white fs-5 mb-0">Montanelli - Intro</h2>
-                        <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
-                      </div>
-                    </div>
-                    <div class="col-4">
-                      <p class="text-white-50">694.578</p>
-                    </div>
-                    <div class="col-1">
-                      <p class="text-white-50">1:28</p>
-                    </div>
-                  </div>
-                  <div class="row my-2 align-items-center">
-                    <div class="col-1 text-center"><h4 class="text-white-50">1</h4></div>
-                    <div class="col-6">
-                      <div>
-                        <h2 class="text-white fs-5 mb-0">Montanelli - Intro</h2>
-                        <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
-                      </div>
-                    </div>
-                    <div class="col-4">
-                      <p class="text-white-50">694.578</p>
-                    </div>
-                    <div class="col-1">
-                      <p class="text-white-50">1:28</p>
-                    </div>
-                  </div>
-                  <div class="row my-2 align-items-center">
-                    <div class="col-1 text-center"><h4 class="text-white-50">1</h4></div>
-                    <div class="col-6">
-                      <div>
-                        <h2 class="text-white fs-5 mb-0">Montanelli - Intro</h2>
-                        <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
-                      </div>
-                    </div>
-                    <div class="col-4">
-                      <p class="text-white-50">694.578</p>
-                    </div>
-                    <div class="col-1">
-                      <p class="text-white-50">1:28</p>
-                    </div>
-                  </div>
-                  <div class="row my-2 align-items-center">
-                    <div class="col-1 text-center"><h4 class="text-white-50">1</h4></div>
-                    <div class="col-6">
-                      <div>
-                        <h2 class="text-white fs-5 mb-0">Montanelli - Intro</h2>
-                        <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
-                      </div>
-                    </div>
-                    <div class="col-4">
-                      <p class="text-white-50">694.578</p>
-                    </div>
-                    <div class="col-1">
-                      <p class="text-white-50">1:28</p>
-                    </div>
-                  </div>
-                  <div class="row my-2 align-items-center">
-                    <div class="col-1 text-center"><h4 class="text-white-50">1</h4></div>
-                    <div class="col-6">
-                      <div>
-                        <h2 class="text-white fs-5 mb-0">Montanelli - Intro</h2>
-                        <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
-                      </div>
-                    </div>
-                    <div class="col-4">
-                      <p class="text-white-50">694.578</p>
-                    </div>
-                    <div class="col-1">
-                      <p class="text-white-50">1:28</p>
-                    </div>
-                  </div>
-                  <div class="row my-2 align-items-center">
-                    <div class="col-1 text-center"><h4 class="text-white-50">1</h4></div>
-                    <div class="col-6">
-                      <div>
-                        <h2 class="text-white fs-5 mb-0">Montanelli - Intro</h2>
-                        <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
-                      </div>
-                    </div>
-                    <div class="col-4">
-                      <p class="text-white-50">694.578</p>
-                    </div>
-                    <div class="col-1">
-                      <p class="text-white-50">1:28</p>
-                    </div>
-                  </div>
-                  <div class="row my-2 align-items-center">
-                    <div class="col-1 text-center"><h4 class="text-white-50">1</h4></div>
-                    <div class="col-6">
-                      <div>
-                        <h2 class="text-white fs-5 mb-0">Montanelli - Intro</h2>
-                        <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
-                      </div>
-                    </div>
-                    <div class="col-4">
-                      <p class="text-white-50">694.578</p>
-                    </div>
-                    <div class="col-1">
-                      <p class="text-white-50">1:28</p>
-                    </div>
-                  </div>
-                  <div class="row my-2 align-items-center">
-                    <div class="col-1 text-center"><h4 class="text-white-50">1</h4></div>
-                    <div class="col-6">
-                      <div>
-                        <h2 class="text-white fs-5 mb-0">Montanelli - Intro</h2>
-                        <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
-                      </div>
-                    </div>
-                    <div class="col-4">
-                      <p class="text-white-50">694.578</p>
-                    </div>
-                    <div class="col-1">
-                      <p class="text-white-50">1:28</p>
-                    </div>
-                  </div>
-                  <div class="row my-2 align-items-center">
-                    <div class="col-1 text-center"><h4 class="text-white-50">1</h4></div>
-                    <div class="col-6">
-                      <div>
-                        <h2 class="text-white fs-5 mb-0">Montanelli - Intro</h2>
-                        <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
-                      </div>
-                    </div>
-                    <div class="col-4">
-                      <p class="text-white-50">694.578</p>
-                    </div>
-                    <div class="col-1">
-                      <p class="text-white-50">1:28</p>
-                    </div>
-                  </div>
-                  <div class="row my-2 align-items-center">
-                    <div class="col-1 text-center"><h4 class="text-white-50">1</h4></div>
-                    <div class="col-6">
-                      <div>
-                        <h2 class="text-white fs-5 mb-0">Montanelli - Intro</h2>
-                        <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
-                      </div>
-                    </div>
-                    <div class="col-4">
-                      <p class="text-white-50">694.578</p>
-                    </div>
-                    <div class="col-1">
-                      <p class="text-white-50">1:28</p>
-                    </div>
-                  </div>
-                  <div class="row my-2 align-items-center">
-                    <div class="col-1 text-center"><h4 class="text-white-50">1</h4></div>
-                    <div class="col-6">
-                      <div>
-                        <h2 class="text-white fs-5 mb-0">Montanelli - Intro</h2>
-                        <p class="text-white-50 mb-0">Pinguini Tattici nucleari</p>
-                      </div>
-                    </div>
-                    <div class="col-4">
-                      <p class="text-white-50">694.578</p>
-                    </div>
-                    <div class="col-1">
-                      <p class="text-white-50">1:28</p>
                     </div>
                   </div>
                 </div>
+
+                <!-- END DIV SCROLL sotto -->
               </div>
+
+              <!-- END DIV BACKGROUND GRADIENT COLOR sotto-->
             </div>
           </div>
 
           <!-- SIDEBAR RIGHT -->
-          <!-- <div class="col-1 bg-black"></div> -->
-          <aside class="col sidebar-right p-3 d-none d-xl-block">
-            <h6 class="text-uppercase text-muted-soft">Attività amici</h6>
-            <div class="friend mt-2">
-              <img src="./assets/imgs/main/image-11.jpg" alt="" />
-              <div>
-                <div>Charlie Hookham</div>
-                <div class="meta">EP III • 4 ore fa</div>
+          <div class="col-2 d-none d-xl-block bg-black">
+            <aside>
+              <div class="d-flex justify-content-end gap-3">
+                <button class="btn text-white p-0">
+                  <i class="fs-4 bi bi-dash-lg"></i>
+                </button>
+                <button class="btn text-white p-0">
+                  <i class="bi bi-window-stack"></i>
+                </button>
+                <button class="btn text-white p-0">
+                  <i class="fs-4 bi bi-x"></i>
+                </button>
               </div>
-            </div>
-            <div class="friend">
-              <img src="./assets/imgs/main/image-12.jpg" alt="" />
-              <div>
-                <div>lightdark02</div>
-                <div class="meta">Aimed to Kill • 3 ore fa</div>
+              <div class="d-flex justify-content-between align-items-center">
+                <h6 class="text-white fs-5 m-0">Attività amici</h6>
+                <div>
+                  <button class="btn p-0">
+                    <i class="text-white-50 fs-5 bi bi-person-fill-add"></i>
+                  </button>
+                  <button class="btn p-0">
+                    <i class="text-white-50 fs-5 bi bi-x"></i>
+                  </button>
+                </div>
               </div>
-            </div>
-            <div class="friend">
-              <img src="./assets/imgs/main/image-13.jpg" alt="" />
-              <div>
-                <div>Valeria Traverso</div>
-                <div class="meta">New Kings • 3 giorni fa</div>
+              <div class="row mt-5">
+                <div class="col-2">
+                  <img src="./assets/imgs/main/image-11.jpg" alt="" class="w-100 rounded-circle" />
+                </div>
+                <div class="col">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <h5 class="text-white-50 fw-bold m-0">Charlie Hookham</h5>
+                    <span class="text-white-50">4 ore</span>
+                  </div>
+                  <p class="text-white-50 m-0">In camera <span style="font-size: 10px" class="text-white">•</span> Yumi Zouma</p>
+                  <p class="text-white-50"><i class="bi bi-record-circle me-2"></i>EP III</p>
+                </div>
               </div>
-            </div>
-          </aside>
+              <div class="row mt-5">
+                <div class="col-2">
+                  <img src="./assets/imgs/main/image-12.jpg" alt="" class="w-100 rounded-circle" />
+                </div>
+                <div class="col">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <h5 class="text-white-50 fw-bold m-0">lightdark02</h5>
+                    <span class="text-white-50">8 ore</span>
+                  </div>
+                  <p class="text-white-50 m-0">Aimed to Kill <span style="font-size: 10px" class="text-white">•</span> Jade LeMac</p>
+                  <p class="text-white-50"><i class="bi bi-record-circle me-2"></i>Aimed to Kill</p>
+                </div>
+              </div>
+              <div class="row mt-5">
+                <div class="col-2">
+                  <img src="./assets/imgs/main/image-13.jpg" alt="" class="w-100 rounded-circle" />
+                </div>
+                <div class="col">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <h5 class="text-white-50 fw-bold m-0">Valeria Traverso</h5>
+                    <span class="text-white-50">3 giorni</span>
+                  </div>
+                  <p class="text-white-50 m-0">New Kings <span style="font-size: 10px" class="text-white">•</span> Sleeping Wolf</p>
+                  <p class="text-white-50"><i class="bi bi-earbuds me-2"></i>ETwint Badass mood</p>
+                </div>
+              </div>
+            </aside>
+          </div>
         </div>
       </div>
     </main>
