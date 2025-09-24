@@ -99,6 +99,40 @@ playMobile.addEventListener("click", () => {
   }
 });
 
+// modifiche al player medium>
+const startMedium = (img, traccia, singer) => {
+  iconPlayMedium.classList.remove("bi-play-circle-fill");
+  iconPlayMedium.classList.add("bi-pause-circle-fill");
+  imgTrackMedium.src = img;
+  titleTrackPlayer.innerText = traccia;
+  singerPlayer.innerText = singer;
+};
+
+iconPlayMedium.addEventListener("click", () => {
+  if (audio.src) {
+    if (audio.paused) {
+      audio.play();
+      iconPlayMedium.classList.remove("bi-play-circle-fill");
+      iconPlayMedium.classList.add("bi-pause-circle-fill");
+    } else {
+      audio.pause();
+      iconPlayMedium.classList.remove("bi-pause-circle-fill");
+      iconPlayMedium.classList.add("bi-play-circle-fill");
+    }
+  }
+});
+
+// gestione della progress bar medium con il listener dell'audio
+// Aggiorna progress bar mentre suona
+audio.addEventListener("timeupdate", () => {
+  if (audio.duration) {
+    const percent = (audio.currentTime / audio.duration) * 100;
+    progressBarMedium.style.width = percent + "%";
+  }
+});
+
+// -------------------------------------------------------------------------------
+
 // GENERAZIONE DELLA PAGINA
 
 // costruzione del background con il media color
@@ -250,6 +284,7 @@ const generateTracks = (track, index) => {
       .play()
       .then(() => {
         console.log("Riproduzione avviata");
+        startMedium(linkImgTrack, title, artist);
         startMobile(title, linkImgTrack);
       })
       .catch((err) => console.warn("Riproduzione bloccata:", err));
