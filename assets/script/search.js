@@ -143,12 +143,22 @@ function showDefaultGenres() {
       <div class="d-flex align-items-start justify-content-between rounded shadow-sm p-3 h-100 overflow-hidden"
            style="background-color: ${colors[index % colors.length]}">
         <h2 class="h5 mb-auto">
-          <a href="album.html?genre=${encodeURIComponent(genre)}" class="text-decoration-none text-dark fw-bold">
+          <a href="album.html?playlist=2228601362" class="text-decoration-none text-dark fw-bold">
             ${genre}
           </a>
         </h2>
       </div>
     `;
+    // col.innerHTML = `
+    //   <div class="d-flex align-items-start justify-content-between rounded shadow-sm p-3 h-100 overflow-hidden"
+    //        style="background-color: ${colors[index % colors.length]}">
+    //     <h2 class="h5 mb-auto">
+    //       <a href="album.html?genre=${encodeURIComponent(genre)}" class="text-decoration-none text-dark fw-bold">
+    //         ${genre}
+    //       </a>
+    //     </h2>
+    //   </div>
+    // `;
 
     row.appendChild(col);
 

@@ -1,6 +1,13 @@
 .scrollable {
-  height: 95vh;
+  height: 100vh;
   overflow-y: auto;
+}
+
+@media (min-width: 768px) {
+  .scrollable {
+    height: 95vh;
+    overflow-y: auto;
+  }
 }
 
 .scrollable2 {
@@ -20,4 +27,14 @@
 .scrollable::-webkit-scrollbar-thumb,
 .scrollable2::-webkit-scrollbar-thumb {
   background: rgba(138, 136, 136, 0.294);
+}
+
+.paddingScroll {
+  padding-bottom: 150px;
+}
+
+@media (min-width: 768px) {
+  .paddingScroll {
+    padding-bottom: 50px;
+  }
 }
