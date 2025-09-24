@@ -11,10 +11,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="./assets/css/artist.css" />
     <link rel="stylesheet" href="./assets/css/circular-font.css" />
-    <link rel="stylesheet" href="./assets/css/scrollbar.css" />
+    <link rel="stylesheet" href="./assets/css/scrollbarArtist.css" />
 </head>
 
-<body data-bs-theme="dark">
+<body data-bs-theme="dark" class="bg-black">
     <main class="d-flex">
         <!-- DIV COLLAPSE SIDEBAR PER VERSIONE MOBILE E SMALL -->
         <div style="position: fixed; bottom: 0; left: 0; width: 100%; z-index: 1050; background-color: rgba(0, 0, 0, 1)"
@@ -161,7 +161,7 @@
             </div>
         </div>
         <!-- side-bar sx -->
-        <div class="col-4 col-xl-2 d-none d-md-block bg-black h-100 px-1">
+        <div class="col-4 col-xl-2 d-none d-md-block bg-black h-100 px-1 ">
             <aside>
                 <div class="d-flex flex-column align-items-start">
                     <button class="btn text-white-50 fs-5">
@@ -316,7 +316,7 @@
         </div>
         <!-- artist page -->
 
-        <div class="col-lg-8 h-100 overflow-y">
+        <div id="centralIndex" class="col-lg-8 vh-100 scrollable scrollable">
             <!-- immagine artista bg + nome -->
             <div class="d-flex flex-column justify-content-end position-relative"
                 style="max-height: 400px; overflow: hidden">
@@ -585,8 +585,8 @@
             </div>
         </div>
 
-        <!-- nav bar dx -->
-        <div class="col-2 d-none d-xl-block bg-black px-1">
+        <!-- sidebar dx -->
+        <div class="col-2 d-none d-xl-block bg-black px-1 ">
             <aside>
                 <div class="d-flex justify-content-end gap-3">
                     <button class="btn text-white p-0">
