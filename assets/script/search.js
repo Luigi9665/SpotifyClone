@@ -101,7 +101,7 @@ function generateCard(results) {
 
     <!-- Titolo collegato all’album -->
     <h2 class="h6 mb-1">
-      <a href="album.html?album=${item.album.id}" class="text-decoration-none text-dark fw-bold">
+      <a href="playlist.html?id=2228601362" class="text-decoration-none text-dark fw-bold">
         ${item.title}
       </a>
     </h2>
