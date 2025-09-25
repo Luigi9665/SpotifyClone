@@ -1,3 +1,6 @@
+// VARIBILI GENERALI DA RICHIAMARE
+const rowAlbum = document.getElementById("rowAlbum");
+
 // img bg scompare allo scroll
 
 const centerFeed = document.getElementById("centralIndex");
@@ -11,6 +14,80 @@ centerFeed.addEventListener("scroll", function () {
   if (opacity < 0) opacity = 0;
   heroImage.style.opacity = opacity;
 });
+
+// CREAZIONE DELLE COLONNE ALBUM
+const generateAlbum = (artist) => {
+  // variabili
+  const imgAlbum = artist.album.cover_medium;
+  const titleAlbum = artist.album.title;
+  const albumID = artist.album.id;
+
+  // creazione del link per pagina album
+  const linkAlbum = document.createElement("a");
+  linkAlbum.className = "text-decoration-none";
+  linkAlbum.style.fontFamily = "inherit";
+  linkAlbum.style.cursor = "pointer";
+  linkAlbum.href = "album.html?album=" + albumID;
+
+  // creazione della col
+  const colAlbum = document.createElement("div");
+  colAlbum.className = "col-6 col-md-4 col-xl-2";
+
+  // creazione della card
+  const card = document.createElement("div");
+  card.className = "card border-0 bg-transparent";
+  card.setAttribute("style", "width: 150p; font-size: 16px");
+  const img = document.createElement("img");
+  img.className = "card-img-top rounded";
+  img.alt = "album Artist";
+  img.src = imgAlbum;
+
+  const cardBody = document.createElement("div");
+  cardBody.className = "card-body text-center pt-0";
+  const p = document.createElement("p");
+  p.className = "card-text";
+  p.innerText = titleAlbum;
+
+  // gli append
+  cardBody.appendChild(p);
+  card.append(img, cardBody);
+  linkAlbum.appendChild(card);
+  colAlbum.appendChild(linkAlbum);
+  rowAlbum.appendChild(colAlbum);
+};
+
+// FETCH PER LA RICERCA DEGLI ALBUM
+const getFetchSearch = (name) => {
+  const url = "https://deezerdevs-deezer.p.rapidapi.com/search?q=" + name;
+  fetch(url, {
+    headers: {
+      "x-rapidapi-key": "9421b0f4f3msh454cbdf404defecp1c0a31jsn6a41048cfe81",
+      "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+    },
+  })
+    .then((response) => {
+      if (!response.ok) {
+        if (response.status === 401 || response.status === 403) {
+          throw new Error("Autorizzazione fallita, controlla la tua API key.");
+        } else if (response.status === 404) {
+          throw new Error("Risorsa non trovata (404).");
+        } else if (response.status >= 500) {
+          throw new Error("Errore del server, riprova più tardi.");
+        } else {
+          throw new Error("Errore nella richiesta: " + response.status);
+        }
+      }
+      return response.json();
+    })
+    .then((artist) => {
+      console.log(artist.data);
+      artist.data.forEach((artist) => generateAlbum(artist));
+    })
+    .catch((err) => {
+      console.log(err);
+      alert(err);
+    });
+};
 
 // prendo dati artist da API
 let URL = "";
@@ -41,6 +118,13 @@ async function getArtist() {
     document.getElementById("like-name").textContent = "di " + data.name;
     document.getElementById("heroImage").src = data.picture_xl;
     document.getElementById("artist-fan").textContent = data.nb_fan + " ascoltatori mensili";
+    const name = data.name;
+
+    // richiamo il fetch per la ricerca
+    if (name) {
+      getFetchSearch(name);
+      rowAlbum.innerHTML = "";
+    }
   } catch (error) {
     console.error("Errore:", error);
   }
@@ -102,32 +186,32 @@ async function getTracklist() {
 getTracklist();
 
 // Funzione per generare le card dei risultati
-function generateCard(results) {
-  let row;
+// function generateCard(results) {
+//   let row;
 
-  results.forEach((item, index) => {
-    if (index % 4 === 0) {
-      row = document.createElement("div");
-      row.className = "row";
-      container.appendChild(row);
-    }
+//   results.forEach((item, index) => {
+//     if (index % 4 === 0) {
+//       row = document.createElement("div");
+//       row.className = "row";
+//       container.appendChild(row);
+//     }
 
-    const col = document.createElement("div");
-    col.className = "col-6 col-md-4 col-xl-2";
+//     const col = document.createElement("div");
+//     col.className = "col-6 col-md-4 col-xl-2";
 
-    const imgUrl = item.album ? item.album.cover_medium : item.artist.picture;
+//     const imgUrl = item.album ? item.album.cover_medium : item.artist.picture;
 
-    col.innerHTML = `
-                        <div class="card border-0 bg-transparent" style="width: 150p; font-size: 16px">
-                            <img src="${imgUrl}"
-                                class="card-img-top rounded" alt="albumImg" />
-                                <div class="card-body text-center pt-0">
-                                <p class="card-text">${item.title}</p>
-                                </div>
-                        </div>
-`;
+//     col.innerHTML = `
+//                         <div class="card border-0 bg-transparent" style="width: 150p; font-size: 16px">
+//                             <img src="${imgUrl}"
+//                                 class="card-img-top rounded" alt="albumImg" />
+//                                 <div class="card-body text-center pt-0">
+//                                 <p class="card-text">${item.title}</p>
+//                                 </div>
+//                         </div>
+// `;
 
-    row.appendChild(col);
-  });
-}
-generateCard();
+//     row.appendChild(col);
+//   });
+// }
+// generateCard();

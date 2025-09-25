@@ -292,7 +292,7 @@ const generateTracks = (track, index) => {
 
   const linkArtist = document.createElement("a");
   linkArtist.className = "text-decoration-none text-white-50 d-block";
-  linkArtist.href = "artist.html?artistID=" + idSinger;
+  linkArtist.href = "artist.html?artist=" + idSinger;
   linkArtist.innerText = artist;
   const divExplicit = document.createElement("div");
   divExplicit.className = "d-flex align-items-center gap-1";
