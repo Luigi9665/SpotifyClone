@@ -212,6 +212,7 @@ async function getArtist() {
     document.getElementById("artist-name").textContent = data.name;
     document.getElementById("like-name").textContent = "di " + data.name;
     document.getElementById("heroImage").src = data.picture_xl;
+    document.getElementById("likeImage").src = data.picture;
     document.getElementById("artist-fan").textContent = data.nb_fan + " ascoltatori mensili";
     const name = data.name;
 
