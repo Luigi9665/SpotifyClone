@@ -269,7 +269,7 @@ const generateTrack = (track, index) => {
   // generazione della row
   const rowTrack = document.createElement("div");
   rowTrack.style.cursor = "pointer";
-  rowTrack.className = "w-100 row col-12 col-md-4 d-flex flex-wrap align-items-center justify-content-center mb-3";
+  rowTrack.className = "w-100 row col-12 col-md-4 d-flex flex-wrap align-items-center justify-content-around mb-3";
 
   // col indice
   const colIndex = document.createElement("div");
