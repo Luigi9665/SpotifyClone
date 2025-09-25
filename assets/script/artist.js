@@ -14,7 +14,7 @@ centerFeed.addEventListener("scroll", function () {
 
 // prendo dati artist da API
 
-const url = "https://deezerdevs-deezer.p.rapidapi.com/artist/11";
+const url = "https://deezerdevs-deezer.p.rapidapi.com/artist/115";
 const options = {
   method: "GET",
   headers: {
@@ -42,7 +42,7 @@ getArtist();
 
 // prendo dati per tracklist e le creo
 
-const urlT = "https://striveschool-api.herokuapp.com/api/deezer/artist/11/top?limit=5";
+const urlT = "https://striveschool-api.herokuapp.com/api/deezer/artist/115/top?limit=5";
 const optionsT = {
   method: "GET",
   headers: {
