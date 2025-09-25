@@ -40,6 +40,7 @@ async function getArtist() {
     document.getElementById("artist-name").textContent = data.name;
     document.getElementById("like-name").textContent = "di " + data.name;
     document.getElementById("heroImage").src = data.picture_xl;
+    document.getElementById("likeImage").src = data.picture;
     document.getElementById("artist-fan").textContent = data.nb_fan + " ascoltatori mensili";
   } catch (error) {
     console.error("Errore:", error);
@@ -100,34 +101,3 @@ async function getTracklist() {
 }
 
 getTracklist();
-
-// Funzione per generare le card dei risultati
-function generateCard(results) {
-  let row;
-
-  results.forEach((item, index) => {
-    if (index % 4 === 0) {
-      row = document.createElement("div");
-      row.className = "row";
-      container.appendChild(row);
-    }
-
-    const col = document.createElement("div");
-    col.className = "col-6 col-md-4 col-xl-2";
-
-    const imgUrl = item.album ? item.album.cover_medium : item.artist.picture;
-
-    col.innerHTML = `
-                        <div class="card border-0 bg-transparent" style="width: 150p; font-size: 16px">
-                            <img src="${imgUrl}"
-                                class="card-img-top rounded" alt="albumImg" />
-                                <div class="card-body text-center pt-0">
-                                <p class="card-text">${item.title}</p>
-                                </div>
-                        </div>
-`;
-
-    row.appendChild(col);
-  });
-}
-generateCard();

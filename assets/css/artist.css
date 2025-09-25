@@ -18,8 +18,8 @@ h1 {
 .card-body {
   font-size: 12px;
 }
-#trackList:hover {
-  background-color: #212426;
+#rowTrack:hover {
+  background-color: #2a2a2a;
 }
 @media (max-width: 768px) {
   body {
