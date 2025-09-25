@@ -42,6 +42,19 @@ if (params.toString().includes("album")) {
 
 // FUNZIONI
 
+// SALVATAGGIO NEL SESSIONSTORAGE
+const saveTrack = (track) => {
+  const data = {
+    linkImgTrack: `https://cdn-images.dzcdn.net/images/cover/${track.md5_image}/500x500.jpg`,
+    title: track.title,
+    artist: track.artist.name,
+    preview: track.preview,
+    currentTime: audio.currentTime,
+  };
+
+  sessionStorage.setItem("trackSaved", JSON.stringify(data));
+};
+
 // -------------------------------------------------------------------------------
 // SET BARRA VOLUME - BLOCCO ISTRUZIONI
 function setVolumeFromEvent(e) {
@@ -128,6 +141,14 @@ audio.addEventListener("timeupdate", () => {
   if (audio.duration) {
     const percent = (audio.currentTime / audio.duration) * 100;
     progressBarMedium.style.width = percent + "%";
+  }
+
+  // salvo il current time con l'update per il sessionstorage
+  const saved = sessionStorage.getItem("trackSaved");
+  if (saved) {
+    const track = JSON.parse(saved);
+    track.currentTime = audio.currentTime;
+    sessionStorage.setItem("trackSaved", JSON.stringify(track));
   }
 });
 
@@ -255,15 +276,7 @@ const generateAlbum = (album, condition) => {
 // generazione delle tracce
 const generateTracks = (track, index) => {
   // dichiarazioni di tutte le variabile da inserire nella row
-  const number = index + 1;
-  const explicit = track.explicit_lyrics;
-  const title = track.title;
-  const artist = track.artist.name;
-  const riproduzioni = track.rank;
-  const time = formatTime(track.duration);
-  const preview = track.preview;
-  const idSinger = track.artist.id;
-  const linkImgTrack = `https://cdn-images.dzcdn.net/images/cover/${track.md5_image}/500x500.jpg`;
+  q;
 
   // crezione della row
   const row = document.createElement("div");

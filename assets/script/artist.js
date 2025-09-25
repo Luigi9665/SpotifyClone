@@ -345,32 +345,6 @@ async function getTracklist() {
       const track = artist.data[i];
       generateTrack(track, i);
     }
-
-    // data.data.forEach((track, index) => {
-    //   const trackDiv = document.createElement("div");
-    //   trackDiv.className = "w-100 row d-flex flex-wrap align-items-center mb-3";
-
-    //   trackDiv.innerHTML = `
-    //     <div class="col-1 p-0 text-center">${index + 1}</div>
-    //     <div class="col-1 p-0">
-    //       <img class="rounded img-fluid" style="width: 40px; height: 40px"
-    //         src="${track.album.cover_small}" alt="${track.title}" />
-    //     </div>
-    //     <div class="col-4 p-0">${track.title}</div>
-    //     <div class="col-4 d-none d-md-block p-0">${track.rank}</div>
-    //     <div class="col-2 d-none d-md-block p-0">
-    //       ${Math.floor(track.duration / 60)}:${String(track.duration % 60).padStart(2, "0")}
-    //     </div>
-    //     <div class="col-2">
-    //       <button type="button"
-    //         class="d-block d-md-none text-secondary d-flex align-items-center mx-auto btn btn-dark bg-transparent border-0">
-    //         <i class="bi bi-three-dots"></i>
-    //       </button>
-    //     </div>
-    //   `;
-
-    //   row.appendChild(trackDiv);
-    // });
   } catch (error) {
     console.error("Errore:", error);
     alert(error);
