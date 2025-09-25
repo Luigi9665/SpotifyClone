@@ -144,11 +144,14 @@ audio.addEventListener("timeupdate", () => {
   }
 
   // salvo il current time con l'update per il sessionstorage
+  const current = Math.floor(audio.currentTime);
   const saved = sessionStorage.getItem("trackSaved");
   if (saved) {
     const track = JSON.parse(saved);
-    track.currentTime = audio.currentTime;
-    sessionStorage.setItem("trackSaved", JSON.stringify(track));
+    if (track.currentTime !== current) {
+      track.currentTime = current;
+      sessionStorage.setItem("trackSaved", JSON.stringify(track));
+    }
   }
 });
 
@@ -276,7 +279,15 @@ const generateAlbum = (album, condition) => {
 // generazione delle tracce
 const generateTracks = (track, index) => {
   // dichiarazioni di tutte le variabile da inserire nella row
-  q;
+  const number = index + 1;
+  const explicit = track.explicit_lyrics;
+  const title = track.title;
+  const artist = track.artist.name;
+  const riproduzioni = track.rank;
+  const time = formatTime(track.duration);
+  const preview = track.preview;
+  const idSinger = track.artist.id;
+  const linkImgTrack = `https://cdn-images.dzcdn.net/images/cover/${track.md5_image}/500x500.jpg`;
 
   // crezione della row
   const row = document.createElement("div");
@@ -298,25 +309,8 @@ const generateTracks = (track, index) => {
   h2.className = "btn p-0 text-white text-start fs-5 mb-0";
   h2.innerText = title;
 
-  //   il Listener per mandare la traccia all'elemento audio
-  h2.addEventListener("click", () => {
-    audio.pause(); // stop eventuale brano in corso
-    audio.src = preview; // nuova traccia
-    audio.currentTime = 0;
-    audio
-      .play()
-      .then(() => {
-        console.log("Riproduzione avviata");
-        startMedium(linkImgTrack, title, artist);
-        startMobile(title, linkImgTrack);
-        checkSuccess();
-        row.classList.add("bg-success", "bg-gradient", "rounded-3", "selected");
-      })
-      .catch((err) => console.warn("Riproduzione bloccata:", err));
-  });
-
   const linkArtist = document.createElement("a");
-  linkArtist.className = "text-decoration-none text-white-50 d-block";
+  linkArtist.className = "text-decoration-none text-white-50 d-block w-25";
   linkArtist.href = "artist.html?artist=" + idSinger;
   linkArtist.innerText = artist;
   const divExplicit = document.createElement("div");
@@ -363,6 +357,24 @@ const generateTracks = (track, index) => {
   //   append nella row di tutte le col
   row.append(colIndex, colTitle, colRipro, colTime, colIcon);
   rowTracks.appendChild(row);
+
+  //   il Listener per mandare la traccia all'elemento audio
+  h2.addEventListener("click", () => {
+    audio.pause(); // stop eventuale brano in corso
+    audio.src = preview; // nuova traccia
+    audio.currentTime = 0;
+    audio
+      .play()
+      .then(() => {
+        saveTrack(track);
+        console.log("Riproduzione avviata");
+        startMedium(linkImgTrack, title, artist);
+        startMobile(title, linkImgTrack);
+        checkSuccess();
+        row.classList.add("bg-success", "bg-gradient", "rounded-3", "selected");
+      })
+      .catch((err) => console.warn("Riproduzione bloccata:", err));
+  });
 };
 
 // FETCH
@@ -409,4 +421,21 @@ window.addEventListener("DOMContentLoaded", () => {
       console.log(err);
       alert(err);
     });
+
+  const saved = sessionStorage.getItem("trackSaved");
+  console.log(saved);
+  if (saved) {
+    const track = JSON.parse(saved);
+    console.log("track", track);
+    audio.src = track.preview; // nuova traccia
+    audio.currentTime = track.currentTime || 0;
+    audio
+      .play()
+      .then(() => {
+        console.log("Riproduzione avviata");
+        startMedium(track.linkImgTrack, track.title, track.artist);
+        startMobile(track.title, track.linkImgTrack);
+      })
+      .catch((err) => console.warn("Riproduzione bloccata:", err));
+  }
 });
