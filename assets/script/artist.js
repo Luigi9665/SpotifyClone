@@ -13,8 +13,11 @@ centerFeed.addEventListener("scroll", function () {
 });
 
 // prendo dati artist da API
-
-const url = "https://deezerdevs-deezer.p.rapidapi.com/artist/115";
+let URL = "";
+let appId = "";
+let condition;
+const params = new URLSearchParams(window.location.search);
+// const url = "https://deezerdevs-deezer.p.rapidapi.com/artist/11";
 const options = {
   method: "GET",
   headers: {
@@ -22,10 +25,15 @@ const options = {
     "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
   },
 };
-
+console.log(params.toString());
+if (params.toString().includes("artist")) {
+  appId = params.get("artist");
+  URL = "https://deezerdevs-deezer.p.rapidapi.com/artist/";
+  condition = true;
+}
 async function getArtist() {
   try {
-    const response = await fetch(url, options);
+    const response = await fetch(URL + appId, options);
     const data = await response.json();
     console.log(data);
 
@@ -42,7 +50,7 @@ getArtist();
 
 // prendo dati per tracklist e le creo
 
-const urlT = "https://striveschool-api.herokuapp.com/api/deezer/artist/115/top?limit=5";
+const urlT = `https://striveschool-api.herokuapp.com/api/deezer/artist/${appId}/top?limit=5`;
 const optionsT = {
   method: "GET",
   headers: {
@@ -92,3 +100,34 @@ async function getTracklist() {
 }
 
 getTracklist();
+
+// Funzione per generare le card dei risultati
+function generateCard(results) {
+  let row;
+
+  results.forEach((item, index) => {
+    if (index % 4 === 0) {
+      row = document.createElement("div");
+      row.className = "row";
+      container.appendChild(row);
+    }
+
+    const col = document.createElement("div");
+    col.className = "col-6 col-md-4 col-xl-2";
+
+    const imgUrl = item.album ? item.album.cover_medium : item.artist.picture;
+
+    col.innerHTML = `
+                        <div class="card border-0 bg-transparent" style="width: 150p; font-size: 16px">
+                            <img src="${imgUrl}"
+                                class="card-img-top rounded" alt="albumImg" />
+                                <div class="card-body text-center pt-0">
+                                <p class="card-text">${item.title}</p>
+                                </div>
+                        </div>
+`;
+
+    row.appendChild(col);
+  });
+}
+generateCard();
