@@ -7,6 +7,11 @@
   --text:#fff;
   --accent:#1db954;
   --dot:#3da1ff;
+
+  /* Scrollbar colors */
+  --scrollbar-track:#0e0e0e;
+  --scrollbar-thumb:#2d2d2d;
+  --scrollbar-thumb-hover:#3a3a3a;
 }
 
 html,body{height:100%}
@@ -20,16 +25,91 @@ body{
 .app-shell.container-fluid{padding-left:0;padding-right:0}
 
 /* ====== Columns ====== */
+/* Original sidebar classes (kept for the commented HTML version) */
 .sidebar-left,.sidebar-right{
-  background:#000;height:100vh;position:sticky;top:0;overflow-y:auto
+  background:#000;
+  position:sticky;
+  top:0;
+  height:100vh;
+  /* Show scrollbars when content overflows */
+  overflow-y:auto;
+  overflow-x:hidden;
+  /* Firefox scrollbar colors */
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  scrollbar-width: thin;
 }
 .sidebar-left{width:240px}
 .sidebar-right{width:300px}
 
+/* Current HTML sidebars:
+   The <aside> inside the left/right columns should be sticky + scrollable */
+.app-shell .col-4.col-xl-2.bg-black aside,
+.app-shell .col-2.bg-black aside{
+  position:sticky;
+  top:0;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  overflow-y:auto;
+  overflow-x:hidden;
+  /* Firefox scrollbar colors */
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  scrollbar-width: thin;
+}
+
+/* If you only want the long playlist list to scroll (keeps header static),
+   keep aside overflow hidden and scroll just .scrollable2: */
+
+.app-shell .col-4.col-xl-2.bg-black aside,
+.app-shell .col-2.bg-black aside{
+  overflow:hidden;
+}
+.app-shell .col-4.col-xl-2.bg-black aside .scrollable2{
+  overflow-y:auto;
+  overflow-x:hidden;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  scrollbar-width: thin;
+}
+
+
+/* WebKit scrollbars (Chromium/Safari/Edge) */
+.sidebar-left::-webkit-scrollbar,
+.sidebar-right::-webkit-scrollbar,
+.app-shell .col-4.col-xl-2.bg-black aside::-webkit-scrollbar,
+.app-shell .col-2.bg-black aside::-webkit-scrollbar,
+.app-shell .col-4.col-xl-2.bg-black aside .scrollable2::-webkit-scrollbar{
+  width:10px;
+}
+.sidebar-left::-webkit-scrollbar-track,
+.sidebar-right::-webkit-scrollbar-track,
+.app-shell .col-4.col-xl-2.bg-black aside::-webkit-scrollbar-track,
+.app-shell .col-2.bg-black aside::-webkit-scrollbar-track,
+.app-shell .col-4.col-xl-2.bg-black aside .scrollable2::-webkit-scrollbar-track{
+  background:var(--scrollbar-track);
+}
+.sidebar-left::-webkit-scrollbar-thumb,
+.sidebar-right::-webkit-scrollbar-thumb,
+.app-shell .col-4.col-xl-2.bg-black aside::-webkit-scrollbar-thumb,
+.app-shell .col-2.bg-black aside::-webkit-scrollbar-thumb,
+.app-shell .col-4.col-xl-2.bg-black aside .scrollable2::-webkit-scrollbar-thumb{
+  background:var(--scrollbar-thumb);
+  border-radius:8px;
+  border:2px solid var(--scrollbar-track);
+}
+.sidebar-left::-webkit-scrollbar-thumb:hover,
+.sidebar-right::-webkit-scrollbar-thumb:hover,
+.app-shell .col-4.col-xl-2.bg-black aside::-webkit-scrollbar-thumb:hover,
+.app-shell .col-2.bg-black aside::-webkit-scrollbar-thumb:hover,
+.app-shell .col-4.col-xl-2.bg-black aside .scrollable2::-webkit-scrollbar-thumb:hover{
+  background:var(--scrollbar-thumb-hover);
+}
+
+/* ====== Main ====== */
 .main{
   min-height:100vh;
   background:linear-gradient(180deg,#2a2a2a 0%,var(--bg) 32%,var(--bg) 100%);
   padding:24px;
+  /* ensure main content scrolls independently of fixed player */
 }
 
 /* ====== Left nav ====== */
@@ -71,7 +151,7 @@ body{
 .caption .title{font-weight:600;margin:0;font-size:.95rem}
 .caption .sub{color:var(--muted);font-size:.85rem}
 
-/* ====== Right sidebar ====== */
+/* ====== Right sidebar (legacy friend list) ====== */
 .friend{display:flex;align-items:center;gap:.6rem;padding:.5rem .6rem;border-radius:.4rem}
 .friend:hover{background:var(--panel-soft)}
 .friend img{width:32px;height:32px;border-radius:50%;object-fit:cover}
@@ -101,3 +181,136 @@ body{
 .form-control-dark{background:#262626;border-color:#383838;color:#fff}
 .form-control-dark::placeholder{color:#9a9a9a}
 .form-control-dark:focus{background:#2b2b2b;color:#fff;border-color:#4a4a4a;box-shadow:none}
+
+/* ====== LAYOUT: Fixed full-height left rail + optional main sidebar ====== */
+
+/* Shared scrollbar styling (works for Firefox + WebKit) */
+:root{
+  --scrollbar-track:#0e0e0e;
+  --scrollbar-thumb:#2d2d2d;
+  --scrollbar-thumb-hover:#3a3a3a;
+}
+
+/* ----- Left rail: FIXED, full page height, scrolls internally ----- */
+/* Targets your current left column: .col-4.col-xl-2.d-none.d-md-block.bg-black.h-100 */
+@media (min-width: 768px){
+  .app-shell > .d-flex > .col-4.col-xl-2.d-none.d-md-block.bg-black.h-100{
+    position: fixed;
+    top: 0;
+    /* leave space for the desktop player (84px) so it doesn't hide the rail bottom */
+    bottom: 84px;
+    left: 0;
+    width: 240px;              /* fixed width so we can offset the main */
+    overflow: hidden;          /* the <aside> inside will scroll */
+    z-index: 1020;             /* under the player but above content */
+  }
+
+  /* Make the inner <aside> actually scroll */
+  .app-shell > .d-flex > .col-4.col-xl-2.d-none.d-md-block.bg-black.h-100 aside{
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+    scrollbar-width: thin;
+  }
+  .app-shell > .d-flex > .col-4.col-xl-2.d-none.d-md-block.bg-black.h-100 aside::-webkit-scrollbar{ width:10px }
+  .app-shell > .d-flex > .col-4.col-xl-2.d-none.d-md-block.bg-black.h-100 aside::-webkit-scrollbar-track{ background:var(--scrollbar-track) }
+  .app-shell > .d-flex > .col-4.col-xl-2.d-none.d-md-block.bg-black.h-100 aside::-webkit-scrollbar-thumb{
+    background:var(--scrollbar-thumb); border-radius:8px; border:2px solid var(--scrollbar-track)
+  }
+  .app-shell > .d-flex > .col-4.col-xl-2.d-none.d-md-block.bg-black.h-100 aside::-webkit-scrollbar-thumb:hover{
+    background:var(--scrollbar-thumb-hover)
+  }
+
+  /* Shift the main content to the right so it doesn't sit under the fixed rail */
+  .main{
+    margin-left: 240px;
+  }
+
+  /* Keep the bottom player aligned with the content area (not under the rail) */
+  .player{
+    left: 240px;
+  }
+}
+
+/* ----- Desktop XL: keep your existing right column; no change to its CSS needed ----- */
+
+/* ----- OPTIONAL: a sidebar inside the main content ----- */
+/* Add class .with-sidebar to <main> when you include a .main-sidebar element */
+@media (min-width: 992px){
+  .main.with-sidebar{
+    display: grid;
+    grid-template-columns: 1fr 280px;  /* content | main sidebar */
+    gap: 16px;
+  }
+
+  .main .main-sidebar{
+    background: var(--panel);
+    border-radius: .6rem;
+    padding: 12px;
+    position: sticky;
+    top: 16px;                         /* stick under your header spacing */
+    max-height: calc(100vh - 16px - 84px); /* account for player height */
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+    scrollbar-width: thin;
+  }
+  .main .main-sidebar::-webkit-scrollbar{ width:10px }
+  .main .main-sidebar::-webkit-scrollbar-track{ background:var(--scrollbar-track) }
+  .main .main-sidebar::-webkit-scrollbar-thumb{
+    background:var(--scrollbar-thumb); border-radius:8px; border:2px solid var(--scrollbar-track)
+  }
+  .main .main-sidebar::-webkit-scrollbar-thumb:hover{ background:var(--scrollbar-thumb-hover) }
+}
+
+/* ----- Touch nothing below if you like your existing visuals ----- */
+
+/* Your original sticky sidebars (legacy selectors) are overridden by the fixed rail above.
+   Keep them if you need fallback for < md screens. */
+.sidebar-left,.sidebar-right{
+  background:#000;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  scrollbar-width: thin;
+}
+
+/* MAIN: own scrollbar (desktop), accounting for the 84px fixed player */
+@media (min-width: 768px){
+  /* prevent the page itself from scrolling; let .main handle it */
+  body{ overflow: hidden; }
+
+  .main{
+    height: calc(100vh - 84px);   /* viewport height minus player */
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-bottom: 24px;          /* some breathing room above the player */
+
+    /* Firefox scrollbar */
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+    scrollbar-width: thin;
+  }
+
+  /* WebKit scrollbar (Chrome/Safari/Edge) */
+  .main::-webkit-scrollbar{ width:10px }
+  .main::-webkit-scrollbar-track{ background:var(--scrollbar-track) }
+  .main::-webkit-scrollbar-thumb{
+    background:var(--scrollbar-thumb);
+    border-radius:8px;
+    border:2px solid var(--scrollbar-track);
+  }
+  .main::-webkit-scrollbar-thumb:hover{ background:var(--scrollbar-thumb-hover) }
+}
+
+/* Mobile: fall back to normal page scroll */
+@media (max-width: 767.98px){
+  body{ overflow: auto; }
+  .main{
+    height: auto;
+    overflow: visible;
+  }
+}
