@@ -135,6 +135,16 @@ audio.addEventListener("timeupdate", () => {
 
 // GENERAZIONE DELLA PAGINA
 
+// controllo del bg success
+const checkSuccess = () => {
+  const rowSucce = document.querySelectorAll(".bg-success");
+  if (rowSucce) {
+    rowSucce.forEach((row) => row.classList.remove("bg-success", "bg-gradient", "rounded-3"));
+  } else {
+    return;
+  }
+};
+
 // costruzione del background con il media color
 const generateBackground = () => {
   const bg = document.getElementById("background");
@@ -286,6 +296,8 @@ const generateTracks = (track, index) => {
         console.log("Riproduzione avviata");
         startMedium(linkImgTrack, title, artist);
         startMobile(title, linkImgTrack);
+        checkSuccess();
+        row.classList.add("bg-success", "bg-gradient", "rounded-3");
       })
       .catch((err) => console.warn("Riproduzione bloccata:", err));
   });
