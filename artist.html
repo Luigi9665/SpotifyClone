@@ -44,6 +44,7 @@
           </a>
         </div>
       </div>
+
       <!-- DIV COLLAPSE PER IL PLAYER -->
       <div style="position: fixed; bottom: 90px; left: 0; width: 100%; z-index: 1050" class="container-fluid d-md-none">
         <div class="bg-dark rounded-1">
@@ -106,7 +107,7 @@
                 <!-- Barra avanzamento brano -->
                 <div class="w-100 d-flex justify-content-center">
                   <div class="progress w-75" style="height: 4px; background: #222">
-                    <div id="progressBarMedium" class="progress-bar bg-white" role="progressbar" style="width: 40%"></div>
+                    <div id="progressBarMedium" class="progress-bar bg-white" role="progressbar" style="width: 0%"></div>
                   </div>
                 </div>
               </div>
@@ -197,6 +198,8 @@
           </div>
         </div>
       </div>
+
+      <!-- CONTENUTO PRINCIPALE -->
       <div class="container-fluid">
         <div class="row">
           <!-- side-bar sx -->
@@ -634,7 +637,7 @@
         </div>
       </div>
     </main>
-
+    <audio id="audio-player"></audio>
     <script src="./assets/script/artist.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"

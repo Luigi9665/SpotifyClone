@@ -137,9 +137,9 @@ audio.addEventListener("timeupdate", () => {
 
 // controllo del bg success
 const checkSuccess = () => {
-  const rowSucce = document.querySelectorAll(".bg-success");
+  const rowSucce = document.querySelectorAll(".selected");
   if (rowSucce) {
-    rowSucce.forEach((row) => row.classList.remove("bg-success", "bg-gradient", "rounded-3"));
+    rowSucce.forEach((row) => row.classList.remove("bg-success", "bg-gradient", "rounded-3", "selected"));
   } else {
     return;
   }
@@ -297,7 +297,7 @@ const generateTracks = (track, index) => {
         startMedium(linkImgTrack, title, artist);
         startMobile(title, linkImgTrack);
         checkSuccess();
-        row.classList.add("bg-success", "bg-gradient", "rounded-3");
+        row.classList.add("bg-success", "bg-gradient", "rounded-3", "selected");
       })
       .catch((err) => console.warn("Riproduzione bloccata:", err));
   });

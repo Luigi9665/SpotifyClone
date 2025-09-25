@@ -1,6 +1,101 @@
 // VARIBILI GENERALI DA RICHIAMARE
 const rowAlbum = document.getElementById("rowAlbum");
+const row = document.getElementById("track");
 
+// VARIABILI UTILI PER IL PLAYER
+const audio = document.getElementById("audio-player");
+const volumeBar = document.getElementById("volume-bar");
+const volumeFill = document.getElementById("volume-fill");
+const volumeThumb = document.getElementById("volume-thumb");
+// variabili player mobile
+const tracciaMobile = document.getElementById("tracciaMobile");
+const playMobile = document.getElementById("playMobile");
+const iconPlayMobile = document.getElementById("iconPlayMobile");
+const imgTrackMobile = document.getElementById("imgTrackMobile");
+
+// variabili player medium
+const imgTrackMedium = document.getElementById("imgTrackMedium");
+const titleTrackPlayer = document.getElementById("titleTrackPlayer");
+const singerPlayer = document.getElementById("singerPlayer");
+const iconPlayMedium = document.getElementById("iconPlayMedium");
+const progressBarMedium = document.getElementById("progressBarMedium");
+
+// -------------------------------------------------------------------------------
+// SET BARRA VOLUME - BLOCCO ISTRUZIONI
+function setVolumeFromEvent(e) {
+  const rect = volumeBar.getBoundingClientRect();
+  let percent = (e.clientX - rect.left) / rect.width;
+  percent = Math.max(0, Math.min(1, percent));
+  volumeFill.style.width = percent * 100 + "%";
+  volumeThumb.style.left = percent * 100 + "%";
+
+  // Applicazione al player
+  audio.volume = percent;
+}
+
+volumeBar.addEventListener("click", setVolumeFromEvent);
+
+let isDragging = false;
+volumeBar.addEventListener("mousedown", () => (isDragging = true));
+window.addEventListener("mouseup", () => (isDragging = false));
+window.addEventListener("mousemove", (e) => {
+  if (isDragging) setVolumeFromEvent(e);
+});
+
+// MANIPOLAZIONE DEL PLAYER
+// modifiche al player mobile
+const startMobile = (traccia, img) => {
+  iconPlayMobile.classList.remove("bi-play-fill");
+  iconPlayMobile.classList.add("bi-pause-fill");
+  tracciaMobile.innerText = traccia;
+  imgTrackMobile.src = img;
+};
+
+playMobile.addEventListener("click", () => {
+  if (audio.paused) {
+    audio.play();
+    iconPlayMobile.classList.remove("bi-play-fill");
+    iconPlayMobile.classList.add("bi-pause-fill");
+  } else {
+    audio.pause();
+    iconPlayMobile.classList.remove("bi-pause-fill");
+    iconPlayMobile.classList.add("bi-play-fill");
+  }
+});
+
+// modifiche al player medium>
+const startMedium = (img, traccia, singer) => {
+  iconPlayMedium.classList.remove("bi-play-circle-fill");
+  iconPlayMedium.classList.add("bi-pause-circle-fill");
+  imgTrackMedium.src = img;
+  titleTrackPlayer.innerText = traccia;
+  singerPlayer.innerText = singer;
+};
+
+iconPlayMedium.addEventListener("click", () => {
+  if (audio.src) {
+    if (audio.paused) {
+      audio.play();
+      iconPlayMedium.classList.remove("bi-play-circle-fill");
+      iconPlayMedium.classList.add("bi-pause-circle-fill");
+    } else {
+      audio.pause();
+      iconPlayMedium.classList.remove("bi-pause-circle-fill");
+      iconPlayMedium.classList.add("bi-play-circle-fill");
+    }
+  }
+});
+
+// gestione della progress bar medium con il listener dell'audio
+// Aggiorna progress bar mentre suona
+audio.addEventListener("timeupdate", () => {
+  if (audio.duration) {
+    const percent = (audio.currentTime / audio.duration) * 100;
+    progressBarMedium.style.width = percent + "%";
+  }
+});
+
+// -------------------------------------------------------------------------------
 // img bg scompare allo scroll
 
 const centerFeed = document.getElementById("centralIndex");
@@ -143,40 +238,138 @@ const optionsT = {
   },
 };
 
+// funzione per la crezione delle tracce
+
+function formatTime(time) {
+  const minutes = Math.floor(time / 60);
+  const secs = time % 60;
+  return `${minutes}:${secs.toString().padStart(2, "0")}`;
+}
+
+// controllo del bg success
+const checkSuccess = () => {
+  const rowSucce = document.querySelectorAll(".selected");
+  if (rowSucce) {
+    rowSucce.forEach((row) => row.classList.remove("bg-success", "bg-gradient", "rounded-3", "selected"));
+  } else {
+    return;
+  }
+};
+
+const generateTrack = (track, index) => {
+  // variabili
+  const name = track.artist.name;
+  const imgTrack = track.album.cover_small;
+  const trackTitle = track.title;
+  const rank = track.rank;
+  const duration = formatTime(track.duration);
+  const preview = track.preview;
+
+  // generazione della row
+  const rowTrack = document.createElement("div");
+  rowTrack.style.cursor = "pointer";
+  rowTrack.className = "w-100 row col-12 col-md-4 d-flex flex-wrap align-items-center justify-content-center mb-3";
+
+  // col indice
+  const colIndex = document.createElement("div");
+  colIndex.className = "col-1 p-0 text-center";
+  const pIndex = document.createElement("p");
+  pIndex.innerText = index + 1;
+  // col img
+  const colImg = document.createElement("div");
+  colImg.className = "col-1 p-0";
+  const img = document.createElement("img");
+  img.className = "rounded img-fluid";
+  img.setAttribute("style", "width: 40px; height: 40px");
+  img.src = imgTrack;
+  // col title
+  const colTitle = document.createElement("div");
+  colTitle.className = "col-4 p-0";
+  const pTitle = document.createElement("p");
+  pTitle.innerText = trackTitle;
+  // col rank
+  const colRank = document.createElement("div");
+  colRank.className = "col-4 d-none d-md-block p-0";
+  const pRank = document.createElement("p");
+  pRank.innerText = rank;
+  // col duration
+  const colDuration = document.createElement("div");
+  colDuration.className = "col-2 d-none d-md-block p-0";
+  const pDuration = document.createElement("p");
+  pDuration.innerText = duration;
+  //  col button
+  const colButton = document.createElement("div");
+  colButton.className = "col-3 d-md-none";
+  colButton.innerHTML = `<button type="button"
+            class="d-block text-secondary d-flex align-items-center mx-auto btn btn-dark bg-transparent border-0">
+            <i class="bi bi-three-dots"></i>
+          </button>`;
+
+  // gli append
+  colIndex.appendChild(pIndex);
+  colImg.appendChild(img);
+  colTitle.appendChild(pTitle);
+  colRank.appendChild(pRank);
+  colDuration.appendChild(pDuration);
+  rowTrack.append(colIndex, colImg, colTitle, colRank, colDuration, colButton);
+  row.appendChild(rowTrack);
+
+  // il listener
+  rowTrack.addEventListener("click", () => {
+    audio.pause(); // stop eventuale brano in corso
+    audio.src = preview; // nuova traccia
+    audio.currentTime = 0;
+    audio
+      .play()
+      .then(() => {
+        console.log("Riproduzione avviata");
+        startMedium(imgTrack, trackTitle, name);
+        startMobile(trackTitle, imgTrack);
+        checkSuccess();
+        rowTrack.classList.add("bg-success", "bg-gradient", "rounded-3", "selected");
+      })
+      .catch((err) => console.warn("Riproduzione bloccata:", err));
+  });
+};
+
 async function getTracklist() {
   try {
     const response = await fetch(urlT, optionsT);
-    const data = await response.json();
-    console.log(data);
+    const artist = await response.json();
+    console.log(artist);
 
-    const row = document.getElementById("track");
     row.innerHTML = "";
 
-    data.data.forEach((track, index) => {
-      const trackDiv = document.createElement("div");
-      trackDiv.className = "w-100 row d-flex flex-wrap align-items-center mb-3";
+    for (let i = 0; i < artist.data.length; i++) {
+      const track = artist.data[i];
+      generateTrack(track, i);
+    }
 
-      trackDiv.innerHTML = `
-        <div class="col-1 p-0 text-center">${index + 1}</div>
-        <div class="col-1 p-0">
-          <img class="rounded img-fluid" style="width: 40px; height: 40px"
-            src="${track.album.cover_small}" alt="${track.title}" />
-        </div>
-        <div class="col-4 p-0">${track.title}</div>
-        <div class="col-4 d-none d-md-block p-0">${track.rank}</div>
-        <div class="col-2 d-none d-md-block p-0">
-          ${Math.floor(track.duration / 60)}:${String(track.duration % 60).padStart(2, "0")}
-        </div>
-        <div class="col-2">
-          <button type="button"
-            class="d-block d-md-none text-secondary d-flex align-items-center mx-auto btn btn-dark bg-transparent border-0">
-            <i class="bi bi-three-dots"></i>
-          </button>
-        </div>
-      `;
+    // data.data.forEach((track, index) => {
+    //   const trackDiv = document.createElement("div");
+    //   trackDiv.className = "w-100 row d-flex flex-wrap align-items-center mb-3";
 
-      row.appendChild(trackDiv);
-    });
+    //   trackDiv.innerHTML = `
+    //     <div class="col-1 p-0 text-center">${index + 1}</div>
+    //     <div class="col-1 p-0">
+    //       <img class="rounded img-fluid" style="width: 40px; height: 40px"
+    //         src="${track.album.cover_small}" alt="${track.title}" />
+    //     </div>
+    //     <div class="col-4 p-0">${track.title}</div>
+    //     <div class="col-4 d-none d-md-block p-0">${track.rank}</div>
+    //     <div class="col-2 d-none d-md-block p-0">
+    //       ${Math.floor(track.duration / 60)}:${String(track.duration % 60).padStart(2, "0")}
+    //     </div>
+    //     <div class="col-2">
+    //       <button type="button"
+    //         class="d-block d-md-none text-secondary d-flex align-items-center mx-auto btn btn-dark bg-transparent border-0">
+    //         <i class="bi bi-three-dots"></i>
+    //       </button>
+    //     </div>
+    //   `;
+
+    //   row.appendChild(trackDiv);
+    // });
   } catch (error) {
     console.error("Errore:", error);
     alert(error);
@@ -184,34 +377,3 @@ async function getTracklist() {
 }
 
 getTracklist();
-
-// Funzione per generare le card dei risultati
-// function generateCard(results) {
-//   let row;
-
-//   results.forEach((item, index) => {
-//     if (index % 4 === 0) {
-//       row = document.createElement("div");
-//       row.className = "row";
-//       container.appendChild(row);
-//     }
-
-//     const col = document.createElement("div");
-//     col.className = "col-6 col-md-4 col-xl-2";
-
-//     const imgUrl = item.album ? item.album.cover_medium : item.artist.picture;
-
-//     col.innerHTML = `
-//                         <div class="card border-0 bg-transparent" style="width: 150p; font-size: 16px">
-//                             <img src="${imgUrl}"
-//                                 class="card-img-top rounded" alt="albumImg" />
-//                                 <div class="card-body text-center pt-0">
-//                                 <p class="card-text">${item.title}</p>
-//                                 </div>
-//                         </div>
-// `;
-
-//     row.appendChild(col);
-//   });
-// }
-// generateCard();
