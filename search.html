@@ -10,6 +10,8 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="./assets/css/scrollbar.css" />
+    <link rel="stylesheet" href="./assets/css/circular-font.css" />
     <link rel="stylesheet" href="./assets/css/search.css" />
     <title>Search</title>
   </head>
@@ -74,8 +76,146 @@
 
     <!-- CONTENUTO -->
     <main class="flex-fill bg-dark1">
-      <div id="container-foto" class="container-fluid py-4">
-        <h2 class="text-light mb-2 text-center">Sfoglia tutto</h2>
+      <div class="row">
+        <!-- SIDEBAR LEFT -->
+        <div class="col-4 col-xl-2 d-none d-md-block bg-black h-100">
+          <aside>
+            <div class="d-flex flex-column align-items-start">
+              <button class="btn text-white-50 fs-5">
+                <i class="fs-4 bi me-2 bi-three-dots"></i>
+              </button>
+              <a href="./index.html">
+                <button style="font-family: Circular, sans-serif" class="btn text-white-50 fs-5"><i class="fs-4 bi me-2 bi-house-door-fill"></i> Home</button>
+              </a>
+              <a href="./search.html">
+                <button style="font-family: Circular, sans-serif" class="btn text-white-50 fs-5"><i class="fs-4 bi me-2 bi-search"></i> Cerca</button>
+              </a>
+              <button style="font-family: Circular, sans-serif" class="btn text-start text-white-50 fs-5">
+                <i class="fs-4 bi me-2 bi-collection"></i> La tua libreria
+              </button>
+            </div>
+
+            <div class="d-flex flex-column align-items-start mt-3">
+              <button style="font-family: Circular, sans-serif" class="btn text-white-50 fs-5">
+                <i class="fs-4 bi bi-plus-square-fill me-2"></i>Crea playlist
+              </button>
+              <button style="font-family: Circular, sans-serif" class="btn text-start text-white-50 fs-5">
+                <i class="fs-4 bi bi-bookmark-heart-fill me-2"></i>Brani che ti piacciono
+              </button>
+
+              <button style="font-family: Circular, sans-serif" class="btn text-white-50 fs-5">
+                <i class="fs-4 bi bi-bookmark-fill me-2"></i>I tuoi episodi
+              </button>
+            </div>
+            <div class="border-top border-dark"></div>
+            <div class="scrollable2 d-flex flex-column align-items-start">
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">early stage emily syndrome (sett-ott 2022)</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Be The Young</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">"..." cit. Kimiko (lug-ago 2022)</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">saggio vibes 💃 &#xF483; 🩰</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">that fucking mood 🔪☠</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 text-uppercase my-1">vee,carlotta e giacomo vanno a bosio</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">An Emily Winchester kind of mood 🔪🖕</a>
+              <div class="w-100 d-flex align-items-center justify-content-between">
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">landing page (mar-apr 2022)</a>
+                <button class="btn p-0">
+                  <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
+                </button>
+              </div>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">2021 lol</a>
+              <div class="w-100 d-flex align-items-center justify-content-between">
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">cosa cazzo cuol dire questa affermazione (g..</a>
+                <button class="btn p-0">
+                  <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
+                </button>
+              </div>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">honey and glass (nov-dic 2021)</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">(Revenge) Training Arc1F412 🦍</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Lidia & Emily</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">minecraft e nintendo switch</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Silvano d'orba? i hardly know her</a>
+              <div class="w-100 d-flex align-items-center justify-content-between">
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Culo 2021</a>
+                <button class="btn p-0">
+                  <i class="bi bi-people text-white-50"></i>
+                </button>
+              </div>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Frah Quintale Mix</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Francesco Guccini Mix</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">early stage emily syndrome (sett-ott 2022)</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Be The Young</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">"..." cit. Kimiko (lug-ago 2022)</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">saggio vibes 💃 &#xF483; 🩰</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">that fucking mood 🔪☠</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 text-uppercase my-1">vee,carlotta e giacomo vanno a bosio</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">An Emily Winchester kind of mood 🔪🖕</a>
+              <div class="w-100 d-flex align-items-center justify-content-between">
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">landing page (mar-apr 2022)</a>
+                <button class="btn p-0">
+                  <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
+                </button>
+              </div>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">2021 lol</a>
+              <div class="w-100 d-flex align-items-center justify-content-between">
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">cosa cazzo cuol dire questa affermazione (g..</a>
+                <button class="btn p-0">
+                  <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
+                </button>
+              </div>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">honey and glass (nov-dic 2021)</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">(Revenge) Training Arc1F412 🦍</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Lidia & Emily</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">minecraft e nintendo switch</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Silvano d'orba? i hardly know her</a>
+              <div class="w-100 d-flex align-items-center justify-content-between">
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Culo 2021</a>
+                <button class="btn p-0">
+                  <i class="bi bi-people text-white-50"></i>
+                </button>
+              </div>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Frah Quintale Mix</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Francesco Guccini Mix</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">early stage emily syndrome (sett-ott 2022)</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Be The Young</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">"..." cit. Kimiko (lug-ago 2022)</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">saggio vibes 💃 &#xF483; 🩰</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">that fucking mood 🔪☠</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 text-uppercase my-1">vee,carlotta e giacomo vanno a bosio</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">An Emily Winchester kind of mood 🔪🖕</a>
+              <div class="w-100 d-flex align-items-center justify-content-between">
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">landing page (mar-apr 2022)</a>
+                <button class="btn p-0">
+                  <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
+                </button>
+              </div>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">2021 lol</a>
+              <div class="w-100 d-flex align-items-center justify-content-between">
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">cosa cazzo cuol dire questa affermazione (g..</a>
+                <button class="btn p-0">
+                  <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
+                </button>
+              </div>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">honey and glass (nov-dic 2021)</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">(Revenge) Training Arc1F412 🦍</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Lidia & Emily</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">minecraft e nintendo switch</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Silvano d'orba? i hardly know her</a>
+              <div class="w-100 d-flex align-items-center justify-content-between">
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Culo 2021</a>
+                <button class="btn p-0">
+                  <i class="bi bi-people text-white-50"></i>
+                </button>
+              </div>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Frah Quintale Mix</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Francesco Guccini Mix</a>
+            </div>
+          </aside>
+        </div>
+        <div class="col-8">
+          <div id="container-foto" class="container-fluid py-4">
+            <h2 class="text-light mb-2 text-center">Sfoglia tutto</h2>
+          </div>
+        </div>
       </div>
     </main>
     <!-- DIV COLLAPSE SIDEBAR PER VERSIONE MOBILE E SMALL -->
