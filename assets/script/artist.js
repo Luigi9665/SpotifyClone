@@ -21,6 +21,20 @@ const iconPlayMedium = document.getElementById("iconPlayMedium");
 const progressBarMedium = document.getElementById("progressBarMedium");
 
 // -------------------------------------------------------------------------------
+// SALVATAGGIO NEL SESSIONSTORAGE
+const saveTrack = (track) => {
+  const data = {
+    linkImgTrack: `https://cdn-images.dzcdn.net/images/cover/${track.md5_image}/500x500.jpg`,
+    title: track.title,
+    artist: track.artist.name,
+    preview: track.preview,
+    currentTime: audio.currentTime,
+  };
+
+  sessionStorage.setItem("trackSaved", JSON.stringify(data));
+};
+
+// -------------------------------------------------------------------------------
 // SET BARRA VOLUME - BLOCCO ISTRUZIONI
 function setVolumeFromEvent(e) {
   const rect = volumeBar.getBoundingClientRect();
@@ -92,6 +106,17 @@ audio.addEventListener("timeupdate", () => {
   if (audio.duration) {
     const percent = (audio.currentTime / audio.duration) * 100;
     progressBarMedium.style.width = percent + "%";
+  }
+
+  // salvo il current time con l'update per il sessionstorage
+  const current = Math.floor(audio.currentTime);
+  const saved = sessionStorage.getItem("trackSaved");
+  if (saved) {
+    const track = JSON.parse(saved);
+    if (track.currentTime !== current) {
+      track.currentTime = current;
+      sessionStorage.setItem("trackSaved", JSON.stringify(track));
+    }
   }
 });
 
@@ -175,7 +200,6 @@ const getFetchSearch = (name) => {
       return response.json();
     })
     .then((artist) => {
-      console.log(artist.data);
       artist.data.forEach((artist) => generateAlbum(artist));
     })
     .catch((err) => {
@@ -197,7 +221,6 @@ const options = {
     "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
   },
 };
-console.log(params.toString());
 if (params.toString().includes("artist")) {
   appId = params.get("artist");
   URL = "https://deezerdevs-deezer.p.rapidapi.com/artist/";
@@ -227,17 +250,6 @@ async function getArtist() {
 }
 
 getArtist();
-
-// prendo dati per tracklist e le creo
-
-const urlT = `https://striveschool-api.herokuapp.com/api/deezer/artist/${appId}/top?limit=5`;
-const optionsT = {
-  method: "GET",
-  headers: {
-    "x-rapidapi-key": "21b69e9642msh2aed025ccf822f4p13a115jsncaebffbd915f",
-    "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
-  },
-};
 
 // funzione per la crezione delle tracce
 
@@ -302,9 +314,9 @@ const generateTrack = (track, index) => {
   const colButton = document.createElement("div");
   colButton.className = "col-3 d-md-none";
   colButton.innerHTML = `<button type="button"
-            class="d-block text-secondary d-flex align-items-center mx-auto btn btn-dark bg-transparent border-0">
-            <i class="bi bi-three-dots"></i>
-          </button>`;
+  class="d-block text-secondary d-flex align-items-center mx-auto btn btn-dark bg-transparent border-0">
+  <i class="bi bi-three-dots"></i>
+  </button>`;
 
   // gli append
   colIndex.appendChild(pIndex);
@@ -319,10 +331,17 @@ const generateTrack = (track, index) => {
   rowTrack.addEventListener("click", () => {
     audio.pause(); // stop eventuale brano in corso
     audio.src = preview; // nuova traccia
-    audio.currentTime = 0;
+
+    // controllo se c'è la session storage
+    const saved = sessionStorage.getItem("trackSaved");
+    if (!saved) {
+      audio.currentTime = 0;
+    }
     audio
       .play()
       .then(() => {
+        sessionStorage.removeItem("trackSaved");
+        saveTrack(track);
         console.log("Riproduzione avviata");
         startMedium(imgTrack, trackTitle, name);
         startMobile(trackTitle, imgTrack);
@@ -333,6 +352,16 @@ const generateTrack = (track, index) => {
   });
 };
 
+// prendo dati per tracklist e le creo
+
+const urlT = `https://striveschool-api.herokuapp.com/api/deezer/artist/${appId}/top?limit=5`;
+const optionsT = {
+  method: "GET",
+  headers: {
+    "x-rapidapi-key": "21b69e9642msh2aed025ccf822f4p13a115jsncaebffbd915f",
+    "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+  },
+};
 async function getTracklist() {
   try {
     const response = await fetch(urlT, optionsT);
@@ -345,32 +374,6 @@ async function getTracklist() {
       const track = artist.data[i];
       generateTrack(track, i);
     }
-
-    // data.data.forEach((track, index) => {
-    //   const trackDiv = document.createElement("div");
-    //   trackDiv.className = "w-100 row d-flex flex-wrap align-items-center mb-3";
-
-    //   trackDiv.innerHTML = `
-    //     <div class="col-1 p-0 text-center">${index + 1}</div>
-    //     <div class="col-1 p-0">
-    //       <img class="rounded img-fluid" style="width: 40px; height: 40px"
-    //         src="${track.album.cover_small}" alt="${track.title}" />
-    //     </div>
-    //     <div class="col-4 p-0">${track.title}</div>
-    //     <div class="col-4 d-none d-md-block p-0">${track.rank}</div>
-    //     <div class="col-2 d-none d-md-block p-0">
-    //       ${Math.floor(track.duration / 60)}:${String(track.duration % 60).padStart(2, "0")}
-    //     </div>
-    //     <div class="col-2">
-    //       <button type="button"
-    //         class="d-block d-md-none text-secondary d-flex align-items-center mx-auto btn btn-dark bg-transparent border-0">
-    //         <i class="bi bi-three-dots"></i>
-    //       </button>
-    //     </div>
-    //   `;
-
-    //   row.appendChild(trackDiv);
-    // });
   } catch (error) {
     console.error("Errore:", error);
     alert(error);
@@ -378,3 +381,21 @@ async function getTracklist() {
 }
 
 getTracklist();
+
+window.addEventListener("DOMContentLoaded", () => {
+  const saved = sessionStorage.getItem("trackSaved");
+  if (saved) {
+    const track = JSON.parse(saved);
+    console.log("track", track);
+    audio.src = track.preview; // nuova traccia
+    audio.currentTime = track.currentTime || 0;
+    audio
+      .play()
+      .then(() => {
+        console.log("Riproduzione avviata");
+        startMedium(track.linkImgTrack, track.title, track.artist);
+        startMobile(track.title, track.linkImgTrack);
+      })
+      .catch((err) => console.warn("Riproduzione bloccata:", err));
+  }
+});
