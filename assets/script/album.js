@@ -5,10 +5,7 @@ const volumeThumb = document.getElementById("volume-thumb");
 const audio = document.getElementById("audio-player");
 // const URL = "https://deezerdevs-deezer.p.rapidapi.com/album/";
 // const appId = params.get("album");
-let URL = "";
-let appId = "";
-let condition;
-const params = new URLSearchParams(window.location.search);
+
 const rowTracks = document.getElementById("rowTracks");
 const rowAlbum = document.getElementById("rowAlbum");
 

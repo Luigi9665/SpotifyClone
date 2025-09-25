@@ -13,8 +13,11 @@ centerFeed.addEventListener("scroll", function () {
 });
 
 // prendo dati artist da API
-
-const url = "https://deezerdevs-deezer.p.rapidapi.com/artist/11";
+let URL = "";
+let appId = "";
+let condition;
+const params = new URLSearchParams(window.location.search);
+// const url = "https://deezerdevs-deezer.p.rapidapi.com/artist/11";
 const options = {
   method: "GET",
   headers: {
@@ -22,10 +25,15 @@ const options = {
     "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
   },
 };
-
+console.log(params.toString());
+if (params.toString().includes("artist")) {
+  appId = params.get("artist");
+  URL = "https://deezerdevs-deezer.p.rapidapi.com/artist/";
+  condition = true;
+}
 async function getArtist() {
   try {
-    const response = await fetch(url, options);
+    const response = await fetch(URL + appId, options);
     const data = await response.json();
     console.log(data);
 
@@ -42,7 +50,7 @@ getArtist();
 
 // prendo dati per tracklist e le creo
 
-const urlT = "https://striveschool-api.herokuapp.com/api/deezer/artist/11/top?limit=5";
+const urlT = `https://striveschool-api.herokuapp.com/api/deezer/artist/${appId}/top?limit=5`;
 const optionsT = {
   method: "GET",
   headers: {
