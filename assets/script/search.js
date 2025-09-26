@@ -7,6 +7,8 @@ const buttonResearch = document.getElementById("buttonSearch");
 const buttonRandomGenres = document.getElementById("buttonRandomGenres");
 const saved = sessionStorage.getItem("trackSaved");
 
+// ------------------------------------------------------------------------------------------
+// FUNZIONI PER LA BARRA DI RICERCA
 // Funzione per mescolare l'array
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -15,17 +17,6 @@ function shuffleArray(array) {
   }
   return array;
 }
-
-// Mostra generi casuali all’avvio
-document.addEventListener("DOMContentLoaded", () => {
-  showDefaultGenres();
-});
-
-buttonRandomGenres.addEventListener("click", (e) => {
-  e.preventDefault(); // previene il reload della pagina
-  container.innerHTML = "";
-  showDefaultGenres();
-});
 
 // Gestione del submit del form
 form.addEventListener("submit", (e) => {
@@ -82,6 +73,7 @@ function performSearch(query) {
 
 // Funzione per generare le card dei risultati
 function generateCard(results) {
+  containerCard.innerHTML = "";
   let row;
 
   results.forEach((item, index) => {
@@ -122,80 +114,8 @@ function generateCard(results) {
   });
 }
 
-// Funzione per generare card di generi casuali
-function showDefaultGenres() {
-  const shuffledGenres = shuffleArray([...defaultGenres]);
-  const selectedGenres = shuffledGenres.slice();
+// ------------------------------------------------------------------------------------------
 
-  console.log("Generi selezionati per default:", selectedGenres);
-
-  let row;
-  selectedGenres.forEach((genre, index) => {
-    if (index % 4 === 0) {
-      row = document.createElement("div");
-      row.className = "row g-4 mb-2";
-      container.appendChild(row);
-    }
-
-    const col = document.createElement("div");
-    col.className = "col-6 col-lg-3";
-
-    col.innerHTML = `
-      <div class="d-flex align-items-start justify-content-between rounded shadow-sm p-3 h-100 overflow-hidden"
-           style="background-color: ${colors[index % colors.length]}">
-        <h2 class="h5 mb-auto">
-          <a href="album.html?playlist=2228601362" class="text-decoration-none text-dark fw-bold">
-            ${genre}
-          </a>
-        </h2>
-      </div>
-    `;
-    // col.innerHTML = `
-    //   <div class="d-flex align-items-start justify-content-between rounded shadow-sm p-3 h-100 overflow-hidden"
-    //        style="background-color: ${colors[index % colors.length]}">
-    //     <h2 class="h5 mb-auto">
-    //       <a href="album.html?genre=${encodeURIComponent(genre)}" class="text-decoration-none text-dark fw-bold">
-    //         ${genre}
-    //       </a>
-    //     </h2>
-    //   </div>
-    // `;
-
-    row.appendChild(col);
-
-    // fetch immagine per il genere
-    const url = `https://deezerdevs-deezer.p.rapidapi.com/search?q=${encodeURIComponent(genre)}`;
-    const options = {
-      method: "GET",
-      headers: {
-        "x-rapidapi-key": "d235d3412dmshd4271a5a5fb44c3p11d3f3jsnf9b1434c6565",
-        "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
-      },
-    };
-
-    fetch(url, options)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.data && data.data.length > 0) {
-          const firstItem = data.data[0];
-          const imgUrl = firstItem.album.cover_medium;
-
-          const img = new Image();
-          img.src = imgUrl;
-          img.className = "img-fluid w-50 ms-auto";
-          img.style.transform = "rotate(25deg)";
-          img.alt = genre;
-
-          img.onload = () => {
-            col.querySelector("div").appendChild(img);
-          };
-        }
-      })
-      .catch(() => {
-        console.log("Errore fetch immagine per genere:", genre);
-      });
-  });
-}
 // VARIABILI UTILI PER IL PLAYER
 const audio = document.getElementById("audio-player");
 const volumeBar = document.getElementById("volume-bar");
@@ -270,7 +190,7 @@ playMobile.addEventListener("click", () => {
     iconPlayMobile.classList.add("bi-play-fill");
   }
 });
-
+// ------------------------------------------------------------------------------------------
 // modifiche al player medium>
 const startMedium = (img, traccia, singer) => {
   iconPlayMedium.classList.remove("bi-play-circle-fill");
@@ -330,6 +250,7 @@ audio.addEventListener("ended", () => {
   sessionStorage.removeItem("trackSaved");
 });
 
+// ------------------------------------------------------------------------------------------
 // generazione della durata traccia
 const generateDuration = () => {
   // check per eliminazione contenuto
@@ -374,26 +295,145 @@ const pausePlayer = () => {
   iconPlayMedium.classList.add("bi-play-circle-fill");
 };
 
-window.addEventListener("DOMContentLoaded", () => {
-  if (saved) {
-    const track = JSON.parse(saved);
-    console.log("track", track);
-    audio.src = track.preview; // nuova traccia
-    audio.currentTime = track.currentTime || 0;
-    audio
-      .play()
-      .then(() => {
-        console.log("Riproduzione avviata");
-        startMedium(track.linkImgTrack, track.title, track.artist);
-        startMobile(track.title, track.linkImgTrack);
-        pausePlayer();
-        generateDuration();
-      })
-      .catch((err) => console.warn("Riproduzione bloccata:", err));
-  }
-});
+// ------------------------------------------------------------------------------------------// ------------------------------------------------------------------------------------------
+
+// DA MIGLIORARE
+
+// Mostra generi casuali all’avvio
+// document.addEventListener("DOMContentLoaded", () => {
+//   showDefaultGenres();
+// });
+
+// Funzione per generare card di generi casuali
+// function showDefaultGenres() {
+//   const shuffledGenres = shuffleArray([...defaultGenres]);
+//   const selectedGenres = shuffledGenres.slice();
+
+//   console.log("Generi selezionati per default:", selectedGenres);
+
+//   let row;
+//   selectedGenres.forEach((genre, index) => {
+//     if (index % 4 === 0) {
+//       row = document.createElement("div");
+//       row.className = "row g-4 mb-2";
+//       container.appendChild(row);
+//     }
+
+//     const col = document.createElement("div");
+//     col.className = "col-6 col-lg-3";
+
+//     col.innerHTML = `
+//       <div class="d-flex align-items-start justify-content-between rounded shadow-sm p-3 h-100 overflow-hidden"
+//            style="background-color: ${colors[index % colors.length]}">
+//         <h2 class="h5 mb-auto">
+//           <a href="album.html?playlist=2228601362" class="text-decoration-none text-dark fw-bold">
+//             ${genre}
+//           </a>
+//         </h2>
+//       </div>
+//     `;
+// col.innerHTML = `
+//   <div class="d-flex align-items-start justify-content-between rounded shadow-sm p-3 h-100 overflow-hidden"
+//        style="background-color: ${colors[index % colors.length]}">
+//     <h2 class="h5 mb-auto">
+//       <a href="album.html?genre=${encodeURIComponent(genre)}" class="text-decoration-none text-dark fw-bold">
+//         ${genre}
+//       </a>
+//     </h2>
+//   </div>
+// `;
+
+// row.appendChild(col);
+
+// fetch immagine per il genere
+//     const url = `https://deezerdevs-deezer.p.rapidapi.com/search?q=${encodeURIComponent(genre)}`;
+//     const options = {
+//       method: "GET",
+//       headers: {
+//         "x-rapidapi-key": "d235d3412dmshd4271a5a5fb44c3p11d3f3jsnf9b1434c6565",
+//         "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+//       },
+//     };
+
+//     fetch(url, options)
+//       .then((res) => res.json())
+//       .then((data) => {
+//         if (data.data && data.data.length > 0) {
+//           const firstItem = data.data[0];
+//           const imgUrl = firstItem.album.cover_medium;
+
+//           const img = new Image();
+//           img.src = imgUrl;
+//           img.className = "img-fluid w-50 ms-auto";
+//           img.style.transform = "rotate(25deg)";
+//           img.alt = genre;
+
+//           img.onload = () => {
+//             col.querySelector("div").appendChild(img);
+//           };
+//         }
+//       })
+//       .catch(() => {
+//         console.log("Errore fetch immagine per genere:", genre);
+//       });
+//   });
+// }
+
+// costruzione del background con il media color
+const generateBackground = (id) => {
+  const bg = document.getElementById("background" + id);
+  const img = document.getElementById("img" + id);
+
+  img.onload = () => {
+    const colorThief = new ColorThief();
+    // palette di 3 colori principali
+    const palette = colorThief.getPalette(img, 11);
+
+    const gradient = `linear-gradient(to bottom, 
+                      rgb(${palette[0].join(",")}), 
+                      rgb(${palette[1].join(",")}),
+                      #000000
+                      )`;
+
+    bg.style.backgroundImage = gradient;
+  };
+};
 
 // prove di map per generare card dinamicamente
+const urlPlaylist = "https://deezerdevs-deezer.p.rapidapi.com/playlist/";
+const containerCard = document.getElementById("containerCard");
+
+const generatePlaylist = (playlist) => {
+  const title = playlist.title;
+  const img = playlist.picture_medium;
+  const id = playlist.id;
+  const col = document.createElement("div");
+  col.className = "col-6 col-lg-4 col-xl-3";
+  const linkPlaylist = document.createElement("a");
+  linkPlaylist.className = "text-decoration-none text-dark fw-bold";
+  linkPlaylist.style.cursor = "pointer";
+  linkPlaylist.href = "album.html?playlist=" + id;
+  const card = document.createElement("div");
+  card.id = "background" + id;
+  card.className = "d-flex align-items-start justify-content-between rounded shadow-sm p-3 h-100 overflow-hidden";
+  const h2 = document.createElement("h2");
+  h2.className = "h5 mb-auto text-white";
+  h2.innerText = title;
+
+  const imgPlaylist = document.createElement("img");
+  imgPlaylist.crossOrigin = "anonymous";
+  imgPlaylist.id = "img" + id;
+  imgPlaylist.src = img;
+  imgPlaylist.className = "img-fluid w-50 ms-auto";
+  imgPlaylist.style.transform = "rotate(25deg)";
+  imgPlaylist.alt = "playlist" + title;
+  // gli append
+  card.append(h2, imgPlaylist);
+  linkPlaylist.appendChild(card);
+  col.appendChild(linkPlaylist);
+  containerCard.appendChild(col);
+};
+
 const playlists = new Map([
   ["Top Worldwide", 3155776842],
   ["Radar Weekly", 1282495565],
@@ -426,7 +466,76 @@ const playlists = new Map([
   ["New Electronic", 2143562442],
 ]);
 
-playlists.forEach((id, name) => {
-  console.log("Nome playlist:", name); // <-- la chiave
-  console.log("ID playlist:", id); // <-- il valore
+const fetchCardPlaylist = async (id) => {
+  await fetch(urlPlaylist + id, {
+    headers: {
+      "x-rapidapi-key": "9421b0f4f3msh454cbdf404defecp1c0a31jsn6a41048cfe81",
+      "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+    },
+  })
+    .then((response) => {
+      if (!response.ok) {
+        if (response.status === 401 || response.status === 403) {
+          throw new Error("Autorizzazione fallita, controlla la tua API key.");
+        } else if (response.status === 404) {
+          throw new Error("Risorsa non trovata (404).");
+        } else if (response.status >= 500) {
+          throw new Error("Errore del server, riprova più tardi.");
+        } else {
+          throw new Error("Errore nella richiesta: " + response.status);
+        }
+      }
+      return response.json();
+    })
+    .then((playlist) => {
+      // console.log(playlist);
+      generatePlaylist(playlist);
+      generateBackground(playlist.id);
+    })
+    .catch((err) => {
+      console.log(err);
+      alert(err);
+    });
+
+  generateBackground(id);
+};
+
+const manipulationPlaylist = () => {
+  playlists.forEach((id, name) => {
+    // console.log("Nome playlist:", name); // <-- la chiave
+    // console.log("ID playlist:", id); // <-- il valore
+    fetchCardPlaylist(id);
+  });
+};
+
+// button per generare le card generi in modo causale
+buttonRandomGenres.addEventListener("click", (e) => {
+  e.preventDefault(); // previene il reload della pagina
+  input.value = "";
+  container.innerHTML = "";
+  container.innerHTML = `<h2 class="text-light mb-2 text-center">Sfoglia tutto</h2>`;
+  manipulationPlaylist();
+});
+
+// ------------------------------------------------------------------------------------------
+// AL CARICAMENTO DELLA PAGINA
+// recupera la proprietà dal sessionStorage e riformula il player
+window.addEventListener("DOMContentLoaded", () => {
+  manipulationPlaylist();
+  if (saved) {
+    const track = JSON.parse(saved);
+    console.log("track", track);
+    audio.src = track.preview; // nuova traccia
+    audio.currentTime = track.currentTime || 0;
+    audio
+      .play()
+      .then(() => {
+        console.log("Riproduzione avviata");
+        startMedium(track.linkImgTrack, track.title, track.artist);
+        startMobile(track.title, track.linkImgTrack);
+        pausePlayer();
+        generateDuration();
+      })
+      .catch((err) => console.warn("Riproduzione bloccata:", err));
+  }
 });
