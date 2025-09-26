@@ -219,6 +219,8 @@ const generateAlbum = (artist) => {
   const p = document.createElement("p");
   p.className = "card-text";
   p.innerText = titleAlbum;
+  p.className = "overflow-hidden";
+  p.style.maxHeight = "16px";
 
   // gli append
   cardBody.appendChild(p);
