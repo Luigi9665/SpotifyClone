@@ -304,6 +304,7 @@ const generateTrack = (track, index) => {
   const colRank = document.createElement("div");
   colRank.className = "col-4 d-none d-md-block p-0";
   const pRank = document.createElement("p");
+  pRank.className = "ps-1";
   pRank.innerText = rank;
   // col duration
   const colDuration = document.createElement("div");
