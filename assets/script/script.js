@@ -3,6 +3,25 @@ const RAPIDAPI_KEY = "d235d3412dmshd4271a5a5fb44c3p11d3f3jsnf9b1434c6565";
 const RAPIDAPI_HOST = "deezerdevs-deezer.p.rapidapi.com";
 const API_BASE = "https://deezerdevs-deezer.p.rapidapi.com";
 
+// -------------------------------------------------------------------------------
+// VARIABILI UTILI PER IL PLAYER
+// variabili player mobile
+const volumeBar = document.getElementById("volume-bar");
+const volumeFill = document.getElementById("volume-fill");
+const volumeThumb = document.getElementById("volume-thumb");
+const audio = document.getElementById("audio-player");
+const tracciaMobile = document.getElementById("tracciaMobile");
+const playMobile = document.getElementById("playMobile");
+const iconPlayMobile = document.getElementById("iconPlayMobile");
+const imgTrackMobile = document.getElementById("imgTrackMobile");
+
+// variabili player medium
+const imgTrackMedium = document.getElementById("imgTrackMedium");
+const titleTrackPlayer = document.getElementById("titleTrackPlayer");
+const singerPlayer = document.getElementById("singerPlayer");
+const iconPlayMedium = document.getElementById("iconPlayMedium");
+const progressBarMedium = document.getElementById("progressBarMedium");
+
 /* DOM refs */
 const tilesRow = document.getElementById("tilesRow");
 const albumsRow = document.getElementById("albumsRow");
@@ -11,6 +30,108 @@ const input = document.getElementById("searchInput");
 const btnSearch = document.getElementById("btnSearch");
 const btnRandom = document.getElementById("btnRandom");
 // const miniTitle  = document.getElementById("miniTitle");
+
+//-------------------------------------------------------------------------------
+// SET BARRA VOLUME - BLOCCO ISTRUZIONI
+function setVolumeFromEvent(e) {
+  const rect = volumeBar.getBoundingClientRect();
+  let percent = (e.clientX - rect.left) / rect.width;
+  percent = Math.max(0, Math.min(1, percent));
+  volumeFill.style.width = percent * 100 + "%";
+  volumeThumb.style.left = percent * 100 + "%";
+
+  // Applicazione al player
+  audio.volume = percent;
+}
+
+volumeBar.addEventListener("click", setVolumeFromEvent);
+
+let isDragging = false;
+volumeBar.addEventListener("mousedown", () => (isDragging = true));
+window.addEventListener("mouseup", () => (isDragging = false));
+window.addEventListener("mousemove", (e) => {
+  if (isDragging) setVolumeFromEvent(e);
+});
+
+// FORMATTAZIONE DEI SECONDI
+function formatTime(time) {
+  const minutes = Math.floor(time / 60);
+  const secs = time % 60;
+  return `${minutes}:${secs.toString().padStart(2, "0")}`;
+}
+function formatTimeAlbum(time) {
+  const minutes = Math.floor(time / 60);
+  const secs = time % 60;
+  return `${minutes}min ${secs.toString().padStart(2, "0")}sec.`;
+}
+
+// -------------------------------------------------------------------------------
+
+// MANIPOLAZIONE DEL PLAYER
+// modifiche al player mobile
+const startMobile = (traccia, img) => {
+  iconPlayMobile.classList.remove("bi-play-fill");
+  iconPlayMobile.classList.add("bi-pause-fill");
+  tracciaMobile.innerText = traccia;
+  imgTrackMobile.src = img;
+};
+
+playMobile.addEventListener("click", () => {
+  if (audio.paused) {
+    audio.play();
+    iconPlayMobile.classList.remove("bi-play-fill");
+    iconPlayMobile.classList.add("bi-pause-fill");
+  } else {
+    audio.pause();
+    iconPlayMobile.classList.remove("bi-pause-fill");
+    iconPlayMobile.classList.add("bi-play-fill");
+  }
+});
+
+// modifiche al player medium>
+const startMedium = (img, traccia, singer) => {
+  iconPlayMedium.classList.remove("bi-play-circle-fill");
+  iconPlayMedium.classList.add("bi-pause-circle-fill");
+  imgTrackMedium.src = img;
+  titleTrackPlayer.innerText = traccia;
+  singerPlayer.innerText = singer;
+};
+
+iconPlayMedium.addEventListener("click", () => {
+  if (audio.src) {
+    if (audio.paused) {
+      audio.play();
+      iconPlayMedium.classList.remove("bi-play-circle-fill");
+      iconPlayMedium.classList.add("bi-pause-circle-fill");
+    } else {
+      audio.pause();
+      iconPlayMedium.classList.remove("bi-pause-circle-fill");
+      iconPlayMedium.classList.add("bi-play-circle-fill");
+    }
+  }
+});
+
+// gestione della progress bar medium con il listener dell'audio
+// Aggiorna progress bar mentre suona
+audio.addEventListener("timeupdate", () => {
+  if (audio.duration) {
+    const percent = (audio.currentTime / audio.duration) * 100;
+    progressBarMedium.style.width = percent + "%";
+  }
+
+  // salvo il current time con l'update per il sessionstorage
+  const current = Math.floor(audio.currentTime);
+  const saved = sessionStorage.getItem("trackSaved");
+  if (saved) {
+    const track = JSON.parse(saved);
+    if (track.currentTime !== current) {
+      track.currentTime = current;
+      sessionStorage.setItem("trackSaved", JSON.stringify(track));
+    }
+  }
+});
+
+// -------------------------------------------------------------------------------
 
 /* A pool of queries for the "Buonasera" shelf */
 const DEFAULT_QUERIES = [
@@ -133,6 +254,24 @@ async function performSearch(query) {
 document.addEventListener("DOMContentLoaded", () => {
   showDefaultGenres(); // fill "Buonasera"
   performSearch("hit italy"); // fill first grid
+
+  // recuper dati dal sessionStorage
+  const saved = sessionStorage.getItem("trackSaved");
+  console.log(saved);
+  if (saved) {
+    const track = JSON.parse(saved);
+    console.log("track", track);
+    audio.src = track.preview; // nuova traccia
+    audio.currentTime = track.currentTime || 0;
+    audio
+      .play()
+      .then(() => {
+        console.log("Riproduzione avviata");
+        startMedium(track.linkImgTrack, track.title, track.artist);
+        startMobile(track.title, track.linkImgTrack);
+      })
+      .catch((err) => console.warn("Riproduzione bloccata:", err));
+  }
 });
 
 btnRandom.addEventListener("click", (e) => {
