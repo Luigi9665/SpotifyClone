@@ -1,0 +1,99 @@
+@keyframes cardFadeUp {
+  0% {
+    opacity: 0;
+    translatey: (50px);
+    scale: (0.95);
+  }
+  100% {
+    opacity: 1;
+    translatey: (0);
+    scale: (1);
+  }
+}
+
+@keyframes imgRotateIn {
+  0% {
+    opacity: 0;
+    transform: rotate(90deg);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(25deg);
+  }
+}
+
+.card-animate {
+  animation: cardFadeUp 0.8s forwards;
+}
+
+.img-animate {
+  animation: imgRotateIn 0.8s forwards;
+  animation-delay: 0.5s;
+}
+
+.card-animate:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
+}
+
+.card-animate:hover .img-animate {
+  transform: rotate(30deg);
+  transition: transform 0.3s ease-in-out;
+}
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.track-animate {
+  animation: slideInLeft 0.5s ease-out forwards;
+}
+
+@keyframes growFromCenter {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.album-cover {
+  animation: growFromCenter 1s ease-out forwards;
+  transform-origin: center;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.album-title {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+  border-right: 3px solid;
+  animation: typing 3s steps(30) 1s forwards;
+}
+
+.album-cover {
+  transition: transform 0.3s ease;
+}
+
+.album-cover:hover {
+  transform: scale(1.05);
+}
