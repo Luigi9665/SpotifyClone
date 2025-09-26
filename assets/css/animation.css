@@ -1,0 +1,33 @@
+/* Animazione della card */
+@keyframes cardFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Animazione dell'immagine */
+@keyframes imgRotateIn {
+  0% {
+    opacity: 0;
+    transform: rotate(90deg);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(25deg);
+  }
+}
+
+/* Classe da aggiungere dinamicamente */
+.card-animate {
+  animation: cardFadeUp 0.8s forwards;
+}
+
+.img-animate {
+  animation: imgRotateIn 0.8s forwards;
+  animation-delay: 0.5s; /* parte dopo l'ingresso della card */
+}

@@ -415,7 +415,7 @@ const generatePlaylist = (playlist) => {
   linkPlaylist.href = "album.html?playlist=" + id;
   const card = document.createElement("div");
   card.id = "background" + id;
-  card.className = "d-flex align-items-start justify-content-between rounded shadow-sm p-3 h-100 overflow-hidden";
+  card.className = "d-flex align-items-start justify-content-between rounded shadow-sm p-3 h-100 overflow-hidden card-animate";
   const h2 = document.createElement("h2");
   h2.className = "h5 mb-auto text-white";
   h2.innerText = title;
@@ -424,7 +424,7 @@ const generatePlaylist = (playlist) => {
   imgPlaylist.crossOrigin = "anonymous";
   imgPlaylist.id = "img" + id;
   imgPlaylist.src = img;
-  imgPlaylist.className = "img-fluid w-50 ms-auto";
+  imgPlaylist.className = "img-fluid w-50 ms-auto img-animate";
   imgPlaylist.style.transform = "rotate(25deg)";
   imgPlaylist.alt = "playlist" + title;
   // gli append
@@ -490,7 +490,6 @@ const fetchCardPlaylist = async (id) => {
     .then((playlist) => {
       // console.log(playlist);
       generatePlaylist(playlist);
-      generateBackground(playlist.id);
     })
     .catch((err) => {
       console.log(err);
@@ -501,20 +500,23 @@ const fetchCardPlaylist = async (id) => {
 };
 
 const manipulationPlaylist = () => {
-  playlists.forEach((id, name) => {
-    // console.log("Nome playlist:", name); // <-- la chiave
-    // console.log("ID playlist:", id); // <-- il valore
-    fetchCardPlaylist(id);
+  playlists.forEach((id, i) => {
+    // fetchCardPlaylist(id);
+    setTimeout(() => {
+      fetchCardPlaylist(id);
+    }, i * 300); // 300ms tra una richiesta e l'altra
   });
 };
 
 // button per generare le card generi in modo causale
 buttonRandomGenres.addEventListener("click", (e) => {
   e.preventDefault(); // previene il reload della pagina
-  input.value = "";
-  container.innerHTML = "";
-  container.innerHTML = `<h2 class="text-light mb-2 text-center">Sfoglia tutto</h2>`;
-  manipulationPlaylist();
+  if (containerCard.children.length === 0) {
+    input.value = "";
+    container.innerHTML = "";
+    container.innerHTML = `<h2 class="text-light mb-2 text-center">Sfoglia tutto</h2>`;
+    manipulationPlaylist();
+  }
 });
 
 // ------------------------------------------------------------------------------------------
