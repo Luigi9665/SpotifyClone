@@ -392,3 +392,41 @@ window.addEventListener("DOMContentLoaded", () => {
       .catch((err) => console.warn("Riproduzione bloccata:", err));
   }
 });
+
+// prove di map per generare card dinamicamente
+const playlists = new Map([
+  ["Top Worldwide", 3155776842],
+  ["Radar Weekly", 1282495565],
+  ["Chill Hits", 1976454162],
+  ["Fresh Pop", 2228601362],
+  ["Rap Bangers", 1996494362],
+  ["R&B Hits", 1999466402],
+  ["Hot New Rock", 1306978785],
+  ["Latin Grammy 2025", 6651436664],
+  ["Gaming Mode", 2298075882],
+  ["Reggaeton 2.0", 13668661441],
+  ["Hits Zouk & Kompa", 10349775862],
+  ["Queens Of Soul", 1950386602],
+  ["Workout", 2153050122],
+  ["'20s POP", 13650203641],
+  ["Global Dance Hits", 706093725],
+  ["Acoustic Hits", 9346933942],
+  ["New Country", 1132251583],
+  ["Classical Essentials", 747148961],
+  ["Chill Jazz", 1914526462],
+  ["Afro Hits", 1440614715],
+  ["Party Hits", 2097558104],
+  ["Love Featurings", 12327094931],
+  ["New Alternative", 1402845615],
+  ["Metal Radar", 1050179021],
+  ["Home Office", 1320283135],
+  ["Top K-Pop", 4096400722],
+  ["Happy Hits", 1479458365],
+  ["Sleep", 733113466],
+  ["New Electronic", 2143562442],
+]);
+
+playlists.forEach((id, name) => {
+  console.log("Nome playlist:", name); // <-- la chiave
+  console.log("ID playlist:", id); // <-- il valore
+});
