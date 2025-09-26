@@ -1,8 +1,4 @@
 //  VARIABILI GENERALI
-const volumeBar = document.getElementById("volume-bar");
-const volumeFill = document.getElementById("volume-fill");
-const volumeThumb = document.getElementById("volume-thumb");
-const audio = document.getElementById("audio-player");
 // const URL = "https://deezerdevs-deezer.p.rapidapi.com/album/";
 // const appId = params.get("album");
 let URL = "";
@@ -15,6 +11,10 @@ const rowAlbum = document.getElementById("rowAlbum");
 // -------------------------------------------------------------------------------
 // VARIABILI UTILI PER IL PLAYER
 // variabili player mobile
+const volumeBar = document.getElementById("volume-bar");
+const volumeFill = document.getElementById("volume-fill");
+const volumeThumb = document.getElementById("volume-thumb");
+const audio = document.getElementById("audio-player");
 const tracciaMobile = document.getElementById("tracciaMobile");
 const playMobile = document.getElementById("playMobile");
 const iconPlayMobile = document.getElementById("iconPlayMobile");
