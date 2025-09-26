@@ -2,10 +2,18 @@
   height: 100vh;
   overflow-y: auto;
 }
+.scrollableSearch {
+  height: 90vh;
+  overflow-y: auto;
+}
 
 @media (min-width: 768px) {
   .scrollable {
     height: 95vh;
+    overflow-y: auto;
+  }
+  .scrollableSearch {
+    height: 94vh;
     overflow-y: auto;
   }
 }
@@ -15,17 +23,20 @@
   overflow-y: auto;
 }
 .scrollable::-webkit-scrollbar,
-.scrollable2::-webkit-scrollbar {
+.scrollable2::-webkit-scrollbar,
+.scrollableSearch::-webkit-scrollbar {
   width: 14px;
 }
 
 .scrollable::-webkit-scrollbar-track,
-.scrollable2::-webkit-scrollbar-track {
+.scrollable2::-webkit-scrollbar-track,
+.scrollableSearch::-webkit-scrollbar-track {
   background: rgba(62, 61, 61, 0.25);
 }
 
 .scrollable::-webkit-scrollbar-thumb,
-.scrollable2::-webkit-scrollbar-thumb {
+.scrollable2::-webkit-scrollbar-thumb,
+.scrollableSearch::-webkit-scrollbar-thumb {
   background: rgba(138, 136, 136, 0.294);
 }
 
