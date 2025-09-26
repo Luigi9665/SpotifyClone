@@ -246,7 +246,7 @@ const generateAlbum = (album, condition) => {
   let imgSinger;
   let name;
   let date;
-  const idSinger = album.artist.id;
+  const idSinger = album.id;
   const type = album.type;
   const title = album.title;
   document.title = title;
