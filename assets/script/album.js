@@ -246,16 +246,18 @@ const generateAlbum = (album, condition) => {
   let imgSinger;
   let name;
   let date;
-  const idSinger = album.id;
+  let idSinger;
   const type = album.type;
   const title = album.title;
   document.title = title;
   if (condition) {
+    idSinger = album.id;
     imgAlbum = album.cover_big;
     imgSinger = album.artist.picture;
     name = album.artist.name;
     date = album.release_date.split("-")[0];
   } else {
+    idSinger = album.creator.id;
     imgAlbum = album.picture_big;
     imgSinger = album.picture_small;
     name = album.creator.name;
@@ -314,7 +316,7 @@ const generateAlbum = (album, condition) => {
   const linkArtist = document.createElement("a");
   linkArtist.style.cursor = "pointer";
   linkArtist.className = "text-decoration-none";
-  linkArtist.href = "artist.html?artist=" + idSinger;
+  linkArtist.href = "#";
 
   linkArtist.addEventListener("mouseover", () => {
     linkArtist.style.textDecoration = "underline";
