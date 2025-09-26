@@ -1,6 +1,7 @@
 // VARIBILI GENERALI DA RICHIAMARE
 const rowAlbum = document.getElementById("rowAlbum");
 const row = document.getElementById("track");
+const saved = sessionStorage.getItem("trackSaved");
 
 // VARIABILI UTILI PER IL PLAYER
 const audio = document.getElementById("audio-player");
@@ -118,7 +119,58 @@ audio.addEventListener("timeupdate", () => {
       sessionStorage.setItem("trackSaved", JSON.stringify(track));
     }
   }
+
+  // uso la stessa variabile current per il timer che scorre
+  const pdurationProgress = document.getElementById("durationProgress");
+  if (pdurationProgress) {
+    if (current < 10) {
+      pdurationProgress.innerText = "0:0" + current;
+    } else {
+      pdurationProgress.innerText = "0:" + current;
+    }
+  }
 });
+
+// listener dell'audio terminato mi cancella la proprietà salvata nel sessionStorage
+audio.addEventListener("ended", () => {
+  console.log("Audio terminato");
+  sessionStorage.removeItem("trackSaved");
+});
+
+// generazione della durata traccia
+const generateDuration = () => {
+  // check per eliminazione contenuto
+  const checkProgressDuration = document.getElementById("durationProgress");
+  const checkTotalDuration = document.getElementById("totalDuration");
+  if (checkProgressDuration) {
+    checkProgressDuration.remove();
+    checkTotalDuration.remove();
+  }
+
+  const progress = document.querySelector(".progress");
+  const pDurationProgress = document.createElement("p");
+  pDurationProgress.id = "durationProgress";
+  pDurationProgress.className = "text-white-50 fs-5 m-0";
+
+  if (saved) {
+    const track = JSON.parse(saved);
+    if (track.currentTime < 10) {
+      pDurationProgress.innerText = "0:0" + track.currentTime;
+    } else {
+      pDurationProgress.innerText = "0:" + track.currentTime;
+    }
+  } else {
+    pDurationProgress.innerText = "0:00";
+  }
+  const pTotalDuration = document.createElement("p");
+  pTotalDuration.id = "totalDuration";
+  pTotalDuration.className = "text-white-50 fs-5 m-0";
+  pTotalDuration.innerText = "0:30";
+
+  // gli append
+  progress.before(pDurationProgress);
+  progress.after(pTotalDuration);
+};
 
 // -------------------------------------------------------------------------------
 // img bg scompare allo scroll
@@ -346,6 +398,7 @@ const generateTrack = (track, index) => {
         sessionStorage.removeItem("trackSaved");
         saveTrack(track);
         console.log("Riproduzione avviata");
+        generateDuration();
         startMedium(imgTrack, trackTitle, name);
         startMobile(trackTitle, imgTrack);
         checkSuccess();
@@ -386,7 +439,6 @@ async function getTracklist() {
 getTracklist();
 
 window.addEventListener("DOMContentLoaded", () => {
-  const saved = sessionStorage.getItem("trackSaved");
   if (saved) {
     const track = JSON.parse(saved);
     console.log("track", track);
@@ -396,6 +448,7 @@ window.addEventListener("DOMContentLoaded", () => {
       .play()
       .then(() => {
         console.log("Riproduzione avviata");
+        generateDuration();
         startMedium(track.linkImgTrack, track.title, track.artist);
         startMobile(track.title, track.linkImgTrack);
       })

@@ -2,6 +2,7 @@
 const RAPIDAPI_KEY = "d235d3412dmshd4271a5a5fb44c3p11d3f3jsnf9b1434c6565";
 const RAPIDAPI_HOST = "deezerdevs-deezer.p.rapidapi.com";
 const API_BASE = "https://deezerdevs-deezer.p.rapidapi.com";
+const saved = sessionStorage.getItem("trackSaved");
 
 // -------------------------------------------------------------------------------
 // VARIABILI UTILI PER IL PLAYER
@@ -129,7 +130,58 @@ audio.addEventListener("timeupdate", () => {
       sessionStorage.setItem("trackSaved", JSON.stringify(track));
     }
   }
+
+  // uso la stessa variabile current per il timer che scorre
+  const pdurationProgress = document.getElementById("durationProgress");
+  if (pdurationProgress) {
+    if (current < 10) {
+      pdurationProgress.innerText = "0:0" + current;
+    } else {
+      pdurationProgress.innerText = "0:" + current;
+    }
+  }
 });
+
+// listener dell'audio terminato mi cancella la proprietà salvata nel sessionStorage
+audio.addEventListener("ended", () => {
+  console.log("Audio terminato");
+  sessionStorage.removeItem("trackSaved");
+});
+
+// generazione della durata traccia
+const generateDuration = () => {
+  // check per eliminazione contenuto
+  const checkProgressDuration = document.getElementById("durationProgress");
+  const checkTotalDuration = document.getElementById("totalDuration");
+  if (checkProgressDuration) {
+    checkProgressDuration.remove();
+    checkTotalDuration.remove();
+  }
+
+  const progress = document.querySelector(".progress");
+  const pDurationProgress = document.createElement("p");
+  pDurationProgress.id = "durationProgress";
+  pDurationProgress.className = "text-white-50 fs-5 m-0";
+
+  if (saved) {
+    const track = JSON.parse(saved);
+    if (track.currentTime < 10) {
+      pDurationProgress.innerText = "0:0" + track.currentTime;
+    } else {
+      pDurationProgress.innerText = "0:" + track.currentTime;
+    }
+  } else {
+    pDurationProgress.innerText = "0:00";
+  }
+  const pTotalDuration = document.createElement("p");
+  pTotalDuration.id = "totalDuration";
+  pTotalDuration.className = "text-white-50 fs-5 m-0";
+  pTotalDuration.innerText = "0:30";
+
+  // gli append
+  progress.before(pDurationProgress);
+  progress.after(pTotalDuration);
+};
 
 // -------------------------------------------------------------------------------
 
@@ -256,7 +308,7 @@ document.addEventListener("DOMContentLoaded", () => {
   performSearch("hit italy"); // fill first grid
 
   // recuper dati dal sessionStorage
-  const saved = sessionStorage.getItem("trackSaved");
+
   console.log(saved);
   if (saved) {
     const track = JSON.parse(saved);
@@ -269,6 +321,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("Riproduzione avviata");
         startMedium(track.linkImgTrack, track.title, track.artist);
         startMobile(track.title, track.linkImgTrack);
+        generateDuration();
       })
       .catch((err) => console.warn("Riproduzione bloccata:", err));
   }

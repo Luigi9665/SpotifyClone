@@ -5,6 +5,7 @@ const colors = ["#FFB6C1", "#87CEFA", "#FFD700", "#90EE90", "#FFA07A", "#20B2AA"
 const defaultGenres = ["rock", "pop", "jazz", "classical", "hip hop", "electronic", "blues", "reggae"];
 const buttonResearch = document.getElementById("buttonSearch");
 const buttonRandomGenres = document.getElementById("buttonRandomGenres");
+const saved = sessionStorage.getItem("trackSaved");
 
 // Funzione per mescolare l'array
 function shuffleArray(array) {
@@ -311,9 +312,60 @@ audio.addEventListener("timeupdate", () => {
       sessionStorage.setItem("trackSaved", JSON.stringify(track));
     }
   }
+
+  // uso la stessa variabile current per il timer che scorre
+  const pdurationProgress = document.getElementById("durationProgress");
+  if (pdurationProgress) {
+    if (current < 10) {
+      pdurationProgress.innerText = "0:0" + current;
+    } else {
+      pdurationProgress.innerText = "0:" + current;
+    }
+  }
 });
+
+// listener dell'audio terminato mi cancella la proprietà salvata nel sessionStorage
+audio.addEventListener("ended", () => {
+  console.log("Audio terminato");
+  sessionStorage.removeItem("trackSaved");
+});
+
+// generazione della durata traccia
+const generateDuration = () => {
+  // check per eliminazione contenuto
+  const checkProgressDuration = document.getElementById("durationProgress");
+  const checkTotalDuration = document.getElementById("totalDuration");
+  if (checkProgressDuration) {
+    checkProgressDuration.remove();
+    checkTotalDuration.remove();
+  }
+
+  const progress = document.querySelector(".progress");
+  const pDurationProgress = document.createElement("p");
+  pDurationProgress.id = "durationProgress";
+  pDurationProgress.className = "text-white-50 fs-5 m-0";
+
+  if (saved) {
+    const track = JSON.parse(saved);
+    if (track.currentTime < 10) {
+      pDurationProgress.innerText = "0:0" + track.currentTime;
+    } else {
+      pDurationProgress.innerText = "0:" + track.currentTime;
+    }
+  } else {
+    pDurationProgress.innerText = "0:00";
+  }
+  const pTotalDuration = document.createElement("p");
+  pTotalDuration.id = "totalDuration";
+  pTotalDuration.className = "text-white-50 fs-5 m-0";
+  pTotalDuration.innerText = "0:30";
+
+  // gli append
+  progress.before(pDurationProgress);
+  progress.after(pTotalDuration);
+};
+
 window.addEventListener("DOMContentLoaded", () => {
-  const saved = sessionStorage.getItem("trackSaved");
   if (saved) {
     const track = JSON.parse(saved);
     console.log("track", track);
@@ -325,6 +377,7 @@ window.addEventListener("DOMContentLoaded", () => {
         console.log("Riproduzione avviata");
         startMedium(track.linkImgTrack, track.title, track.artist);
         startMobile(track.title, track.linkImgTrack);
+        generateDuration();
       })
       .catch((err) => console.warn("Riproduzione bloccata:", err));
   }
