@@ -2,6 +2,7 @@
 const rowAlbum = document.getElementById("rowAlbum");
 const row = document.getElementById("track");
 const saved = sessionStorage.getItem("trackSaved");
+const mediaBackground = document.getElementById("mediaBackground");
 
 // VARIABILI UTILI PER IL PLAYER
 const audio = document.getElementById("audio-player");
@@ -173,8 +174,28 @@ const generateDuration = () => {
 };
 
 // -------------------------------------------------------------------------------
-// img bg scompare allo scroll
 
+// costruzione del background con il media color
+const generateBackground = (condition) => {
+  const img = document.getElementById("heroImage");
+  img.crossOrigin = "Anonymous";
+
+  img.onload = () => {
+    const colorThief = new ColorThief();
+    // palette di 3 colori principali
+    const palette = colorThief.getPalette(img, 11);
+
+    const gradient = `linear-gradient(to bottom, 
+      rgb(${palette[0].join(",")}), 
+      rgb(${palette[1].join(",")}),
+      rgb(${palette[2].join(",")}),
+      #000000
+    )`;
+    centerFeed.style.backgroundImage = gradient;
+  };
+};
+
+// img bg scompare allo scroll
 const centerFeed = document.getElementById("centralIndex");
 const heroImage = document.getElementById("heroImage");
 
@@ -215,9 +236,10 @@ const generateAlbum = (artist) => {
   img.src = imgAlbum;
 
   const cardBody = document.createElement("div");
-  cardBody.className = "card-body text-center pt-0";
+  cardBody.className = "card-body text-center pt-1";
   const p = document.createElement("p");
-  p.className = "card-text";
+  p.className = "text-black fs-5 fw-semibold m-0";
+  p.setAttribute("style", "letter-spacing: -1.1px; line-height:20px");
   p.innerText = titleAlbum;
 
   // gli append
@@ -290,7 +312,7 @@ async function getArtist() {
     document.getElementById("likeImage").src = data.picture;
     document.getElementById("artist-fan").textContent = data.nb_fan + " ascoltatori mensili";
     const name = data.name;
-
+    generateBackground();
     // richiamo il fetch per la ricerca
     if (name) {
       getFetchSearch(name);
@@ -315,7 +337,10 @@ function formatTime(time) {
 const checkSuccess = () => {
   const rowSucce = document.querySelectorAll(".selected");
   if (rowSucce) {
-    rowSucce.forEach((row) => row.classList.remove("bg-success", "bg-gradient", "rounded-3", "selected"));
+    rowSucce.forEach((row) => {
+      row.classList.remove("bg-success", "bg-gradient", "selected");
+      row.classList.add("bg-black");
+    });
   } else {
     return;
   }
@@ -333,7 +358,15 @@ const generateTrack = (track, index) => {
   // generazione della row
   const rowTrack = document.createElement("div");
   rowTrack.style.cursor = "pointer";
-  rowTrack.className = "w-100 row col-12 col-md-4 d-flex flex-wrap align-items-center justify-content-around mb-3";
+  rowTrack.className = "w-100 row col-12 col-md-4 d-flex flex-wrap align-items-baseline justify-content-around rounded-5 bg-black py-2 mb-1";
+
+  rowTrack.addEventListener("mouseover", () => {
+    rowTrack.style.transform = "scale(1.05)";
+  });
+
+  rowTrack.addEventListener("mouseout", () => {
+    rowTrack.style.transform = "scale(1)";
+  });
 
   // col indice
   const colIndex = document.createElement("div");
@@ -402,6 +435,7 @@ const generateTrack = (track, index) => {
         startMedium(imgTrack, trackTitle, name);
         startMobile(trackTitle, imgTrack);
         checkSuccess();
+        rowTrack.classList.remove("bg-black");
         rowTrack.classList.add("bg-success", "bg-gradient", "rounded-3", "selected");
       })
       .catch((err) => console.warn("Riproduzione bloccata:", err));

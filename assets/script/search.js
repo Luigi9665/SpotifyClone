@@ -89,7 +89,7 @@ function generateCard(results) {
     const imgUrl = item.album ? item.album.cover_medium : item.artist.picture;
 
     col.innerHTML = `
-  <div class="d-flex flex-column rounded shadow-sm p-3 h-100 overflow-hidden"
+  <div class="d-flex flex-column rounded shadow-sm p-3 h-100 overflow-hidden card-animate"
        style="background-color: ${colors[index % colors.length]}">
 
     <!-- Titolo collegato all’album -->
@@ -106,7 +106,7 @@ function generateCard(results) {
       </a>
     </p>
 
-    <img src="${imgUrl}" class="img-fluid w-50 ms-auto" alt="${item.title}" style="transform: rotate(25deg);" />
+    <img src="${imgUrl}" class="img-fluid w-50 ms-auto img-animate" alt="${item.title}" style="transform: rotate(25deg);" />
   </div>
 `;
 
@@ -447,23 +447,10 @@ const playlists = new Map([
   ["Reggaeton 2.0", 13668661441],
   ["Hits Zouk & Kompa", 10349775862],
   ["Queens Of Soul", 1950386602],
-  ["Workout", 2153050122],
-  ["'20s POP", 13650203641],
-  ["Global Dance Hits", 706093725],
-  ["Acoustic Hits", 9346933942],
-  ["New Country", 1132251583],
-  ["Classical Essentials", 747148961],
-  ["Chill Jazz", 1914526462],
-  ["Afro Hits", 1440614715],
-  ["Party Hits", 2097558104],
-  ["Love Featurings", 12327094931],
-  ["New Alternative", 1402845615],
-  ["Metal Radar", 1050179021],
-  ["Home Office", 1320283135],
-  ["Top K-Pop", 4096400722],
-  ["Happy Hits", 1479458365],
-  ["Sleep", 733113466],
-  ["New Electronic", 2143562442],
+  // ["Workout", 2153050122],
+  // ["'20s POP", 13650203641],
+  // ["Global Dance Hits", 706093725],
+  // ["Acoustic Hits", 9346933942],
 ]);
 
 const fetchCardPlaylist = async (id) => {
@@ -504,7 +491,7 @@ const manipulationPlaylist = () => {
     // fetchCardPlaylist(id);
     setTimeout(() => {
       fetchCardPlaylist(id);
-    }, i * 300); // 300ms tra una richiesta e l'altra
+    }, i * 1000); // 300ms tra una richiesta e l'altra
   });
 };
 

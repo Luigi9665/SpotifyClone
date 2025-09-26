@@ -246,6 +246,7 @@ const generateAlbum = (album, condition) => {
   let imgSinger;
   let name;
   let date;
+  const idSinger = album.artist.id;
   const type = album.type;
   const title = album.title;
   document.title = title;
@@ -273,7 +274,7 @@ const generateAlbum = (album, condition) => {
   img.id = "album";
   img.src = imgAlbum;
   img.alt = "cover album";
-  img.className = "w-100";
+  img.className = "w-100 album-cover";
 
   // creazione col album con tutte le referenze
   const colAlbum = document.createElement("div");
@@ -290,7 +291,7 @@ const generateAlbum = (album, condition) => {
   h1Mobile.innerText = title;
   // h1 gestito dopo il medium
   const h1Medium = document.createElement("h1");
-  h1Medium.className = "d-none d-md-block fw-bold text-white w-100";
+  h1Medium.className = "d-none d-md-block fw-bold text-white album-title w-100";
   h1Medium.setAttribute("style", "font-size: 6rem; font-family: Circular, sans-serif; letter-spacing: -5px");
   h1Medium.innerText = title;
 
@@ -310,6 +311,23 @@ const generateAlbum = (album, condition) => {
   <span class="text-white-50">${duration}.</span>
   </p>`;
 
+  const linkArtist = document.createElement("a");
+  linkArtist.style.cursor = "pointer";
+  linkArtist.className = "text-decoration-none";
+  linkArtist.href = "artist.html?artist=" + idSinger;
+
+  linkArtist.addEventListener("mouseover", () => {
+    linkArtist.style.textDecoration = "underline";
+    linkArtist.style.fontSize = "18px";
+  });
+
+  linkArtist.addEventListener("mouseout", () => {
+    linkArtist.style.textDecoration = "none";
+    linkArtist.style.fontSize = "16px";
+  });
+
+  linkArtist.appendChild(p);
+
   //   GLI APPEND
   // append della prima col con img dell'album
   divImg.appendChild(img);
@@ -318,7 +336,7 @@ const generateAlbum = (album, condition) => {
   //  append col credenziali album e cantante
   // il div col flex che gestisci il contenuto e il suo append
   divImgSinger.appendChild(singer);
-  divSinger.append(divImgSinger, p);
+  divSinger.append(divImgSinger, linkArtist);
   divAlbum.append(h4, h1Mobile, h1Medium, divSinger);
   // per poi inserirlo nella col album
   colAlbum.appendChild(divAlbum);
@@ -342,7 +360,7 @@ const generateTracks = (track, index) => {
 
   // crezione della row
   const row = document.createElement("div");
-  row.className = "row my-2 align-items-center";
+  row.className = "row my-2 align-items-center track-animate";
 
   //   colonna dell'indice
   const colIndex = document.createElement("div");
