@@ -1,162 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Home – Spotify style</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    <link rel="stylesheet" href="./assets/css/scrollbar.css" />
-    <link rel="stylesheet" href="./assets/css/circular-font.css" />
-  </head>
-  <body style="font-family: 'Circular', Arial, Helvetica, sans-serif; position: relative">
-    <main>
-      <!-- DIV COLLAPSE SIDEBAR PER VERSIONE MOBILE E SMALL -->
-      <div
-        style="position: fixed; bottom: 0; left: 0; width: 100%; z-index: 1050; background-color: rgba(0, 0, 0, 0.9)"
-        id="navbarPlayesSmall"
-        class="d-md-none py-2"
-      >
-        <div class="d-flex align-items-center justify-content-around">
-          <a href="./index.html" class="btn text-decoration-none text-white text-center p-0">
-            <i class="fs-1 bi bi-house-door-fill"></i>
-            <br />
-            Home
-          </a>
-          <a href="./search.html" class="btn text-decoration-none text-white text-center p-0">
-            <i class="fs-1 bi bi-search"></i>
-            <br />
-            Cerca
-          </a>
-          <a href="" class="btn text-decoration-none text-white text-center p-0">
-            <i class="fs-1 bi bi-collection"></i>
-            <br />
-            Libreria
-          </a>
-        </div>
-      </div>
 
-      <!-- DIV COLLAPSE PER IL PLAYER -->
-      <div style="position: fixed; bottom: 90px; left: 0; width: 100%; z-index: 1050" class="container-fluid d-md-none">
-        <div class="bg-dark rounded-1">
-          <div class="row align-items-center p-2">
-            <div class="col">
-              <img id="imgTrackMobile" src="./assets/imgs/main/image-13.jpg" alt="copertina brano" style="width: 25px" class="rounded-circle" />
-            </div>
-            <div class="col-7">
-              <p id="tracciaMobile" class="text-white fw-semibold m-0">Traccia del brano</p>
-            </div>
-            <div class="col-3 d-flex gap-2">
-              <button class="btn p-0 text-white-50">
-                <i class="fs-4 bi bi-speaker"></i>
-              </button>
-              <button class="btn p-0 text-white-50">
-                <i class="fs-4 bi bi-heart"></i>
-              </button>
-              <button id="playMobile" class="btn p-0 text-white-50">
-                <i id="iconPlayMobile" class="fs-4 bi bi-play-fill"></i>
-              </button>
-            </div>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Home – Spotify style</title>
+  <link rel="icon" href="./assets/imgs/logospotify senza sfondo copia.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="stylesheet" href="./assets/css/scrollbar.css" />
+  <link rel="stylesheet" href="./assets/css/circular-font.css" />
+</head>
+
+<body style="font-family: 'Circular', Arial, Helvetica, sans-serif; position: relative">
+  <main>
+    <!-- DIV COLLAPSE SIDEBAR PER VERSIONE MOBILE E SMALL -->
+    <div style="position: fixed; bottom: 0; left: 0; width: 100%; z-index: 1050; background-color: rgba(0, 0, 0, 0.9)"
+      id="navbarPlayesSmall" class="d-md-none py-2">
+      <div class="d-flex align-items-center justify-content-around">
+        <a href="./index.html" class="btn text-decoration-none text-white text-center p-0">
+          <i class="fs-1 bi bi-house-door-fill"></i>
+          <br />
+          Home
+        </a>
+        <a href="./search.html" class="btn text-decoration-none text-white text-center p-0">
+          <i class="fs-1 bi bi-search"></i>
+          <br />
+          Cerca
+        </a>
+        <a href="" class="btn text-decoration-none text-white text-center p-0">
+          <i class="fs-1 bi bi-collection"></i>
+          <br />
+          Libreria
+        </a>
+      </div>
+    </div>
+
+    <!-- DIV COLLAPSE PER IL PLAYER -->
+    <div style="position: fixed; bottom: 90px; left: 0; width: 100%; z-index: 1050" class="container-fluid d-md-none">
+      <div class="bg-dark rounded-1">
+        <div class="row align-items-center p-2">
+          <div class="col">
+            <img id="imgTrackMobile" src="./assets/imgs/main/image-13.jpg" alt="copertina brano" style="width: 25px"
+              class="rounded-circle" />
+          </div>
+          <div class="col-7">
+            <p id="tracciaMobile" class="text-white fw-semibold m-0">Traccia del brano</p>
+          </div>
+          <div class="col-3 d-flex gap-2">
+            <button class="btn p-0 text-white-50">
+              <i class="fs-4 bi bi-speaker"></i>
+            </button>
+            <button class="btn p-0 text-white-50">
+              <i class="fs-4 bi bi-heart"></i>
+            </button>
+            <button id="playMobile" class="btn p-0 text-white-50">
+              <i id="iconPlayMobile" class="fs-4 bi bi-play-fill"></i>
+            </button>
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- DIV CON IL LETTORE E I CONTROLLI AUDIO -->
-      <!-- Player fisso in basso -->
-      <div
-        style="position: fixed; bottom: 0; left: 0; width: 100%; z-index: 1050; box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.5); background-color: rgb(15 15 15)"
-        id="navbarPlayerMedium"
-        class="d-none d-md-block"
-      >
-        <div class="container-fluid">
-          <div class="row py-3">
-            <div class="col-3 col-xl-2 d-flex align-items-center gap-3 flex-fill">
-              <div style="width: 60px; height: 60px">
-                <img
-                  id="imgTrackMedium"
-                  src="https://cdn-images.dzcdn.net/images/cover/0f7f816a316d3303adea31ad037c6740/250x250-000000-80-0-0.jpg"
-                  alt="Cover"
-                  class="w-100"
-                />
-              </div>
-              <div>
-                <h4 id="titleTrackPlayer" class="text-white fs-6 m-0">Fat Funny Friend</h4>
-                <p id="singerPlayer" style="font-size: 14px" class="text-white-50 m-0">Maddie Zahm</p>
-              </div>
-              <button class="btn text-white-50 fs-5 p-0"><i class="bi bi-heart"></i></button>
+    <!-- DIV CON IL LETTORE E I CONTROLLI AUDIO -->
+    <!-- Player fisso in basso -->
+    <div
+      style="position: fixed; bottom: 0; left: 0; width: 100%; z-index: 1050; box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.5); background-color: rgb(15 15 15)"
+      id="navbarPlayerMedium" class="d-none d-md-block">
+      <div class="container-fluid">
+        <div class="row py-3">
+          <div class="col-3 col-xl-2 d-flex align-items-center gap-3 flex-fill">
+            <div style="width: 60px; height: 60px">
+              <img id="imgTrackMedium"
+                src="https://cdn-images.dzcdn.net/images/cover/0f7f816a316d3303adea31ad037c6740/250x250-000000-80-0-0.jpg"
+                alt="Cover" class="w-100" />
             </div>
-            <!-- COLONNA CENTRALE FOOTER  -->
-            <div class="col-5 col-xl-6 col-xxl-7 text-center">
-              <div>
-                <div class="d-flex gap-1 gap-xl-4 align-items-center justify-content-center">
-                  <i class="btn text-white-50 bi bi-shuffle fs-2 p-0"></i>
-                  <i class="btn text-white-50 bi bi-skip-start fs-2 p-0"></i>
-                  <i id="iconPlayMedium" class="btn bi bi-play-circle-fill text-white fs-1 p-0"></i>
-                  <i class="btn text-white-50 bi bi-skip-end fs-2 p-0"></i>
-                  <i class="btn text-white-50 bi bi-repeat fs-2 p-0"></i>
-                </div>
-                <!-- Barra avanzamento brano -->
-                <div class="w-100 d-flex justify-content-center align-items-baseline gap-2">
-                  <div class="progress w-75" style="height: 4px; background: #222">
-                    <div id="progressBarMedium" class="progress-bar bg-white" role="progressbar" style="width: 0%"></div>
-                  </div>
+            <div>
+              <h4 id="titleTrackPlayer" class="text-white fs-6 m-0">Fat Funny Friend</h4>
+              <p id="singerPlayer" style="font-size: 14px" class="text-white-50 m-0">Maddie Zahm</p>
+            </div>
+            <button class="btn text-white-50 fs-5 p-0"><i class="bi bi-heart"></i></button>
+          </div>
+          <!-- COLONNA CENTRALE FOOTER  -->
+          <div class="col-5 col-xl-6 col-xxl-7 text-center">
+            <div>
+              <div class="d-flex gap-1 gap-xl-4 align-items-center justify-content-center">
+                <i class="btn text-white-50 bi bi-shuffle fs-2 p-0"></i>
+                <i class="btn text-white-50 bi bi-skip-start fs-2 p-0"></i>
+                <i id="iconPlayMedium" class="btn bi bi-play-circle-fill text-white fs-1 p-0"></i>
+                <i class="btn text-white-50 bi bi-skip-end fs-2 p-0"></i>
+                <i class="btn text-white-50 bi bi-repeat fs-2 p-0"></i>
+              </div>
+              <!-- Barra avanzamento brano -->
+              <div class="w-100 d-flex justify-content-center align-items-baseline gap-2">
+                <div class="progress w-75" style="height: 4px; background: #222">
+                  <div id="progressBarMedium" class="progress-bar bg-white" role="progressbar" style="width: 0%"></div>
                 </div>
               </div>
             </div>
+          </div>
 
-            <!-- Colonna destra -->
-            <div class="col-4 col-xl-3 col-xxl-3 d-flex align-items-center">
-              <div class="d-flex align-items-center gap-0 gap-xxl-2 flex-fill">
-                <button class="d-none d-xl-block btn p-0">
-                  <i class="bi bi-mic text-white-50"></i>
-                </button>
-                <button class="btn p-0">
-                  <svg
-                    class="icon text-white-50"
-                    role="img"
-                    aria-label="Coda"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M3 6h14v2H3V6zm0 5h14v2H3v-2zM3 16h10v2H3v-2zM20 7l3 2-3 2V7z" />
-                  </svg>
-                </button>
-                <button class="btn p-0">
-                  <svg
-                    class="text-white-50"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="28"
-                    height="28"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                    role="img"
-                    aria-label="Connetti un dispositivo"
-                  >
-                    <path d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-7v2h3v2H8v-2h3v-2H4a2 2 0 0 1-2-2V6zM4 6v9h16V6H4z" />
-                    <path d="M7 18a5 5 0 0 1 5 5H9a3 3 0 0 0-3-3v-2z" />
-                  </svg>
-                </button>
+          <!-- Colonna destra -->
+          <div class="col-4 col-xl-3 col-xxl-3 d-flex align-items-center">
+            <div class="d-flex align-items-center gap-0 gap-xxl-2 flex-fill">
+              <button class="d-none d-xl-block btn p-0">
+                <i class="bi bi-mic text-white-50"></i>
+              </button>
+              <button class="btn p-0">
+                <svg class="icon text-white-50" role="img" aria-label="Coda" xmlns="http://www.w3.org/2000/svg"
+                  width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M3 6h14v2H3V6zm0 5h14v2H3v-2zM3 16h10v2H3v-2zM20 7l3 2-3 2V7z" />
+                </svg>
+              </button>
+              <button class="btn p-0">
+                <svg class="text-white-50" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor"
+                  viewBox="0 0 24 24" role="img" aria-label="Connetti un dispositivo">
+                  <path
+                    d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-7v2h3v2H8v-2h3v-2H4a2 2 0 0 1-2-2V6zM4 6v9h16V6H4z" />
+                  <path d="M7 18a5 5 0 0 1 5 5H9a3 3 0 0 0-3-3v-2z" />
+                </svg>
+              </button>
 
-                <!-- Barra volume con span + thumb(il pallino) -->
-                <div class="d-flex align-items-center gap-2">
-                  <i class="bi bi-volume-up fs-3 text-white-50"></i>
-                  <div
-                    id="volume-bar"
-                    class="volume-progress"
-                    style="width: 100px; height: 8px; background: black; border-radius: 999px; position: relative; cursor: pointer"
-                  >
-                    <span
-                      id="volume-fill"
-                      style="display: block; position: absolute; top: 0; left: 0; height: 100%; width: 70%; background: white; border-radius: 999px"
-                    ></span>
-                    <div
-                      id="volume-thumb"
-                      class="volume-thumb"
-                      style="
+              <!-- Barra volume con span + thumb(il pallino) -->
+              <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-volume-up fs-3 text-white-50"></i>
+                <div id="volume-bar" class="volume-progress"
+                  style="width: 100px; height: 8px; background: black; border-radius: 999px; position: relative; cursor: pointer">
+                  <span id="volume-fill"
+                    style="display: block; position: absolute; top: 0; left: 0; height: 100%; width: 70%; background: white; border-radius: 999px"></span>
+                  <div id="volume-thumb" class="volume-thumb" style="
                         position: absolute;
                         top: 50%;
                         left: 70%;
@@ -166,321 +139,328 @@
                         background: white;
                         border-radius: 50%;
                         pointer-events: none;
-                      "
-                    ></div>
-                  </div>
+                      "></div>
                 </div>
-
-                <button class="d-none d-xl-block btn p-0">
-                  <svg
-                    class="icon-full text-white-50"
-                    role="img"
-                    aria-label="Entra in schermo intero"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M7 14H5v4h4v-2H7v-2zm10 0v2h-2v2h4v-4h-2zM7 6h2V4H5v4h2V6zm10 0v2h2V4h-4v2h2z" />
-                  </svg>
-                </button>
               </div>
+
+              <button class="d-none d-xl-block btn p-0">
+                <svg class="icon-full text-white-50" role="img" aria-label="Entra in schermo intero"
+                  xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M7 14H5v4h4v-2H7v-2zm10 0v2h-2v2h4v-4h-2zM7 6h2V4H5v4h2V6zm10 0v2h2V4h-4v2h2z" />
+                </svg>
+              </button>
             </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- INIZIO CONTAINER PER I CONTNEUTI PRINCIPALI -->
-      <div class="container-fluid">
-        <div class="row">
-          <!-- SIDEBAR LEFT -->
-          <div class="col-4 col-xl-2 d-none d-md-block bg-black h-100">
-            <aside>
-              <div class="d-flex flex-column align-items-start">
-                <button class="btn text-white-50 fs-5">
-                  <i class="fs-4 bi me-2 bi-three-dots"></i>
-                </button>
-                <a href="./index.html">
-                  <button style="font-family: Circular, sans-serif" class="btn text-white-50 fs-5"><i class="fs-4 bi me-2 bi-house-door-fill"></i> Home</button>
-                </a>
-                <a href="./search.html">
-                  <button style="font-family: Circular, sans-serif" class="btn text-white-50 fs-5"><i class="fs-4 bi me-2 bi-search"></i> Cerca</button>
-                </a>
-                <button style="font-family: Circular, sans-serif" class="btn text-start text-white-50 fs-5">
-                  <i class="fs-4 bi me-2 bi-collection"></i> La tua libreria
-                </button>
-              </div>
-
-              <div class="d-flex flex-column align-items-start mt-3">
-                <button style="font-family: Circular, sans-serif" class="btn text-white-50 fs-5">
-                  <i class="fs-4 bi bi-plus-square-fill me-2"></i>Crea playlist
-                </button>
-                <button style="font-family: Circular, sans-serif" class="btn text-start text-white-50 fs-5">
-                  <i class="fs-4 bi bi-bookmark-heart-fill me-2"></i>Brani che ti piacciono
-                </button>
-
-                <button style="font-family: Circular, sans-serif" class="btn text-white-50 fs-5">
-                  <i class="fs-4 bi bi-bookmark-fill me-2"></i>I tuoi episodi
-                </button>
-              </div>
-              <div class="border-top border-dark"></div>
-              <div class="scrollable2 d-flex flex-column align-items-start">
-                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">early stage emily syndrome (sett-ott 2022)</a>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Be The Young</a>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">"..." cit. Kimiko (lug-ago 2022)</a>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">saggio vibes 💃 &#xF483; 🩰</a>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">that fucking mood 🔪☠</a>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 text-uppercase my-1">vee,carlotta e giacomo vanno a bosio</a>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">An Emily Winchester kind of mood 🔪🖕</a>
-                <div class="w-100 d-flex align-items-center justify-content-between">
-                  <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">landing page (mar-apr 2022)</a>
-                  <button class="btn p-0">
-                    <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
-                  </button>
-                </div>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">2021 lol</a>
-                <div class="w-100 d-flex align-items-center justify-content-between">
-                  <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">cosa cazzo cuol dire questa affermazione (g..</a>
-                  <button class="btn p-0">
-                    <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
-                  </button>
-                </div>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">honey and glass (nov-dic 2021)</a>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">(Revenge) Training Arc1F412 🦍</a>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Lidia & Emily</a>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">minecraft e nintendo switch</a>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Silvano d'orba? i hardly know her</a>
-                <div class="w-100 d-flex align-items-center justify-content-between">
-                  <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Culo 2021</a>
-                  <button class="btn p-0">
-                    <i class="bi bi-people text-white-50"></i>
-                  </button>
-                </div>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Frah Quintale Mix</a>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Francesco Guccini Mix</a>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">early stage emily syndrome (sett-ott 2022)</a>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Be The Young</a>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">"..." cit. Kimiko (lug-ago 2022)</a>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">saggio vibes 💃 &#xF483; 🩰</a>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">that fucking mood 🔪☠</a>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 text-uppercase my-1">vee,carlotta e giacomo vanno a bosio</a>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">An Emily Winchester kind of mood 🔪🖕</a>
-                <div class="w-100 d-flex align-items-center justify-content-between">
-                  <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">landing page (mar-apr 2022)</a>
-                  <button class="btn p-0">
-                    <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
-                  </button>
-                </div>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">2021 lol</a>
-                <div class="w-100 d-flex align-items-center justify-content-between">
-                  <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">cosa cazzo cuol dire questa affermazione (g..</a>
-                  <button class="btn p-0">
-                    <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
-                  </button>
-                </div>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">honey and glass (nov-dic 2021)</a>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">(Revenge) Training Arc1F412 🦍</a>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Lidia & Emily</a>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">minecraft e nintendo switch</a>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Silvano d'orba? i hardly know her</a>
-                <div class="w-100 d-flex align-items-center justify-content-between">
-                  <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Culo 2021</a>
-                  <button class="btn p-0">
-                    <i class="bi bi-people text-white-50"></i>
-                  </button>
-                </div>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Frah Quintale Mix</a>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Francesco Guccini Mix</a>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">early stage emily syndrome (sett-ott 2022)</a>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Be The Young</a>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">"..." cit. Kimiko (lug-ago 2022)</a>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">saggio vibes 💃 &#xF483; 🩰</a>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">that fucking mood 🔪☠</a>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 text-uppercase my-1">vee,carlotta e giacomo vanno a bosio</a>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">An Emily Winchester kind of mood 🔪🖕</a>
-                <div class="w-100 d-flex align-items-center justify-content-between">
-                  <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">landing page (mar-apr 2022)</a>
-                  <button class="btn p-0">
-                    <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
-                  </button>
-                </div>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">2021 lol</a>
-                <div class="w-100 d-flex align-items-center justify-content-between">
-                  <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">cosa cazzo cuol dire questa affermazione (g..</a>
-                  <button class="btn p-0">
-                    <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
-                  </button>
-                </div>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">honey and glass (nov-dic 2021)</a>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">(Revenge) Training Arc1F412 🦍</a>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Lidia & Emily</a>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">minecraft e nintendo switch</a>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Silvano d'orba? i hardly know her</a>
-                <div class="w-100 d-flex align-items-center justify-content-between">
-                  <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Culo 2021</a>
-                  <button class="btn p-0">
-                    <i class="bi bi-people text-white-50"></i>
-                  </button>
-                </div>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Frah Quintale Mix</a>
-                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Francesco Guccini Mix</a>
-              </div>
-            </aside>
-          </div>
-
-          <!-- CONTENUTO PRINCIPALI CON L'ALBUM SCELTO E I BRANI -->
-          <div class="col-12 col-md-8 h-100 p-0">
-            <div class="scrollable px-3">
-              <!-- Hero (desktop only) -->
-              <section class="hero mb-4 d-none d-md-flex">
-                <img class="cover" src="./assets/imgs/main/image-1.jpg" alt="" />
-                <div class="flex-grow-1">
-                  <div class="text-uppercase text-muted-soft small fw-bold">Album</div>
-                  <h1>VIOLA (feat. Salmo)</h1>
-                  <div class="meta mt-1">Fedez, Salmo • Ascolta il nuovo singolo di Fedez e Salmo!</div>
-                  <div class="d-flex gap-2 mt-3">
-                    <button class="btn-play">Play</button>
-                    <button class="btn-soft">Salva</button>
-                    <button class="btn-soft"><i class="bi bi-three-dots"></i></button>
-                  </div>
-                </div>
-              </section>
-
-              <!-- Buonasera / navbar -->
-              <header class="mb-3">
-                <div class="d-flex align-items-center justify-content-between">
-                  <h2 class="h3 fw-bold mb-0">Buonasera</h2>
-
-                  <!-- Title icons -->
-                  <div class="d-flex align-items-center gap-2">
-                    <button type="button" class="ctrl-btn position-relative">
-                      <i class="bi bi-bell"></i>
-                      <!-- blue dot -->
-                      <span class="notif-dot position-absolute top-0 start-100 translate-middle rounded-circle"></span>
-                    </button>
-                    <button type="button" class="ctrl-btn"><i class="bi bi-clock-history"></i></button>
-                    <button type="button" class="ctrl-btn"><i class="bi bi-gear"></i></button>
-                  </div>
-                </div>
-
-                <!-- Pills -->
-                <ul class="nav nav-pills small gap-4 mt-3">
-                  <li class="nav-item">
-                    <button class="btn btn-pill active" type="button">Musica</button>
-                  </li>
-                  <li class="nav-item">
-                    <button class="btn btn-pill" type="button">Podcast e show</button>
-                  </li>
-                </ul>
-              </header>
-
-              <!-- Tiles (popolati via JS) -->
-              <div class="d-flex justify-content-between align-items-center mb-2">
-                <div class="text-muted-soft small">Aggiorna suggerimenti</div>
-                <button id="btnRandom" class="btn btn-soft btn-sm px-3">Random</button>
-              </div>
-
-              <div id="tilesRow" class="row g-3 row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xxl-4 mb-4">
-                <!-- JS will inject tiles here -->
-              </div>
-
-              <!-- Search + results -->
-              <section id="search" class="mb-2">
-                <form id="searchForm" class="row g-2 align-items-center">
-                  <div class="col-12 col-sm">
-                    <input id="searchInput" class="form-control form-control-dark" placeholder="Cerca brani, artisti o album…" />
-                  </div>
-                  <div class="col-auto">
-                    <button id="btnSearch" class="btn btn-play px-3" type="submit">Cerca</button>
-                  </div>
-                </form>
-              </section>
-
-              <div class="d-flex justify-content-between align-items-center">
-                <h2 class="section-title mb-2">Altro di ciò che ti piace</h2>
-                <a href="#" class="text-muted-soft small text-decoration-none d-none d-md-block">VISUALIZZA TUTTO</a>
-              </div>
-
-              <div id="albumsRow" class="row g-3 row-cols-2 row-cols-md-3 row-cols-lg-5">
-                <!-- JS will inject album/track cards here -->
-              </div>
-
-              <hr class="hr-soft mt-4" />
+    <!-- INIZIO CONTAINER PER I CONTNEUTI PRINCIPALI -->
+    <div class="container-fluid">
+      <div class="row">
+        <!-- SIDEBAR LEFT -->
+        <div class="col-4 col-xl-2 d-none d-md-block bg-black h-100">
+          <aside>
+            <div class="d-flex flex-column align-items-start">
+              <button class="btn text-white-50 fs-5">
+                <i class="fs-4 bi me-2 bi-three-dots"></i>
+              </button>
+              <a href="./index.html">
+                <button style="font-family: Circular, sans-serif" class="btn text-white-50 fs-5"><i
+                    class="fs-4 bi me-2 bi-house-door-fill"></i> Home</button>
+              </a>
+              <a href="./search.html">
+                <button style="font-family: Circular, sans-serif" class="btn text-white-50 fs-5"><i
+                    class="fs-4 bi me-2 bi-search"></i> Cerca</button>
+              </a>
+              <button style="font-family: Circular, sans-serif" class="btn text-start text-white-50 fs-5">
+                <i class="fs-4 bi me-2 bi-collection"></i> La tua libreria
+              </button>
             </div>
-          </div>
 
-          <!-- SIDEBAR RIGHT -->
-          <div class="col-2 d-none d-xl-block bg-black">
-            <aside>
-              <div class="d-flex justify-content-end gap-3">
-                <button class="btn text-white p-0">
-                  <i class="fs-4 bi bi-dash-lg"></i>
-                </button>
-                <button class="btn text-white p-0">
-                  <i class="bi bi-window-stack"></i>
-                </button>
-                <button class="btn text-white p-0">
-                  <i class="fs-4 bi bi-x"></i>
+            <div class="d-flex flex-column align-items-start mt-3">
+              <button style="font-family: Circular, sans-serif" class="btn text-white-50 fs-5">
+                <i class="fs-4 bi bi-plus-square-fill me-2"></i>Crea playlist
+              </button>
+              <button style="font-family: Circular, sans-serif" class="btn text-start text-white-50 fs-5">
+                <i class="fs-4 bi bi-bookmark-heart-fill me-2"></i>Brani che ti piacciono
+              </button>
+
+              <button style="font-family: Circular, sans-serif" class="btn text-white-50 fs-5">
+                <i class="fs-4 bi bi-bookmark-fill me-2"></i>I tuoi episodi
+              </button>
+            </div>
+            <div class="border-top border-dark"></div>
+            <div class="scrollable2 d-flex flex-column align-items-start">
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">early stage emily syndrome (sett-ott
+                2022)</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Be The Young</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">"..." cit. Kimiko (lug-ago 2022)</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">saggio vibes 💃 &#xF483; 🩰</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">that fucking mood 🔪☠</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 text-uppercase my-1">vee,carlotta e giacomo
+                vanno a bosio</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">An Emily Winchester kind of mood 🔪🖕</a>
+              <div class="w-100 d-flex align-items-center justify-content-between">
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">landing page (mar-apr 2022)</a>
+                <button class="btn p-0">
+                  <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
                 </button>
               </div>
-              <div class="d-flex justify-content-between align-items-center">
-                <h6 class="text-white fs-5 m-0">Attività amici</h6>
-                <div>
-                  <button class="btn p-0">
-                    <i class="text-white-50 fs-5 bi bi-person-fill-add"></i>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">2021 lol</a>
+              <div class="w-100 d-flex align-items-center justify-content-between">
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">cosa cazzo cuol dire questa
+                  affermazione (g..</a>
+                <button class="btn p-0">
+                  <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
+                </button>
+              </div>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">honey and glass (nov-dic 2021)</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">(Revenge) Training Arc1F412 🦍</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Lidia & Emily</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">minecraft e nintendo switch</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Silvano d'orba? i hardly know her</a>
+              <div class="w-100 d-flex align-items-center justify-content-between">
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Culo 2021</a>
+                <button class="btn p-0">
+                  <i class="bi bi-people text-white-50"></i>
+                </button>
+              </div>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Frah Quintale Mix</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Francesco Guccini Mix</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">early stage emily syndrome (sett-ott
+                2022)</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Be The Young</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">"..." cit. Kimiko (lug-ago 2022)</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">saggio vibes 💃 &#xF483; 🩰</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">that fucking mood 🔪☠</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 text-uppercase my-1">vee,carlotta e giacomo
+                vanno a bosio</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">An Emily Winchester kind of mood 🔪🖕</a>
+              <div class="w-100 d-flex align-items-center justify-content-between">
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">landing page (mar-apr 2022)</a>
+                <button class="btn p-0">
+                  <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
+                </button>
+              </div>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">2021 lol</a>
+              <div class="w-100 d-flex align-items-center justify-content-between">
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">cosa cazzo cuol dire questa
+                  affermazione (g..</a>
+                <button class="btn p-0">
+                  <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
+                </button>
+              </div>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">honey and glass (nov-dic 2021)</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">(Revenge) Training Arc1F412 🦍</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Lidia & Emily</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">minecraft e nintendo switch</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Silvano d'orba? i hardly know her</a>
+              <div class="w-100 d-flex align-items-center justify-content-between">
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Culo 2021</a>
+                <button class="btn p-0">
+                  <i class="bi bi-people text-white-50"></i>
+                </button>
+              </div>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Frah Quintale Mix</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Francesco Guccini Mix</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">early stage emily syndrome (sett-ott
+                2022)</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Be The Young</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">"..." cit. Kimiko (lug-ago 2022)</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">saggio vibes 💃 &#xF483; 🩰</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">that fucking mood 🔪☠</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 text-uppercase my-1">vee,carlotta e giacomo
+                vanno a bosio</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">An Emily Winchester kind of mood 🔪🖕</a>
+              <div class="w-100 d-flex align-items-center justify-content-between">
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">landing page (mar-apr 2022)</a>
+                <button class="btn p-0">
+                  <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
+                </button>
+              </div>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">2021 lol</a>
+              <div class="w-100 d-flex align-items-center justify-content-between">
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">cosa cazzo cuol dire questa
+                  affermazione (g..</a>
+                <button class="btn p-0">
+                  <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
+                </button>
+              </div>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">honey and glass (nov-dic 2021)</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">(Revenge) Training Arc1F412 🦍</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Lidia & Emily</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">minecraft e nintendo switch</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Silvano d'orba? i hardly know her</a>
+              <div class="w-100 d-flex align-items-center justify-content-between">
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Culo 2021</a>
+                <button class="btn p-0">
+                  <i class="bi bi-people text-white-50"></i>
+                </button>
+              </div>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Frah Quintale Mix</a>
+              <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Francesco Guccini Mix</a>
+            </div>
+          </aside>
+        </div>
+
+        <!-- CONTENUTO PRINCIPALI CON L'ALBUM SCELTO E I BRANI -->
+        <div class="col-12 col-md-8 h-100 p-0">
+          <div class="scrollable px-3">
+            <!-- Hero (desktop only) -->
+            <section class="hero mb-4 d-none d-md-flex">
+              <img class="cover" src="./assets/imgs/main/image-1.jpg" alt="" />
+              <div class="flex-grow-1">
+                <div class="text-uppercase text-muted-soft small fw-bold">Album</div>
+                <h1>VIOLA (feat. Salmo)</h1>
+                <div class="meta mt-1">Fedez, Salmo • Ascolta il nuovo singolo di Fedez e Salmo!</div>
+                <div class="d-flex gap-2 mt-3">
+                  <button class="btn-play">Play</button>
+                  <button class="btn-soft">Salva</button>
+                  <button class="btn-soft"><i class="bi bi-three-dots"></i></button>
+                </div>
+              </div>
+            </section>
+
+            <!-- Buonasera / navbar -->
+            <header class="mb-3">
+              <div class="d-flex align-items-center justify-content-between">
+                <h2 class="h3 fw-bold mb-0">Buonasera</h2>
+
+                <!-- Title icons -->
+                <div class="d-flex align-items-center gap-2">
+                  <button type="button" class="ctrl-btn position-relative">
+                    <i class="bi bi-bell"></i>
+                    <!-- blue dot -->
+                    <span class="notif-dot position-absolute top-0 start-100 translate-middle rounded-circle"></span>
                   </button>
-                  <button class="btn p-0">
-                    <i class="text-white-50 fs-5 bi bi-x"></i>
-                  </button>
+                  <button type="button" class="ctrl-btn"><i class="bi bi-clock-history"></i></button>
+                  <button type="button" class="ctrl-btn"><i class="bi bi-gear"></i></button>
                 </div>
               </div>
-              <div class="row mt-5">
-                <div class="col-2">
-                  <img src="./assets/imgs/main/image-11.jpg" alt="" class="w-100 rounded-circle" />
+
+              <!-- Pills -->
+              <ul class="nav nav-pills small gap-4 mt-3">
+                <li class="nav-item">
+                  <button class="btn btn-pill active" type="button">Musica</button>
+                </li>
+                <li class="nav-item">
+                  <button class="btn btn-pill" type="button">Podcast e show</button>
+                </li>
+              </ul>
+            </header>
+
+            <!-- Tiles (popolati via JS) -->
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <div class="text-muted-soft small">Aggiorna suggerimenti</div>
+              <button id="btnRandom" class="btn btn-soft btn-sm px-3">Random</button>
+            </div>
+
+            <div id="tilesRow" class="row g-3 row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xxl-4 mb-4">
+              <!-- JS will inject tiles here -->
+            </div>
+
+            <!-- Search + results -->
+            <section id="search" class="mb-2">
+              <form id="searchForm" class="row g-2 align-items-center">
+                <div class="col-12 col-sm">
+                  <input id="searchInput" class="form-control form-control-dark"
+                    placeholder="Cerca brani, artisti o album…" />
                 </div>
-                <div class="col">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <h5 class="text-white-50 fw-bold m-0">Charlie Hookham</h5>
-                    <span class="text-white-50">4 ore</span>
-                  </div>
-                  <p class="text-white-50 m-0">In camera <span style="font-size: 10px" class="text-white">•</span> Yumi Zouma</p>
-                  <p class="text-white-50"><i class="bi bi-record-circle me-2"></i>EP III</p>
+                <div class="col-auto">
+                  <button id="btnSearch" class="btn btn-play px-3" type="submit">Cerca</button>
                 </div>
-              </div>
-              <div class="row mt-5">
-                <div class="col-2">
-                  <img src="./assets/imgs/main/image-12.jpg" alt="" class="w-100 rounded-circle" />
-                </div>
-                <div class="col">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <h5 class="text-white-50 fw-bold m-0">lightdark02</h5>
-                    <span class="text-white-50">8 ore</span>
-                  </div>
-                  <p class="text-white-50 m-0">Aimed to Kill <span style="font-size: 10px" class="text-white">•</span> Jade LeMac</p>
-                  <p class="text-white-50"><i class="bi bi-record-circle me-2"></i>Aimed to Kill</p>
-                </div>
-              </div>
-              <div class="row mt-5">
-                <div class="col-2">
-                  <img src="./assets/imgs/main/image-13.jpg" alt="" class="w-100 rounded-circle" />
-                </div>
-                <div class="col">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <h5 class="text-white-50 fw-bold m-0">Valeria Traverso</h5>
-                    <span class="text-white-50">3 giorni</span>
-                  </div>
-                  <p class="text-white-50 m-0">New Kings <span style="font-size: 10px" class="text-white">•</span> Sleeping Wolf</p>
-                  <p class="text-white-50"><i class="bi bi-earbuds me-2"></i>ETwint Badass mood</p>
-                </div>
-              </div>
-            </aside>
+              </form>
+            </section>
+
+            <div class="d-flex justify-content-between align-items-center">
+              <h2 class="section-title mb-2">Altro di ciò che ti piace</h2>
+              <a href="#" class="text-muted-soft small text-decoration-none d-none d-md-block">VISUALIZZA TUTTO</a>
+            </div>
+
+            <div id="albumsRow" class="row g-3 row-cols-2 row-cols-md-3 row-cols-lg-5">
+              <!-- JS will inject album/track cards here -->
+            </div>
+
+            <hr class="hr-soft mt-4" />
           </div>
         </div>
+
+        <!-- SIDEBAR RIGHT -->
+        <div class="col-2 d-none d-xl-block bg-black">
+          <aside>
+            <div class="d-flex justify-content-end gap-3">
+              <button class="btn text-white p-0">
+                <i class="fs-4 bi bi-dash-lg"></i>
+              </button>
+              <button class="btn text-white p-0">
+                <i class="bi bi-window-stack"></i>
+              </button>
+              <button class="btn text-white p-0">
+                <i class="fs-4 bi bi-x"></i>
+              </button>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <h6 class="text-white fs-5 m-0">Attività amici</h6>
+              <div>
+                <button class="btn p-0">
+                  <i class="text-white-50 fs-5 bi bi-person-fill-add"></i>
+                </button>
+                <button class="btn p-0">
+                  <i class="text-white-50 fs-5 bi bi-x"></i>
+                </button>
+              </div>
+            </div>
+            <div class="row mt-5">
+              <div class="col-2">
+                <img src="./assets/imgs/main/image-11.jpg" alt="" class="w-100 rounded-circle" />
+              </div>
+              <div class="col">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h5 class="text-white-50 fw-bold m-0">Charlie Hookham</h5>
+                  <span class="text-white-50">4 ore</span>
+                </div>
+                <p class="text-white-50 m-0">In camera <span style="font-size: 10px" class="text-white">•</span> Yumi
+                  Zouma</p>
+                <p class="text-white-50"><i class="bi bi-record-circle me-2"></i>EP III</p>
+              </div>
+            </div>
+            <div class="row mt-5">
+              <div class="col-2">
+                <img src="./assets/imgs/main/image-12.jpg" alt="" class="w-100 rounded-circle" />
+              </div>
+              <div class="col">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h5 class="text-white-50 fw-bold m-0">lightdark02</h5>
+                  <span class="text-white-50">8 ore</span>
+                </div>
+                <p class="text-white-50 m-0">Aimed to Kill <span style="font-size: 10px" class="text-white">•</span>
+                  Jade LeMac</p>
+                <p class="text-white-50"><i class="bi bi-record-circle me-2"></i>Aimed to Kill</p>
+              </div>
+            </div>
+            <div class="row mt-5">
+              <div class="col-2">
+                <img src="./assets/imgs/main/image-13.jpg" alt="" class="w-100 rounded-circle" />
+              </div>
+              <div class="col">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h5 class="text-white-50 fw-bold m-0">Valeria Traverso</h5>
+                  <span class="text-white-50">3 giorni</span>
+                </div>
+                <p class="text-white-50 m-0">New Kings <span style="font-size: 10px" class="text-white">•</span>
+                  Sleeping Wolf</p>
+                <p class="text-white-50"><i class="bi bi-earbuds me-2"></i>ETwint Badass mood</p>
+              </div>
+            </div>
+          </aside>
+        </div>
       </div>
-    </main>
-    <audio id="audio-player"></audio>
-    <script src="./assets/script/script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-  </body>
+    </div>
+  </main>
+  <audio id="audio-player"></audio>
+  <script src="./assets/script/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
 </html>
