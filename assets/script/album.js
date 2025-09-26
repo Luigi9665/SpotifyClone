@@ -1,8 +1,4 @@
 //  VARIABILI GENERALI
-const volumeBar = document.getElementById("volume-bar");
-const volumeFill = document.getElementById("volume-fill");
-const volumeThumb = document.getElementById("volume-thumb");
-const audio = document.getElementById("audio-player");
 // const URL = "https://deezerdevs-deezer.p.rapidapi.com/album/";
 // const appId = params.get("album");
 let URL = "";
@@ -11,10 +7,14 @@ let condition;
 const params = new URLSearchParams(window.location.search);
 const rowTracks = document.getElementById("rowTracks");
 const rowAlbum = document.getElementById("rowAlbum");
-
+const saved = sessionStorage.getItem("trackSaved");
 // -------------------------------------------------------------------------------
 // VARIABILI UTILI PER IL PLAYER
 // variabili player mobile
+const volumeBar = document.getElementById("volume-bar");
+const volumeFill = document.getElementById("volume-fill");
+const volumeThumb = document.getElementById("volume-thumb");
+const audio = document.getElementById("audio-player");
 const tracciaMobile = document.getElementById("tracciaMobile");
 const playMobile = document.getElementById("playMobile");
 const iconPlayMobile = document.getElementById("iconPlayMobile");
@@ -41,6 +41,19 @@ if (params.toString().includes("album")) {
 }
 
 // FUNZIONI
+
+// SALVATAGGIO NEL SESSIONSTORAGE
+const saveTrack = (track) => {
+  const data = {
+    linkImgTrack: `https://cdn-images.dzcdn.net/images/cover/${track.md5_image}/500x500.jpg`,
+    title: track.title,
+    artist: track.artist.name,
+    preview: track.preview,
+    currentTime: audio.currentTime,
+  };
+
+  sessionStorage.setItem("trackSaved", JSON.stringify(data));
+};
 
 // -------------------------------------------------------------------------------
 // SET BARRA VOLUME - BLOCCO ISTRUZIONI
@@ -129,11 +142,83 @@ audio.addEventListener("timeupdate", () => {
     const percent = (audio.currentTime / audio.duration) * 100;
     progressBarMedium.style.width = percent + "%";
   }
+
+  // salvo il current time con l'update per il sessionstorage
+  const current = Math.floor(audio.currentTime);
+  const saved = sessionStorage.getItem("trackSaved");
+  if (saved) {
+    const track = JSON.parse(saved);
+    if (track.currentTime !== current) {
+      track.currentTime = current;
+      sessionStorage.setItem("trackSaved", JSON.stringify(track));
+    }
+  }
+
+  // uso la stessa variabile current per il timer che scorre
+  const pdurationProgress = document.getElementById("durationProgress");
+  if (pdurationProgress) {
+    if (current < 10) {
+      pdurationProgress.innerText = "0:0" + current;
+    } else {
+      pdurationProgress.innerText = "0:" + current;
+    }
+  }
+});
+
+// listener dell'audio terminato mi cancella la proprietà salvata nel sessionStorage
+audio.addEventListener("ended", () => {
+  console.log("Audio terminato");
+  sessionStorage.removeItem("trackSaved");
 });
 
 // -------------------------------------------------------------------------------
 
 // GENERAZIONE DELLA PAGINA
+
+// generazione della durata traccia
+const generateDuration = () => {
+  // check per eliminazione contenuto
+  const checkProgressDuration = document.getElementById("durationProgress");
+  const checkTotalDuration = document.getElementById("totalDuration");
+  if (checkProgressDuration) {
+    checkProgressDuration.remove();
+    checkTotalDuration.remove();
+  }
+
+  const progress = document.querySelector(".progress");
+  const pDurationProgress = document.createElement("p");
+  pDurationProgress.id = "durationProgress";
+  pDurationProgress.className = "text-white-50 fs-5 m-0";
+
+  if (saved) {
+    const track = JSON.parse(saved);
+    if (track.currentTime < 10) {
+      pDurationProgress.innerText = "0:0" + track.currentTime;
+    } else {
+      pDurationProgress.innerText = "0:" + track.currentTime;
+    }
+  } else {
+    pDurationProgress.innerText = "0:00";
+  }
+  const pTotalDuration = document.createElement("p");
+  pTotalDuration.id = "totalDuration";
+  pTotalDuration.className = "text-white-50 fs-5 m-0";
+  pTotalDuration.innerText = "0:30";
+
+  // gli append
+  progress.before(pDurationProgress);
+  progress.after(pTotalDuration);
+};
+
+// controllo del bg success
+const checkSuccess = () => {
+  const rowSucce = document.querySelectorAll(".selected");
+  if (rowSucce) {
+    rowSucce.forEach((row) => row.classList.remove("bg-success", "bg-gradient", "rounded-3", "selected"));
+  } else {
+    return;
+  }
+};
 
 // costruzione del background con il media color
 const generateBackground = () => {
@@ -275,24 +360,9 @@ const generateTracks = (track, index) => {
   h2.className = "btn p-0 text-white text-start fs-5 mb-0";
   h2.innerText = title;
 
-  //   il Listener per mandare la traccia all'elemento audio
-  h2.addEventListener("click", () => {
-    audio.pause(); // stop eventuale brano in corso
-    audio.src = preview; // nuova traccia
-    audio.currentTime = 0;
-    audio
-      .play()
-      .then(() => {
-        console.log("Riproduzione avviata");
-        startMedium(linkImgTrack, title, artist);
-        startMobile(title, linkImgTrack);
-      })
-      .catch((err) => console.warn("Riproduzione bloccata:", err));
-  });
-
   const linkArtist = document.createElement("a");
-  linkArtist.className = "text-decoration-none text-white-50 d-block";
-  linkArtist.href = "artist.html?artistID=" + idSinger;
+  linkArtist.className = "text-decoration-none text-white-50 d-block w-25";
+  linkArtist.href = "artist.html?artist=" + idSinger;
   linkArtist.innerText = artist;
   const divExplicit = document.createElement("div");
   divExplicit.className = "d-flex align-items-center gap-1";
@@ -338,6 +408,35 @@ const generateTracks = (track, index) => {
   //   append nella row di tutte le col
   row.append(colIndex, colTitle, colRipro, colTime, colIcon);
   rowTracks.appendChild(row);
+
+  //   il Listener per mandare la traccia all'elemento audio
+  h2.addEventListener("click", () => {
+    audio.pause(); // stop eventuale brano in corso
+    audio.src = preview; // nuova traccia
+    audio.currentTime = 0;
+    audio
+      .play()
+      .then(() => {
+        sessionStorage.removeItem("trackSaved");
+        saveTrack(track);
+        console.log("Riproduzione avviata");
+        generateDuration();
+        startMedium(linkImgTrack, title, artist);
+        startMobile(title, linkImgTrack);
+        checkSuccess();
+        row.classList.add("bg-success", "bg-gradient", "rounded-3", "selected");
+      })
+      .catch((err) => console.warn("Riproduzione bloccata:", err));
+  });
+};
+
+// pausa del player al caricamento di una nuova pagina
+const pausePlayer = () => {
+  audio.pause();
+  iconPlayMobile.classList.remove("bi-pause-fill");
+  iconPlayMobile.classList.add("bi-play-fill");
+  iconPlayMedium.classList.remove("bi-pause-circle-fill");
+  iconPlayMedium.classList.add("bi-play-circle-fill");
 };
 
 // FETCH
@@ -384,4 +483,21 @@ window.addEventListener("DOMContentLoaded", () => {
       console.log(err);
       alert(err);
     });
+
+  if (saved) {
+    const track = JSON.parse(saved);
+    console.log("track", track);
+    audio.src = track.preview; // nuova traccia
+    audio.currentTime = track.currentTime || 0;
+    audio
+      .play()
+      .then(() => {
+        console.log("Riproduzione avviata");
+        startMedium(track.linkImgTrack, track.title, track.artist);
+        startMobile(track.title, track.linkImgTrack);
+        pausePlayer();
+        generateDuration();
+      })
+      .catch((err) => console.warn("Riproduzione bloccata:", err));
+  }
 });

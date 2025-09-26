@@ -1,139 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Spotify Clone - Artist page</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="./assets/css/artist.css" />
     <link rel="stylesheet" href="./assets/css/circular-font.css" />
-    <!-- <link rel="stylesheet" href="./assets/css/scrollbarArtist.css" /> -->
     <link rel="stylesheet" href="./assets/css/scrollbar.css" />
-</head>
+  </head>
 
-<body style="font-family: Circularns-serif" data-bs-theme="dark" class="bg-black">
+  <body style="font-family: 'Circular', Arial, Helvetica, sans-serif" data-bs-theme="dark" class="bg-black">
     <main class="d-flex">
-        <!-- DIV COLLAPSE SIDEBAR PER VERSIONE MOBILE E SMALL -->
-        <div style="position: fixed; bottom: 0; left: 0; width: 100%; z-index: 1050; background-color: rgba(0, 0, 0, 0.9)"
-            id="navbarPlayesSmall" class="d-md-none py-2">
-            <div class="d-flex align-items-center justify-content-around">
-                <a href="./index.html" class="btn text-decoration-none text-white text-center p-0">
-                    <i class="fs-1 bi bi-house-door-fill"></i>
-                    <br />
-                    Home
-                </a>
-                <a href="./search.html" class="btn text-decoration-none text-white text-center p-0">
-                    <i class="fs-1 bi bi-search"></i>
-                    <br />
-                    Cerca
-                </a>
-                <a href="" class="btn text-decoration-none text-white text-center p-0">
-                    <i class="fs-1 bi bi-collection"></i>
-                    <br />
-                    Libreria
-                </a>
-            </div>
+      <!-- DIV COLLAPSE SIDEBAR PER VERSIONE MOBILE E SMALL -->
+      <div
+        style="position: fixed; bottom: 0; left: 0; width: 100%; z-index: 1050; background-color: rgba(0, 0, 0, 0.9)"
+        id="navbarPlayesSmall"
+        class="d-md-none py-2"
+      >
+        <div class="d-flex align-items-center justify-content-around">
+          <a href="./index.html" class="btn text-decoration-none text-white text-center p-0">
+            <i class="fs-1 bi bi-house-door-fill"></i>
+            <br />
+            Home
+          </a>
+          <a href="./search.html" class="btn text-decoration-none text-white text-center p-0">
+            <i class="fs-1 bi bi-search"></i>
+            <br />
+            Cerca
+          </a>
+          <a href="" class="btn text-decoration-none text-white text-center p-0">
+            <i class="fs-1 bi bi-collection"></i>
+            <br />
+            Libreria
+          </a>
         </div>
-        <!-- DIV COLLAPSE PER IL PLAYER -->
-        <div style="position: fixed; bottom: 90px; left: 0; width: 100%; z-index: 1050"
-            class="container-fluid d-md-none">
-            <div class="bg-dark rounded-1">
-                <div class="row align-items-center p-2">
-                    <div class="col">
-                        <img id="imgTrackMobile" src="./assets/imgs/main/image-13.jpg" alt="copertina brano"
-                            style="width: 25px" class="rounded-circle" />
-                    </div>
-                    <div class="col-7">
-                        <p id="tracciaMobile" class="text-white fw-semibold m-0">Traccia del brano</p>
-                    </div>
-                    <div class="col-3 d-flex gap-2">
-                        <button class="btn p-0 text-white-50">
-                            <i class="fs-4 bi bi-speaker"></i>
-                        </button>
-                        <button class="btn p-0 text-white-50">
-                            <i class="fs-4 bi bi-heart"></i>
-                        </button>
-                        <button id="playMobile" class="btn p-0 text-white-50">
-                            <i id="iconPlayMobile" class="fs-4 bi bi-play-fill"></i>
-                        </button>
-                    </div>
+      </div>
+
+      <!-- DIV COLLAPSE PER IL PLAYER -->
+      <div style="position: fixed; bottom: 90px; left: 0; width: 100%; z-index: 1050" class="container-fluid d-md-none">
+        <div class="bg-dark rounded-1">
+          <div class="row align-items-center p-2">
+            <div class="col">
+              <img id="imgTrackMobile" src="./assets/imgs/main/image-13.jpg" alt="copertina brano" style="width: 25px" class="rounded-circle" />
+            </div>
+            <div class="col-7">
+              <p id="tracciaMobile" class="text-white fw-semibold m-0">Traccia del brano</p>
+            </div>
+            <div class="col-3 d-flex gap-2">
+              <button class="btn p-0 text-white-50">
+                <i class="fs-4 bi bi-speaker"></i>
+              </button>
+              <button class="btn p-0 text-white-50">
+                <i class="fs-4 bi bi-heart"></i>
+              </button>
+              <button id="playMobile" class="btn p-0 text-white-50">
+                <i id="iconPlayMobile" class="fs-4 bi bi-play-fill"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIV CON IL LETTORE E I CONTROLLI AUDIO -->
+      <!-- Player fisso in basso -->
+      <div
+        style="position: fixed; bottom: 0; left: 0; width: 100%; z-index: 1050; box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.5); background-color: rgb(15 15 15)"
+        id="navbarPlayerMedium"
+        class="d-none d-md-block"
+      >
+        <div class="container-fluid">
+          <div class="row py-3">
+            <div class="col-3 col-xl-2 d-flex align-items-center gap-3 flex-fill">
+              <div style="width: 60px; height: 60px">
+                <img
+                  id="imgTrackMedium"
+                  src="https://cdn-images.dzcdn.net/images/cover/0f7f816a316d3303adea31ad037c6740/250x250-000000-80-0-0.jpg"
+                  alt="Cover"
+                  class="w-100"
+                />
+              </div>
+              <div>
+                <h4 id="titleTrackPlayer" class="text-white fs-6 m-0">Fat Funny Friend</h4>
+                <p id="singerPlayer" style="font-size: 14px" class="text-white-50 m-0">Maddie Zahm</p>
+              </div>
+              <button class="btn text-white-50 fs-5 p-0"><i class="bi bi-heart"></i></button>
+            </div>
+            <!-- COLONNA CENTRALE FOOTER  -->
+            <div class="col-5 col-xl-6 col-xxl-7 text-center">
+              <div>
+                <div class="d-flex gap-1 gap-xl-4 align-items-center justify-content-center">
+                  <i class="btn text-white-50 bi bi-shuffle fs-2 p-0"></i>
+                  <i class="btn text-white-50 bi bi-skip-start fs-2 p-0"></i>
+                  <i id="iconPlayMedium" class="btn bi bi-play-circle-fill text-white fs-1 p-0"></i>
+                  <i class="btn text-white-50 bi bi-skip-end fs-2 p-0"></i>
+                  <i class="btn text-white-50 bi bi-repeat fs-2 p-0"></i>
                 </div>
+                <!-- Barra avanzamento brano -->
+                <div class="w-100 d-flex justify-content-center align-items-baseline gap-2">
+                  <div class="progress w-75" style="height: 4px; background: #222">
+                    <div id="progressBarMedium" class="progress-bar bg-white" role="progressbar" style="width: 0%"></div>
+                  </div>
+                </div>
+              </div>
             </div>
-        </div>
 
-        <!-- DIV CON IL LETTORE E I CONTROLLI AUDIO -->
-        <!-- Player fisso in basso -->
-        <div style="position: fixed; bottom: 0; left: 0; width: 100%; z-index: 1050; box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.5); background-color: rgb(15 15 15)"
-            id="navbarPlayerMedium" class="d-none d-md-block">
-            <div class="container-fluid">
-                <div class="row py-3">
-                    <div class="col-3 col-xl-2 d-flex align-items-center gap-3 flex-fill">
-                        <div style="width: 60px; height: 60px">
-                            <img id="imgTrackMedium"
-                                src="https://cdn-images.dzcdn.net/images/cover/0f7f816a316d3303adea31ad037c6740/250x250-000000-80-0-0.jpg"
-                                alt="Cover" class="w-100" />
-                        </div>
-                        <div>
-                            <h4 id="titleTrackPlayer" class="text-white fs-6 m-0">Fat Funny Friend</h4>
-                            <p id="singerPlayer" style="font-size: 14px" class="text-white-50 m-0">Maddie Zahm</p>
-                        </div>
-                        <button class="btn text-white-50 fs-5 p-0"><i class="bi bi-heart"></i></button>
-                    </div>
-                    <!-- COLONNA CENTRALE FOOTER  -->
-                    <div class="col-5 col-xl-6 col-xxl-7 text-center">
-                        <div>
-                            <div class="d-flex gap-1 gap-xl-4 align-items-center justify-content-center">
-                                <i class="btn text-white-50 bi bi-shuffle fs-2 p-0"></i>
-                                <i class="btn text-white-50 bi bi-skip-start fs-2 p-0"></i>
-                                <i id="iconPlayMedium" class="btn bi bi-play-circle-fill text-white fs-1 p-0"></i>
-                                <i class="btn text-white-50 bi bi-skip-end fs-2 p-0"></i>
-                                <i class="btn text-white-50 bi bi-repeat fs-2 p-0"></i>
-                            </div>
-                            <!-- Barra avanzamento brano -->
-                            <div class="w-100 d-flex justify-content-center">
-                                <div class="progress w-75" style="height: 4px; background: #222">
-                                    <div id="progressBarMedium" class="progress-bar bg-white" role="progressbar"
-                                        style="width: 40%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <!-- Colonna destra -->
+            <div class="col-4 col-xl-3 col-xxl-3 d-flex align-items-center">
+              <div class="d-flex align-items-center gap-0 gap-xxl-2 flex-fill">
+                <button class="d-none d-xl-block btn p-0">
+                  <i class="bi bi-mic text-white-50"></i>
+                </button>
+                <button class="btn p-0">
+                  <svg
+                    class="icon text-white-50"
+                    role="img"
+                    aria-label="Coda"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M3 6h14v2H3V6zm0 5h14v2H3v-2zM3 16h10v2H3v-2zM20 7l3 2-3 2V7z" />
+                  </svg>
+                </button>
+                <button class="btn p-0">
+                  <svg
+                    class="text-white-50"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="28"
+                    height="28"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    role="img"
+                    aria-label="Connetti un dispositivo"
+                  >
+                    <path d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-7v2h3v2H8v-2h3v-2H4a2 2 0 0 1-2-2V6zM4 6v9h16V6H4z" />
+                    <path d="M7 18a5 5 0 0 1 5 5H9a3 3 0 0 0-3-3v-2z" />
+                  </svg>
+                </button>
 
-                    <!-- Colonna destra -->
-                    <div class="col-4 col-xl-3 col-xxl-3 d-flex align-items-center">
-                        <div class="d-flex align-items-center gap-0 gap-xxl-2 flex-fill">
-                            <button class="d-none d-xl-block btn p-0">
-                                <i class="bi bi-mic text-white-50"></i>
-                            </button>
-                            <button class="btn p-0">
-                                <svg class="icon text-white-50" role="img" aria-label="Coda"
-                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path d="M3 6h14v2H3V6zm0 5h14v2H3v-2zM3 16h10v2H3v-2zM20 7l3 2-3 2V7z" />
-                                </svg>
-                            </button>
-                            <button class="btn p-0">
-                                <svg class="text-white-50" xmlns="http://www.w3.org/2000/svg" width="28" height="28"
-                                    fill="currentColor" viewBox="0 0 24 24" role="img"
-                                    aria-label="Connetti un dispositivo">
-                                    <path
-                                        d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-7v2h3v2H8v-2h3v-2H4a2 2 0 0 1-2-2V6zM4 6v9h16V6H4z" />
-                                    <path d="M7 18a5 5 0 0 1 5 5H9a3 3 0 0 0-3-3v-2z" />
-                                </svg>
-                            </button>
-
-                            <!-- Barra volume con span + thumb(il pallino) -->
-                            <div class="d-flex align-items-center gap-2">
-                                <i class="bi bi-volume-up fs-3 text-white-50"></i>
-                                <div id="volume-bar" class="volume-progress"
-                                    style="width: 100px; height: 8px; background: black; border-radius: 999px; position: relative; cursor: pointer">
-                                    <span id="volume-fill"
-                                        style="display: block; position: absolute; top: 0; left: 0; height: 100%; width: 70%; background: white; border-radius: 999px"></span>
-                                    <div id="volume-thumb" class="volume-thumb" style="
+                <!-- Barra volume con span + thumb(il pallino) -->
+                <div class="d-flex align-items-center gap-2">
+                  <i class="bi bi-volume-up fs-3 text-white-50"></i>
+                  <div
+                    id="volume-bar"
+                    class="volume-progress"
+                    style="width: 100px; height: 8px; background: black; border-radius: 999px; position: relative; cursor: pointer"
+                  >
+                    <span
+                      id="volume-fill"
+                      style="display: block; position: absolute; top: 0; left: 0; height: 100%; width: 70%; background: white; border-radius: 999px"
+                    ></span>
+                    <div
+                      id="volume-thumb"
+                      class="volume-thumb"
+                      style="
                         position: absolute;
                         top: 50%;
                         left: 70%;
@@ -143,471 +173,481 @@
                         background: white;
                         border-radius: 50%;
                         pointer-events: none;
-                      "></div>
-                                </div>
-                            </div>
-
-                            <button class="d-none d-xl-block btn p-0">
-                                <svg class="icon-full text-white-50" role="img" aria-label="Entra in schermo intero"
-                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path
-                                        d="M7 14H5v4h4v-2H7v-2zm10 0v2h-2v2h4v-4h-2zM7 6h2V4H5v4h2V6zm10 0v2h2V4h-4v2h2z" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
+                      "
+                    ></div>
+                  </div>
                 </div>
+
+                <button class="d-none d-xl-block btn p-0">
+                  <svg
+                    class="icon-full text-white-50"
+                    role="img"
+                    aria-label="Entra in schermo intero"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M7 14H5v4h4v-2H7v-2zm10 0v2h-2v2h4v-4h-2zM7 6h2V4H5v4h2V6zm10 0v2h2V4h-4v2h2z" />
+                  </svg>
+                </button>
+              </div>
             </div>
+          </div>
         </div>
-        <div class="container-fluid">
-            <div class="row">
-                <!-- side-bar sx -->
-                <div class="col-4 col-xl-2 d-none d-md-block bg-black h-100">
-                    <aside>
-                        <div class="d-flex flex-column align-items-start">
-                            <button class="btn text-white-50 fs-5">
-                                <i class="fs-4 bi me-2 bi-three-dots"></i>
-                            </button>
-                            <a href="./index.html">
-                                <button style="font-family: Circular, sans-serif" class="btn text-white-50 fs-5"><i
-                                        class="fs-4 bi me-2 bi-house-door-fill"></i> Home</button>
-                            </a>
-                            <a href="./search.html">
-                                <button style="font-family: Circular, sans-serif" class="btn text-white-50 fs-5"><i
-                                        class="fs-4 bi me-2 bi-search"></i> Cerca</button>
-                            </a>
-                            <button style="font-family: Circular, sans-serif" class="btn text-start text-white-50 fs-5">
-                                <i class="fs-4 bi me-2 bi-collection"></i> La tua libreria
-                            </button>
-                        </div>
+      </div>
+      <!--  -->
+      <!-- CONTENUTO PRINCIPALE -->
+      <div class="container-fluid">
+        <div class="row">
+          <!-- side-bar sx -->
+          <div class="col-4 col-xl-2 d-none d-md-block bg-black h-100">
+            <aside>
+              <div class="d-flex flex-column align-items-start">
+                <button class="btn text-white-50 fs-5">
+                  <i class="fs-4 bi me-2 bi-three-dots"></i>
+                </button>
+                <a href="./index.html">
+                  <button style="font-family: Circular, sans-serif" class="btn text-white-50 fs-5"><i class="fs-4 bi me-2 bi-house-door-fill"></i> Home</button>
+                </a>
+                <a href="./search.html">
+                  <button style="font-family: Circular, sans-serif" class="btn text-white-50 fs-5"><i class="fs-4 bi me-2 bi-search"></i> Cerca</button>
+                </a>
+                <button style="font-family: Circular, sans-serif" class="btn text-start text-white-50 fs-5">
+                  <i class="fs-4 bi me-2 bi-collection"></i> La tua libreria
+                </button>
+              </div>
 
-                        <div class="d-flex flex-column align-items-start mt-3">
-                            <button style="font-family: Circular, sans-serif" class="btn text-white-50 fs-5">
-                                <i class="fs-4 bi bi-plus-square-fill me-2"></i>Crea playlist
-                            </button>
-                            <button style="font-family: Circular, sans-serif" class="btn text-start text-white-50 fs-5">
-                                <i class="fs-4 bi bi-bookmark-heart-fill me-2"></i>Brani che ti piacciono
-                            </button>
+              <div class="d-flex flex-column align-items-start mt-3">
+                <button style="font-family: Circular, sans-serif" class="btn text-white-50 fs-5">
+                  <i class="fs-4 bi bi-plus-square-fill me-2"></i>Crea playlist
+                </button>
+                <button style="font-family: Circular, sans-serif" class="btn text-start text-white-50 fs-5">
+                  <i class="fs-4 bi bi-bookmark-heart-fill me-2"></i>Brani che ti piacciono
+                </button>
 
-                            <button style="font-family: Circular, sans-serif" class="btn text-white-50 fs-5">
-                                <i class="fs-4 bi bi-bookmark-fill me-2"></i>I tuoi episodi
-                            </button>
-                        </div>
-                        <div class="border-top border-dark"></div>
-                        <div class="scrollable2 d-flex flex-column align-items-start h-100">
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">early stage emily syndrome
-                                (sett-ott 2022)</a>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Be The Young</a>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">"..." cit. Kimiko (lug-ago
-                                2022)</a>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">saggio vibes 💃 &#xF483;
-                                🩰</a>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">that fucking mood 🔪☠</a>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 text-uppercase my-1">vee,carlotta
-                                e giacomo vanno a bosio</a>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">An Emily Winchester kind of
-                                mood 🔪🖕</a>
-                            <div class="w-100 d-flex align-items-center justify-content-between">
-                                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">landing page (mar-apr
-                                    2022)</a>
-                                <button class="btn p-0">
-                                    <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
-                                </button>
-                            </div>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">2021 lol</a>
-                            <div class="w-100 d-flex align-items-center justify-content-between">
-                                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">cosa cazzo cuol dire
-                                    questa affermazione (g..</a>
-                                <button class="btn p-0">
-                                    <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
-                                </button>
-                            </div>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">honey and glass (nov-dic
-                                2021)</a>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">(Revenge) Training Arc1F412
-                                🦍</a>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Lidia & Emily</a>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">minecraft e nintendo
-                                switch</a>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Silvano d'orba? i hardly
-                                know her</a>
-                            <div class="w-100 d-flex align-items-center justify-content-between">
-                                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Culo 2021</a>
-                                <button class="btn p-0">
-                                    <i class="bi bi-people text-white-50"></i>
-                                </button>
-                            </div>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Frah Quintale Mix</a>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Francesco Guccini Mix</a>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">early stage emily syndrome
-                                (sett-ott 2022)</a>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Be The Young</a>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">"..." cit. Kimiko (lug-ago
-                                2022)</a>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">saggio vibes 💃 &#xF483;
-                                🩰</a>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">that fucking mood 🔪☠</a>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 text-uppercase my-1">vee,carlotta
-                                e giacomo vanno a bosio</a>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">An Emily Winchester kind of
-                                mood 🔪🖕</a>
-                            <div class="w-100 d-flex align-items-center justify-content-between">
-                                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">landing page (mar-apr
-                                    2022)</a>
-                                <button class="btn p-0">
-                                    <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
-                                </button>
-                            </div>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">2021 lol</a>
-                            <div class="w-100 d-flex align-items-center justify-content-between">
-                                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">cosa cazzo cuol dire
-                                    questa affermazione (g..</a>
-                                <button class="btn p-0">
-                                    <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
-                                </button>
-                            </div>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">honey and glass (nov-dic
-                                2021)</a>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">(Revenge) Training Arc1F412
-                                🦍</a>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Lidia & Emily</a>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">minecraft e nintendo
-                                switch</a>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Silvano d'orba? i hardly
-                                know her</a>
-                            <div class="w-100 d-flex align-items-center justify-content-between">
-                                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Culo 2021</a>
-                                <button class="btn p-0">
-                                    <i class="bi bi-people text-white-50"></i>
-                                </button>
-                            </div>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Frah Quintale Mix</a>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Francesco Guccini Mix</a>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">early stage emily syndrome
-                                (sett-ott 2022)</a>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Be The Young</a>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">"..." cit. Kimiko (lug-ago
-                                2022)</a>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">saggio vibes 💃 &#xF483;
-                                🩰</a>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">that fucking mood 🔪☠</a>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 text-uppercase my-1">vee,carlotta
-                                e giacomo vanno a bosio</a>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">An Emily Winchester kind of
-                                mood 🔪🖕</a>
-                            <div class="w-100 d-flex align-items-center justify-content-between">
-                                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">landing page (mar-apr
-                                    2022)</a>
-                                <button class="btn p-0">
-                                    <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
-                                </button>
-                            </div>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">2021 lol</a>
-                            <div class="w-100 d-flex align-items-center justify-content-between">
-                                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">cosa cazzo cuol dire
-                                    questa affermazione (g..</a>
-                                <button class="btn p-0">
-                                    <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
-                                </button>
-                            </div>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">honey and glass (nov-dic
-                                2021)</a>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">(Revenge) Training Arc1F412
-                                🦍</a>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Lidia & Emily</a>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">minecraft e nintendo
-                                switch</a>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Silvano d'orba? i hardly
-                                know her</a>
-                            <div class="w-100 d-flex align-items-center justify-content-between">
-                                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Culo 2021</a>
-                                <button class="btn p-0">
-                                    <i class="bi bi-people text-white-50"></i>
-                                </button>
-                            </div>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Frah Quintale Mix</a>
-                            <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Francesco Guccini Mix</a>
-                        </div>
-                    </aside>
+                <button style="font-family: Circular, sans-serif" class="btn text-white-50 fs-5">
+                  <i class="fs-4 bi bi-bookmark-fill me-2"></i>I tuoi episodi
+                </button>
+              </div>
+              <div class="border-top border-dark"></div>
+              <div class="scrollable2 d-flex flex-column align-items-start h-100">
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">early stage emily syndrome (sett-ott 2022)</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Be The Young</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">"..." cit. Kimiko (lug-ago 2022)</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">saggio vibes 💃 &#xF483; 🩰</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">that fucking mood 🔪☠</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 text-uppercase my-1">vee,carlotta e giacomo vanno a bosio</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">An Emily Winchester kind of mood 🔪🖕</a>
+                <div class="w-100 d-flex align-items-center justify-content-between">
+                  <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">landing page (mar-apr 2022)</a>
+                  <button class="btn p-0">
+                    <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
+                  </button>
                 </div>
-                <!-- artist page -->
-
-                <div id="centralIndex" class="col-12 col-md-8 p-0 scrollable">
-                    <!-- immagine artista bg + nome -->
-                    <div class="d-flex flex-column justify-content-end position-relative"
-                        style="overflow: hidden;background: #262626; background: linear-gradient(nulldeg, rgba(38, 38, 38, 1) 0%);">
-                        <img id="heroImage" src="" alt="artistPhoto" class="img-fluid w-100 object-fit-cover top"
-                            style="max-height: 400px;" />
-                        <div class="position-absolute text-white p-3 p-md-4" style="bottom: 10%; left: 0">
-                            <p class="mb-1"><i class="bi bi-patch-check-fill text-info"></i> Artista verificato</p>
-                            <h1 id="artist-name" class="fw-bold"></h1>
-                            <h6 id="artist-fan" class="mb-0"></h6>
-                        </div>
-                    </div>
-
-                    <!-- following & play -->
-                    <div class="conatainer-fluid bg-black bg-gradient h-100">
-                        <div class="row m-0 w-100">
-                            <div class="d-flex align-items-center mb-2" style="height: 120px">
-                                <div class="d-flex align-items-center justify-content-center bg-success rounded-circle mt-4 mx-3"
-                                    style="width: 3rem; height: 3rem">
-                                    <button
-                                        class="bg-transparent border-0 p-0 d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-play-fill text-black fs-3"></i>
-                                    </button>
-                                </div>
-                                <div><button class="btn btn-outline-light mt-4 mx-3">FOLLOWING</button></div>
-                                <div class="mt-4 mx-3">
-                                    <button id="menuBtn" type="button"
-                                        class="text-secondary d-flex align-items-center btn btn-dark bg-transparent border-0">
-                                        <div class="buttonlogo"><i class="bi bi-three-dots"></i></div>
-                                    </button>
-                                </div>
-                            </div>
-                            <!-- lista brani like -->
-                            <div class="row">
-                                <div class="col-12 col-lg-4 m-0 p-0 order-1 order-lg-2 text-center text-lg-start">
-                                    <h4 class="m-4 fs-4 fs-md-2">Brani che ti piacciono</h4>
-                                    <div class="card mb-3 bg-transparent border-0 mx-auto" style="max-width: 540px">
-                                        <div class="row g-0 align-items-center mt-4">
-                                            <div class="col-2 text-center position-relative">
-                                                <img id="likeImage" src="" style="width: 80px"
-                                                    class="img-fluid rounded-circle" alt="Brani che ti piacciono" />
-                                                <span class="p-2 bg-success rounded-circle"
-                                                    style="width: 25px; height: 25px; position: absolute; top: 70%; left: 70%">
-                                                    <i class="bi bi-heart-fill"
-                                                        style="position: absolute; top: 10%; left: 20%"></i>
-                                                </span>
-                                            </div>
-                                            <div class="col-10">
-                                                <div class="card-body d-flex justify-content-between lh-sm">
-                                                    <div>
-                                                        <h6 class="card-title">Hai messo mi piace a 11 brani</h6>
-                                                        <p id="like-name" class="card-text text-secondary"></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-lg-8 m-0 p-0 order-2 order-lg-1 text-center text-lg-start">
-                                    <h2 class="m-4 fs-4 fs-lg-2">Popolari</h2>
-                                    <div id="track">
-                                        <div id="trackList"
-                                            class="w-100 row col-12 col-md-4 d-flex flex-wrap align-items-center justify-content-center mb-3">
-                                            <div class="col-1 p-0 text-center">1</div>
-                                            <div class="col-1 p-0">
-                                                <img class="rounded img-fluid" style="width: 40px; height: 40px" src=""
-                                                    alt="logoLp" />
-                                            </div>
-                                            <div class="col-4 p-0"></div>
-                                            <div class="col-4 d-none d-md-block p-0"></div>
-                                            <div class="col-2 d-none d-md-block p-0"></div>
-                                            <div class="col-2">
-                                                <button id="menuBtn" type="button"
-                                                    class="d-block d-md-none text-secondary d-flex align-items-center mx-auto btn btn-dark bg-transparent border-0">
-                                                    <div class="buttonlogo"><i class="bi bi-three-dots"></i></div>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <p class="text-secondary m-4" style="font-size: 0.85rem">VISUALIZZA ALTRO</p>
-                                </div>
-                            </div>
-                            <h4>Discografia</h4>
-                            <div class="row">
-                                <div class="col-6 col-md-4 col-xl-2">
-                                    <div class="card border-0 bg-transparent" style="width: 150p; font-size: 16px">
-                                        <img src="https://www.rollingstone.com/wp-content/uploads/2018/06/rs-145700-d82f03255cb32502f72976338ff13cd9fa1067f4.jpg?w=301&h=300&crop=1"
-                                            class="card-img-top rounded" alt="albumImg" />
-                                        <div class="card-body text-center pt-0">
-                                            <p class="card-text">Album Name</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-4 col-xl-2">
-                                    <div class="card border-0 bg-transparent" style="width: 150p; font-size: 16px">
-                                        <img src="https://www.rollingstone.com/wp-content/uploads/2018/06/rs-145700-d82f03255cb32502f72976338ff13cd9fa1067f4.jpg?w=301&h=300&crop=1"
-                                            class="card-img-top rounded" alt="albumImg" />
-                                        <div class="card-body text-center pt-0">
-                                            <p class="card-text">Album Name</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-4 col-xl-2">
-                                    <div class="card border-0 bg-transparent" style="width: 150p; font-size: 16px">
-                                        <img src="https://www.rollingstone.com/wp-content/uploads/2018/06/rs-145700-d82f03255cb32502f72976338ff13cd9fa1067f4.jpg?w=301&h=300&crop=1"
-                                            class="card-img-top rounded" alt="albumImg" />
-                                        <div class="card-body text-center pt-0">
-                                            <p class="card-text">Album Name</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-4 col-xl-2">
-                                    <div class="card border-0 bg-transparent" style="width: 150p; font-size: 16px">
-                                        <img src="https://www.rollingstone.com/wp-content/uploads/2018/06/rs-145700-d82f03255cb32502f72976338ff13cd9fa1067f4.jpg?w=301&h=300&crop=1"
-                                            class="card-img-top rounded" alt="albumImg" />
-                                        <div class="card-body text-center pt-0">
-                                            <p class="card-text">Album Name</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-4 col-xl-2">
-                                    <div class="card border-0 bg-transparent" style="width: 150p; font-size: 16px">
-                                        <img src="https://www.rollingstone.com/wp-content/uploads/2018/06/rs-145700-d82f03255cb32502f72976338ff13cd9fa1067f4.jpg?w=301&h=300&crop=1"
-                                            class="card-img-top rounded" alt="albumImg" />
-                                        <div class="card-body text-center pt-0">
-                                            <p class="card-text">Album Name</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-4 col-xl-2">
-                                    <div class="card border-0 bg-transparent" style="width: 150p; font-size: 16px">
-                                        <img src="https://www.rollingstone.com/wp-content/uploads/2018/06/rs-145700-d82f03255cb32502f72976338ff13cd9fa1067f4.jpg?w=301&h=300&crop=1"
-                                            class="card-img-top rounded" alt="albumImg" />
-                                        <div class="card-body text-center pt-0">
-                                            <p class="card-text">Album Name</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-4 col-xl-2">
-                                    <div class="card border-0 bg-transparent" style="width: 150p; font-size: 16px">
-                                        <img src="https://www.rollingstone.com/wp-content/uploads/2018/06/rs-145700-d82f03255cb32502f72976338ff13cd9fa1067f4.jpg?w=301&h=300&crop=1"
-                                            class="card-img-top rounded" alt="albumImg" />
-                                        <div class="card-body text-center pt-0">
-                                            <p class="card-text">Album Name</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-4 col-xl-2">
-                                    <div class="card border-0 bg-transparent" style="width: 150p; font-size: 16px">
-                                        <img src="https://www.rollingstone.com/wp-content/uploads/2018/06/rs-145700-d82f03255cb32502f72976338ff13cd9fa1067f4.jpg?w=301&h=300&crop=1"
-                                            class="card-img-top rounded" alt="albumImg" />
-                                        <div class="card-body text-center pt-0">
-                                            <p class="card-text">Album Name</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-4 col-xl-2">
-                                    <div class="card border-0 bg-transparent" style="width: 150p; font-size: 16px">
-                                        <img src="https://www.rollingstone.com/wp-content/uploads/2018/06/rs-145700-d82f03255cb32502f72976338ff13cd9fa1067f4.jpg?w=301&h=300&crop=1"
-                                            class="card-img-top rounded" alt="albumImg" />
-                                        <div class="card-body text-center pt-0">
-                                            <p class="card-text">Album Name</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-4 col-xl-2">
-                                    <div class="card border-0 bg-transparent" style="width: 150p; font-size: 16px">
-                                        <img src="https://www.rollingstone.com/wp-content/uploads/2018/06/rs-145700-d82f03255cb32502f72976338ff13cd9fa1067f4.jpg?w=301&h=300&crop=1"
-                                            class="card-img-top rounded" alt="albumImg" />
-                                        <div class="card-body text-center pt-0">
-                                            <p class="card-text">Album Name</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-4 col-xl-2">
-                                    <div class="card border-0 bg-transparent" style="width: 150p; font-size: 16px">
-                                        <img src="https://www.rollingstone.com/wp-content/uploads/2018/06/rs-145700-d82f03255cb32502f72976338ff13cd9fa1067f4.jpg?w=301&h=300&crop=1"
-                                            class="card-img-top rounded" alt="albumImg" />
-                                        <div class="card-body text-center pt-0">
-                                            <p class="card-text">Album Name</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-4 col-xl-2">
-                                    <div class="card border-0 bg-transparent" style="width: 150p; font-size: 16px">
-                                        <img src="https://www.rollingstone.com/wp-content/uploads/2018/06/rs-145700-d82f03255cb32502f72976338ff13cd9fa1067f4.jpg?w=301&h=300&crop=1"
-                                            class="card-img-top rounded" alt="albumImg" />
-                                        <div class="card-body text-center pt-0">
-                                            <p class="card-text">Album Name</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">2021 lol</a>
+                <div class="w-100 d-flex align-items-center justify-content-between">
+                  <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">cosa cazzo cuol dire questa affermazione (g..</a>
+                  <button class="btn p-0">
+                    <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
+                  </button>
                 </div>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">honey and glass (nov-dic 2021)</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">(Revenge) Training Arc1F412 🦍</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Lidia & Emily</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">minecraft e nintendo switch</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Silvano d'orba? i hardly know her</a>
+                <div class="w-100 d-flex align-items-center justify-content-between">
+                  <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Culo 2021</a>
+                  <button class="btn p-0">
+                    <i class="bi bi-people text-white-50"></i>
+                  </button>
+                </div>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Frah Quintale Mix</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Francesco Guccini Mix</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">early stage emily syndrome (sett-ott 2022)</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Be The Young</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">"..." cit. Kimiko (lug-ago 2022)</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">saggio vibes 💃 &#xF483; 🩰</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">that fucking mood 🔪☠</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 text-uppercase my-1">vee,carlotta e giacomo vanno a bosio</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">An Emily Winchester kind of mood 🔪🖕</a>
+                <div class="w-100 d-flex align-items-center justify-content-between">
+                  <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">landing page (mar-apr 2022)</a>
+                  <button class="btn p-0">
+                    <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
+                  </button>
+                </div>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">2021 lol</a>
+                <div class="w-100 d-flex align-items-center justify-content-between">
+                  <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">cosa cazzo cuol dire questa affermazione (g..</a>
+                  <button class="btn p-0">
+                    <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
+                  </button>
+                </div>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">honey and glass (nov-dic 2021)</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">(Revenge) Training Arc1F412 🦍</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Lidia & Emily</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">minecraft e nintendo switch</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Silvano d'orba? i hardly know her</a>
+                <div class="w-100 d-flex align-items-center justify-content-between">
+                  <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Culo 2021</a>
+                  <button class="btn p-0">
+                    <i class="bi bi-people text-white-50"></i>
+                  </button>
+                </div>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Frah Quintale Mix</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Francesco Guccini Mix</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">early stage emily syndrome (sett-ott 2022)</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Be The Young</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">"..." cit. Kimiko (lug-ago 2022)</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">saggio vibes 💃 &#xF483; 🩰</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">that fucking mood 🔪☠</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 text-uppercase my-1">vee,carlotta e giacomo vanno a bosio</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">An Emily Winchester kind of mood 🔪🖕</a>
+                <div class="w-100 d-flex align-items-center justify-content-between">
+                  <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">landing page (mar-apr 2022)</a>
+                  <button class="btn p-0">
+                    <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
+                  </button>
+                </div>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">2021 lol</a>
+                <div class="w-100 d-flex align-items-center justify-content-between">
+                  <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">cosa cazzo cuol dire questa affermazione (g..</a>
+                  <button class="btn p-0">
+                    <i class="bi bi-arrow-down-circle-fill text-white-50"></i>
+                  </button>
+                </div>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">honey and glass (nov-dic 2021)</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">(Revenge) Training Arc1F412 🦍</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Lidia & Emily</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">minecraft e nintendo switch</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Silvano d'orba? i hardly know her</a>
+                <div class="w-100 d-flex align-items-center justify-content-between">
+                  <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Culo 2021</a>
+                  <button class="btn p-0">
+                    <i class="bi bi-people text-white-50"></i>
+                  </button>
+                </div>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Frah Quintale Mix</a>
+                <a href="#" class="text-decoration-none fs-6 text-white-50 my-1">Francesco Guccini Mix</a>
+              </div>
+            </aside>
+          </div>
+          <!-- artist page -->
 
-                <!-- sidebar dx -->
-                <div class="col-2 d-none d-xl-block bg-black">
-                    <aside>
-                        <div class="d-flex justify-content-end gap-3">
-                            <button class="btn text-white p-0">
-                                <i class="fs-4 bi bi-dash-lg"></i>
-                            </button>
-                            <button class="btn text-white p-0">
-                                <i class="bi bi-window-stack"></i>
-                            </button>
-                            <button class="btn text-white p-0">
-                                <i class="fs-4 bi bi-x"></i>
-                            </button>
+          <div id="centralIndex" class="col-12 col-md-8 p-0 scrollable">
+            <!-- immagine artista bg + nome -->
+            <div
+              class="d-flex flex-column justify-content-end position-relative"
+              style="overflow: hidden; background: #262626; background: linear-gradient(nulldeg, rgba(38, 38, 38, 1) 0%)"
+            >
+              <img id="heroImage" src="" alt="artistPhoto" class="img-fluid w-100 object-fit-fill" style="max-height: 500px" />
+              <div class="position-absolute text-white p-3 p-md-4" style="bottom: 10%; left: 0">
+                <p class="mb-1"><i class="bi bi-patch-check-fill text-info"></i> Artista verificato</p>
+                <h1 id="artist-name" class="fw-bold"></h1>
+                <h6 id="artist-fan" class="mb-0"></h6>
+              </div>
+            </div>
+
+            <!-- following & play -->
+            <div class="conatainer-fluid bg-black bg-gradient h-100 ps-3">
+              <div class="row m-0 w-100">
+                <div class="d-flex align-items-center mb-2" style="height: 120px">
+                  <div class="d-flex align-items-center justify-content-center bg-success rounded-circle mt-4 mx-3" style="width: 3rem; height: 3rem">
+                    <button class="bg-transparent border-0 p-0 d-flex align-items-center justify-content-center">
+                      <i class="bi bi-play-fill text-black fs-3"></i>
+                    </button>
+                  </div>
+                  <div><button class="btn btn-outline-light mt-4 mx-3">FOLLOWING</button></div>
+                  <div class="mt-4 mx-3">
+                    <button id="menuBtn" type="button" class="text-secondary d-flex align-items-center btn btn-dark bg-transparent border-0">
+                      <div class="buttonlogo"><i class="bi bi-three-dots"></i></div>
+                    </button>
+                  </div>
+                </div>
+                <!-- lista brani like -->
+                <div class="row">
+                  <div class="col-12 col-lg-4 m-0 p-0 order-1 order-lg-2 text-center text-lg-start">
+                    <h4 class="m-4 fs-4 fs-md-2">Brani che ti piacciono</h4>
+                    <div class="card mb-3 bg-transparent border-0 mx-auto" style="max-width: 540px">
+                      <div class="row g-0 align-items-center mt-4">
+                        <div class="col-2 text-center position-relative">
+                          <img
+                            id="likeImage"
+                            src="./assets/imgs/main/image-14.jpg"
+                            style="width: 80px"
+                            class="img-fluid rounded-circle"
+                            alt="Brani che ti piacciono"
+                          />
+                          <span class="p-2 bg-success rounded-circle" style="width: 25px; height: 25px; position: absolute; top: 70%; left: 70%">
+                            <i class="bi bi-heart-fill" style="position: absolute; top: 10%; left: 20%"></i>
+                          </span>
                         </div>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <h6 class="text-white fs-5 m-0">Attività amici</h6>
+                        <div class="col-10">
+                          <div class="card-body d-flex justify-content-between lh-sm">
                             <div>
-                                <button class="btn p-0">
-                                    <i class="text-white-50 fs-5 bi bi-person-fill-add"></i>
-                                </button>
-                                <button class="btn p-0">
-                                    <i class="text-white-50 fs-5 bi bi-x"></i>
-                                </button>
+                              <h6 class="card-title">Hai messo mi piace a 11 brani</h6>
+                              <p id="like-name" class="card-text text-secondary"></p>
                             </div>
+                          </div>
                         </div>
-                        <div class="row mt-5">
-                            <div class="col-2">
-                                <img src="./assets/imgs/main/image-11.jpg" alt="" class="w-100 rounded-circle" />
-                            </div>
-                            <div class="col">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h5 class="text-white-50 fw-bold m-0">Charlie Hookham</h5>
-                                    <span class="text-white-50">4 ore</span>
-                                </div>
-                                <p class="text-white-50 m-0">In camera <span style="font-size: 10px"
-                                        class="text-white">•</span> Yumi Zouma</p>
-                                <p class="text-white-50"><i class="bi bi-record-circle me-2"></i>EP III</p>
-                            </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-lg-8 m-0 p-0 order-2 order-lg-1 text-center text-lg-start">
+                    <h2 class="m-4 fs-4 fs-lg-2">Popolari</h2>
+                    <div id="track" class="px-2 px-md-4">
+                      <div id="trackList" class="w-100 row col-12 col-md-4 d-flex flex-wrap align-items-center ustify-content-around mb-3">
+                        <div class="col-1 p-0 text-center">1</div>
+                        <div class="col-1 p-0">
+                          <img class="rounded img-fluid" style="width: 40px; height: 40px" src="" alt="logoLp" />
                         </div>
-                        <div class="row mt-5">
-                            <div class="col-2">
-                                <img src="./assets/imgs/main/image-12.jpg" alt="" class="w-100 rounded-circle" />
-                            </div>
-                            <div class="col">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h5 class="text-white-50 fw-bold m-0">lightdark02</h5>
-                                    <span class="text-white-50">8 ore</span>
-                                </div>
-                                <p class="text-white-50 m-0">Aimed to Kill <span style="font-size: 10px"
-                                        class="text-white">•</span> Jade LeMac</p>
-                                <p class="text-white-50"><i class="bi bi-record-circle me-2"></i>Aimed to Kill</p>
-                            </div>
+                        <div class="col-4 p-0"></div>
+                        <div class="col-4 d-none d-md-block p-0"></div>
+                        <div class="col-2 d-none d-md-block p-0"></div>
+                        <div class="col-2">
+                          <button
+                            id="menuBtn"
+                            type="button"
+                            class="d-block d-md-none text-secondary d-flex align-items-center mx-auto btn btn-dark bg-transparent border-0"
+                          >
+                            <div class="buttonlogo"><i class="bi bi-three-dots"></i></div>
+                          </button>
                         </div>
-                        <div class="row mt-5">
-                            <div class="col-2">
-                                <img src="./assets/imgs/main/image-13.jpg" alt="" class="w-100 rounded-circle" />
-                            </div>
-                            <div class="col">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h5 class="text-white-50 fw-bold m-0">Valeria Traverso</h5>
-                                    <span class="text-white-50">3 giorni</span>
-                                </div>
-                                <p class="text-white-50 m-0">New Kings <span style="font-size: 10px"
-                                        class="text-white">•</span> Sleeping Wolf</p>
-                                <p class="text-white-50"><i class="bi bi-earbuds me-2"></i>ETwint Badass mood</p>
-                            </div>
-                        </div>
-                    </aside>
+                      </div>
+                    </div>
+
+                    <p class="text-secondary m-4" style="font-size: 0.85rem">VISUALIZZA ALTRO</p>
+                  </div>
                 </div>
+                <h4>Discografia</h4>
+                <div id="rowAlbum" class="row">
+                  <div class="col-6 col-md-4 col-xl-2">
+                    <div class="card border-0 bg-transparent" style="width: 150p; font-size: 16px">
+                      <img
+                        src="https://www.rollingstone.com/wp-content/uploads/2018/06/rs-145700-d82f03255cb32502f72976338ff13cd9fa1067f4.jpg?w=301&h=300&crop=1"
+                        class="card-img-top rounded"
+                        alt="albumImg"
+                      />
+                      <div class="card-body text-center pt-0">
+                        <p class="card-text">Album Name</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-md-4 col-xl-2">
+                    <div class="card border-0 bg-transparent" style="width: 150p; font-size: 16px">
+                      <img
+                        src="https://www.rollingstone.com/wp-content/uploads/2018/06/rs-145700-d82f03255cb32502f72976338ff13cd9fa1067f4.jpg?w=301&h=300&crop=1"
+                        class="card-img-top rounded"
+                        alt="albumImg"
+                      />
+                      <div class="card-body text-center pt-0">
+                        <p class="card-text">Album Name</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-md-4 col-xl-2">
+                    <div class="card border-0 bg-transparent" style="width: 150p; font-size: 16px">
+                      <img
+                        src="https://www.rollingstone.com/wp-content/uploads/2018/06/rs-145700-d82f03255cb32502f72976338ff13cd9fa1067f4.jpg?w=301&h=300&crop=1"
+                        class="card-img-top rounded"
+                        alt="albumImg"
+                      />
+                      <div class="card-body text-center pt-0">
+                        <p class="card-text">Album Name</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-md-4 col-xl-2">
+                    <div class="card border-0 bg-transparent" style="width: 150p; font-size: 16px">
+                      <img
+                        src="https://www.rollingstone.com/wp-content/uploads/2018/06/rs-145700-d82f03255cb32502f72976338ff13cd9fa1067f4.jpg?w=301&h=300&crop=1"
+                        class="card-img-top rounded"
+                        alt="albumImg"
+                      />
+                      <div class="card-body text-center pt-0">
+                        <p class="card-text">Album Name</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-md-4 col-xl-2">
+                    <div class="card border-0 bg-transparent" style="width: 150p; font-size: 16px">
+                      <img
+                        src="https://www.rollingstone.com/wp-content/uploads/2018/06/rs-145700-d82f03255cb32502f72976338ff13cd9fa1067f4.jpg?w=301&h=300&crop=1"
+                        class="card-img-top rounded"
+                        alt="albumImg"
+                      />
+                      <div class="card-body text-center pt-0">
+                        <p class="card-text">Album Name</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-md-4 col-xl-2">
+                    <div class="card border-0 bg-transparent" style="width: 150p; font-size: 16px">
+                      <img
+                        src="https://www.rollingstone.com/wp-content/uploads/2018/06/rs-145700-d82f03255cb32502f72976338ff13cd9fa1067f4.jpg?w=301&h=300&crop=1"
+                        class="card-img-top rounded"
+                        alt="albumImg"
+                      />
+                      <div class="card-body text-center pt-0">
+                        <p class="card-text">Album Name</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-md-4 col-xl-2">
+                    <div class="card border-0 bg-transparent" style="width: 150p; font-size: 16px">
+                      <img
+                        src="https://www.rollingstone.com/wp-content/uploads/2018/06/rs-145700-d82f03255cb32502f72976338ff13cd9fa1067f4.jpg?w=301&h=300&crop=1"
+                        class="card-img-top rounded"
+                        alt="albumImg"
+                      />
+                      <div class="card-body text-center pt-0">
+                        <p class="card-text">Album Name</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-md-4 col-xl-2">
+                    <div class="card border-0 bg-transparent" style="width: 150p; font-size: 16px">
+                      <img
+                        src="https://www.rollingstone.com/wp-content/uploads/2018/06/rs-145700-d82f03255cb32502f72976338ff13cd9fa1067f4.jpg?w=301&h=300&crop=1"
+                        class="card-img-top rounded"
+                        alt="albumImg"
+                      />
+                      <div class="card-body text-center pt-0">
+                        <p class="card-text">Album Name</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-md-4 col-xl-2">
+                    <div class="card border-0 bg-transparent" style="width: 150p; font-size: 16px">
+                      <img
+                        src="https://www.rollingstone.com/wp-content/uploads/2018/06/rs-145700-d82f03255cb32502f72976338ff13cd9fa1067f4.jpg?w=301&h=300&crop=1"
+                        class="card-img-top rounded"
+                        alt="albumImg"
+                      />
+                      <div class="card-body text-center pt-0">
+                        <p class="card-text">Album Name</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-md-4 col-xl-2">
+                    <div class="card border-0 bg-transparent" style="width: 150p; font-size: 16px">
+                      <img
+                        src="https://www.rollingstone.com/wp-content/uploads/2018/06/rs-145700-d82f03255cb32502f72976338ff13cd9fa1067f4.jpg?w=301&h=300&crop=1"
+                        class="card-img-top rounded"
+                        alt="albumImg"
+                      />
+                      <div class="card-body text-center pt-0">
+                        <p class="card-text">Album Name</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-md-4 col-xl-2">
+                    <div class="card border-0 bg-transparent" style="width: 150p; font-size: 16px">
+                      <img
+                        src="https://www.rollingstone.com/wp-content/uploads/2018/06/rs-145700-d82f03255cb32502f72976338ff13cd9fa1067f4.jpg?w=301&h=300&crop=1"
+                        class="card-img-top rounded"
+                        alt="albumImg"
+                      />
+                      <div class="card-body text-center pt-0">
+                        <p class="card-text">Album Name</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-md-4 col-xl-2">
+                    <div class="card border-0 bg-transparent" style="width: 150p; font-size: 16px">
+                      <img
+                        src="https://www.rollingstone.com/wp-content/uploads/2018/06/rs-145700-d82f03255cb32502f72976338ff13cd9fa1067f4.jpg?w=301&h=300&crop=1"
+                        class="card-img-top rounded"
+                        alt="albumImg"
+                      />
+                      <div class="card-body text-center pt-0">
+                        <p class="card-text">Album Name</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
+
+          <!-- sidebar dx -->
+          <div class="col-2 d-none d-xl-block bg-black">
+            <aside>
+              <div class="d-flex justify-content-end gap-3">
+                <button class="btn text-white p-0">
+                  <i class="fs-4 bi bi-dash-lg"></i>
+                </button>
+                <button class="btn text-white p-0">
+                  <i class="bi bi-window-stack"></i>
+                </button>
+                <button class="btn text-white p-0">
+                  <i class="fs-4 bi bi-x"></i>
+                </button>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <h6 class="text-white fs-5 m-0">Attività amici</h6>
+                <div>
+                  <button class="btn p-0">
+                    <i class="text-white-50 fs-5 bi bi-person-fill-add"></i>
+                  </button>
+                  <button class="btn p-0">
+                    <i class="text-white-50 fs-5 bi bi-x"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="row mt-5">
+                <div class="col-2">
+                  <img src="./assets/imgs/main/image-11.jpg" alt="" class="w-100 rounded-circle" />
+                </div>
+                <div class="col">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <h5 class="text-white-50 fw-bold m-0">Charlie Hookham</h5>
+                    <span class="text-white-50">4 ore</span>
+                  </div>
+                  <p class="text-white-50 m-0">In camera <span style="font-size: 10px" class="text-white">•</span> Yumi Zouma</p>
+                  <p class="text-white-50"><i class="bi bi-record-circle me-2"></i>EP III</p>
+                </div>
+              </div>
+              <div class="row mt-5">
+                <div class="col-2">
+                  <img src="./assets/imgs/main/image-12.jpg" alt="" class="w-100 rounded-circle" />
+                </div>
+                <div class="col">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <h5 class="text-white-50 fw-bold m-0">lightdark02</h5>
+                    <span class="text-white-50">8 ore</span>
+                  </div>
+                  <p class="text-white-50 m-0">Aimed to Kill <span style="font-size: 10px" class="text-white">•</span> Jade LeMac</p>
+                  <p class="text-white-50"><i class="bi bi-record-circle me-2"></i>Aimed to Kill</p>
+                </div>
+              </div>
+              <div class="row mt-5">
+                <div class="col-2">
+                  <img src="./assets/imgs/main/image-13.jpg" alt="" class="w-100 rounded-circle" />
+                </div>
+                <div class="col">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <h5 class="text-white-50 fw-bold m-0">Valeria Traverso</h5>
+                    <span class="text-white-50">3 giorni</span>
+                  </div>
+                  <p class="text-white-50 m-0">New Kings <span style="font-size: 10px" class="text-white">•</span> Sleeping Wolf</p>
+                  <p class="text-white-50"><i class="bi bi-earbuds me-2"></i>ETwint Badass mood</p>
+                </div>
+              </div>
+            </aside>
+          </div>
         </div>
+      </div>
     </main>
-
+    <audio id="audio-player"></audio>
     <script src="./assets/script/artist.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
-</body>
-
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

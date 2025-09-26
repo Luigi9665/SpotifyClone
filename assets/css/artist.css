@@ -18,9 +18,9 @@ h1 {
 .card-body {
   font-size: 12px;
 }
-#rowTrack:hover {
-  background-color: #2a2a2a;
-}
+/* #trackId :hover {
+  background-color: #4e4f50;
+} */
 @media (max-width: 768px) {
   body {
     font-size: 14px;
