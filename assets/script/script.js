@@ -316,7 +316,6 @@ document.addEventListener("DOMContentLoaded", () => {
     audio.src = track.preview; // nuova traccia
     audio.currentTime = track.currentTime || 0;
     audio
-      .play()
       .then(() => {
         console.log("Riproduzione avviata");
         startMedium(track.linkImgTrack, track.title, track.artist);
