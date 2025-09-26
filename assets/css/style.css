@@ -1,0 +1,316 @@
+/* ====== Base ====== */
+:root{
+  --bg:#121212;
+  --panel:#181818;
+  --panel-soft:#1f1f1f;
+  --muted:#b3b3b3;
+  --text:#fff;
+  --accent:#1db954;
+  --dot:#3da1ff;
+
+  /* Scrollbar colors */
+  --scrollbar-track:#0e0e0e;
+  --scrollbar-thumb:#2d2d2d;
+  --scrollbar-thumb-hover:#3a3a3a;
+}
+
+html,body{height:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+}
+
+.app-shell.container-fluid{padding-left:0;padding-right:0}
+
+/* ====== Columns ====== */
+/* Original sidebar classes (kept for the commented HTML version) */
+.sidebar-left,.sidebar-right{
+  background:#000;
+  position:sticky;
+  top:0;
+  height:100vh;
+  /* Show scrollbars when content overflows */
+  overflow-y:auto;
+  overflow-x:hidden;
+  /* Firefox scrollbar colors */
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  scrollbar-width: thin;
+}
+.sidebar-left{width:240px}
+.sidebar-right{width:300px}
+
+/* Current HTML sidebars:
+   The <aside> inside the left/right columns should be sticky + scrollable */
+.app-shell .col-4.col-xl-2.bg-black aside,
+.app-shell .col-2.bg-black aside{
+  position:sticky;
+  top:0;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  overflow-y:auto;
+  overflow-x:hidden;
+  /* Firefox scrollbar colors */
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  scrollbar-width: thin;
+}
+
+/* If you only want the long playlist list to scroll (keeps header static),
+   keep aside overflow hidden and scroll just .scrollable2: */
+
+.app-shell .col-4.col-xl-2.bg-black aside,
+.app-shell .col-2.bg-black aside{
+  overflow:hidden;
+}
+.app-shell .col-4.col-xl-2.bg-black aside .scrollable2{
+  overflow-y:auto;
+  overflow-x:hidden;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  scrollbar-width: thin;
+}
+
+
+/* WebKit scrollbars (Chromium/Safari/Edge) */
+.sidebar-left::-webkit-scrollbar,
+.sidebar-right::-webkit-scrollbar,
+.app-shell .col-4.col-xl-2.bg-black aside::-webkit-scrollbar,
+.app-shell .col-2.bg-black aside::-webkit-scrollbar,
+.app-shell .col-4.col-xl-2.bg-black aside .scrollable2::-webkit-scrollbar{
+  width:10px;
+}
+.sidebar-left::-webkit-scrollbar-track,
+.sidebar-right::-webkit-scrollbar-track,
+.app-shell .col-4.col-xl-2.bg-black aside::-webkit-scrollbar-track,
+.app-shell .col-2.bg-black aside::-webkit-scrollbar-track,
+.app-shell .col-4.col-xl-2.bg-black aside .scrollable2::-webkit-scrollbar-track{
+  background:var(--scrollbar-track);
+}
+.sidebar-left::-webkit-scrollbar-thumb,
+.sidebar-right::-webkit-scrollbar-thumb,
+.app-shell .col-4.col-xl-2.bg-black aside::-webkit-scrollbar-thumb,
+.app-shell .col-2.bg-black aside::-webkit-scrollbar-thumb,
+.app-shell .col-4.col-xl-2.bg-black aside .scrollable2::-webkit-scrollbar-thumb{
+  background:var(--scrollbar-thumb);
+  border-radius:8px;
+  border:2px solid var(--scrollbar-track);
+}
+.sidebar-left::-webkit-scrollbar-thumb:hover,
+.sidebar-right::-webkit-scrollbar-thumb:hover,
+.app-shell .col-4.col-xl-2.bg-black aside::-webkit-scrollbar-thumb:hover,
+.app-shell .col-2.bg-black aside::-webkit-scrollbar-thumb:hover,
+.app-shell .col-4.col-xl-2.bg-black aside .scrollable2::-webkit-scrollbar-thumb:hover{
+  background:var(--scrollbar-thumb-hover);
+}
+
+/* ====== Main ====== */
+.main{
+  min-height:100vh;
+  background:linear-gradient(180deg,#2a2a2a 0%,var(--bg) 32%,var(--bg) 100%);
+  padding:24px;
+  /* ensure main content scrolls independently of fixed player */
+}
+
+/* ====== Left nav ====== */
+.brand{display:flex;align-items:center;gap:.6rem;font-weight:700;letter-spacing:.3px;color:var(--text);text-decoration:none}
+.brand img{height:28px}
+.nav-block{background:var(--panel);border-radius:.6rem;padding:12px;margin-bottom:10px}
+.nav-block a{display:flex;align-items:center;gap:.75rem;padding:.55rem .6rem;color:#fff;text-decoration:none;border-radius:.4rem}
+.nav-block a:hover{background:var(--panel-soft)}
+.nav-block .muted{color:var(--muted)}
+
+/* ====== Hero ====== */
+.hero{background:radial-gradient(90% 120% at 10% 10%,#3b3b3b,#1b1b1b 60%,#121212 100%);border-radius:.75rem;padding:22px;display:flex;gap:22px;align-items:end}
+.hero .cover{width:180px;height:180px;object-fit:cover;border-radius:.4rem;box-shadow:0 10px 30px rgba(0,0,0,.45)}
+.hero h1{font-weight:800;font-size:clamp(28px,5vw,56px);line-height:1.05;margin:0}
+.hero .meta{color:var(--muted);font-size:.9rem}
+.btn-play{background:var(--accent);border:none;color:#000;font-weight:700;padding:.55rem 1.2rem;border-radius:999px}
+.btn-play:hover{filter:brightness(1.08)}
+.btn-soft{background:transparent;border:1px solid #565656;color:#fff;padding:.55rem 1.1rem;border-radius:999px}
+.btn-soft:hover{background:#2a2a2a}
+
+/* ====== Header pills / icons ====== */
+.ctrl-btn{background:#2a2a2a;border:0;color:#fff;width:34px;height:34px;border-radius:50%}
+.ctrl-btn:hover{background:#3a3a3a}
+.notif-dot{width:8px;height:8px;background:var(--dot);border:2px solid #0b0b0b}
+.btn-pill{background:#2a2a2a;color:#fff;border:0;border-radius:999px;padding:.45rem .9rem}
+.btn-pill.active,.btn-pill:hover{background:#3a3a3a}
+
+/* ====== Shelves ====== */
+.section-title{font-weight:800;font-size:1.35rem;margin:18px 0 10px}
+.tile,.card-album{background:var(--panel);border-radius:.5rem;overflow:hidden;transition:transform .12s ease,background .12s ease}
+.tile:hover,.card-album:hover{transform:translateY(-2px);background:#232323}
+
+.tile{display:flex;align-items:center;gap:12px;padding:10px 12px}
+.tile .thumb{width:56px;height:56px;object-fit:cover;border-radius:.25rem}
+.tile .text{font-weight:600;font-size:.93rem}
+
+.card-album .thumb{width:100%;aspect-ratio:1/1;object-fit:cover}
+.card-album .caption{padding:10px}
+.caption .title{font-weight:600;margin:0;font-size:.95rem}
+.caption .sub{color:var(--muted);font-size:.85rem}
+
+/* ====== Right sidebar (legacy friend list) ====== */
+.friend{display:flex;align-items:center;gap:.6rem;padding:.5rem .6rem;border-radius:.4rem}
+.friend:hover{background:var(--panel-soft)}
+.friend img{width:32px;height:32px;border-radius:50%;object-fit:cover}
+.friend .meta{color:var(--muted);font-size:.8rem}
+
+/* ====== Desktop player ====== */
+.player{position:fixed;bottom:0;left:0;right:0;z-index:1030;background:#181818;border-top:1px solid #2a2a2a;color:#fff}
+.player .wrap{height:84px;display:flex;align-items:center;gap:16px;padding:0 16px}
+.track{display:flex;align-items:center;gap:.75rem;width:320px}
+.track img{width:48px;height:48px;object-fit:cover;border-radius:.25rem}
+.controls{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px}
+.progress{width:460px;height:5px;background:#333;border-radius:999px;overflow:hidden}
+.progress>span{display:block;height:100%;width:38%;background:#fff}
+.player-right{width:320px;display:flex;justify-content:flex-end;gap:10px}
+
+/* ====== Mobile footer ====== */
+.mobile-footer{background:rgba(0,0,0,.92);padding-bottom:max(env(safe-area-inset-bottom),.25rem);color:#fff}
+.mini-player{background:#2a2a2a;box-shadow:0 6px 20px rgba(0,0,0,.35)}
+.bottom-nav .nav-item{color:#9a9a9a}
+.bottom-nav .nav-item.active,.bottom-nav .nav-item:hover{color:#fff}
+
+/* ====== Helpers ====== */
+.text-muted-soft{color:var(--muted)}
+.hr-soft{border-top:1px solid #2a2a2a;opacity:1}
+
+/* Dark input */
+.form-control-dark{background:#262626;border-color:#383838;color:#fff}
+.form-control-dark::placeholder{color:#9a9a9a}
+.form-control-dark:focus{background:#2b2b2b;color:#fff;border-color:#4a4a4a;box-shadow:none}
+
+/* ====== LAYOUT: Fixed full-height left rail + optional main sidebar ====== */
+
+/* Shared scrollbar styling (works for Firefox + WebKit) */
+:root{
+  --scrollbar-track:#0e0e0e;
+  --scrollbar-thumb:#2d2d2d;
+  --scrollbar-thumb-hover:#3a3a3a;
+}
+
+/* ----- Left rail: FIXED, full page height, scrolls internally ----- */
+/* Targets your current left column: .col-4.col-xl-2.d-none.d-md-block.bg-black.h-100 */
+@media (min-width: 768px){
+  .app-shell > .d-flex > .col-4.col-xl-2.d-none.d-md-block.bg-black.h-100{
+    position: fixed;
+    top: 0;
+    /* leave space for the desktop player (84px) so it doesn't hide the rail bottom */
+    bottom: 84px;
+    left: 0;
+    width: 240px;              /* fixed width so we can offset the main */
+    overflow: hidden;          /* the <aside> inside will scroll */
+    z-index: 1020;             /* under the player but above content */
+  }
+
+  /* Make the inner <aside> actually scroll */
+  .app-shell > .d-flex > .col-4.col-xl-2.d-none.d-md-block.bg-black.h-100 aside{
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+    scrollbar-width: thin;
+  }
+  .app-shell > .d-flex > .col-4.col-xl-2.d-none.d-md-block.bg-black.h-100 aside::-webkit-scrollbar{ width:10px }
+  .app-shell > .d-flex > .col-4.col-xl-2.d-none.d-md-block.bg-black.h-100 aside::-webkit-scrollbar-track{ background:var(--scrollbar-track) }
+  .app-shell > .d-flex > .col-4.col-xl-2.d-none.d-md-block.bg-black.h-100 aside::-webkit-scrollbar-thumb{
+    background:var(--scrollbar-thumb); border-radius:8px; border:2px solid var(--scrollbar-track)
+  }
+  .app-shell > .d-flex > .col-4.col-xl-2.d-none.d-md-block.bg-black.h-100 aside::-webkit-scrollbar-thumb:hover{
+    background:var(--scrollbar-thumb-hover)
+  }
+
+  /* Shift the main content to the right so it doesn't sit under the fixed rail */
+  .main{
+    margin-left: 240px;
+  }
+
+  /* Keep the bottom player aligned with the content area (not under the rail) */
+  .player{
+    left: 240px;
+  }
+}
+
+/* ----- Desktop XL: keep your existing right column; no change to its CSS needed ----- */
+
+/* ----- OPTIONAL: a sidebar inside the main content ----- */
+/* Add class .with-sidebar to <main> when you include a .main-sidebar element */
+@media (min-width: 992px){
+  .main.with-sidebar{
+    display: grid;
+    grid-template-columns: 1fr 280px;  /* content | main sidebar */
+    gap: 16px;
+  }
+
+  .main .main-sidebar{
+    background: var(--panel);
+    border-radius: .6rem;
+    padding: 12px;
+    position: sticky;
+    top: 16px;                         /* stick under your header spacing */
+    max-height: calc(100vh - 16px - 84px); /* account for player height */
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+    scrollbar-width: thin;
+  }
+  .main .main-sidebar::-webkit-scrollbar{ width:10px }
+  .main .main-sidebar::-webkit-scrollbar-track{ background:var(--scrollbar-track) }
+  .main .main-sidebar::-webkit-scrollbar-thumb{
+    background:var(--scrollbar-thumb); border-radius:8px; border:2px solid var(--scrollbar-track)
+  }
+  .main .main-sidebar::-webkit-scrollbar-thumb:hover{ background:var(--scrollbar-thumb-hover) }
+}
+
+/* ----- Touch nothing below if you like your existing visuals ----- */
+
+/* Your original sticky sidebars (legacy selectors) are overridden by the fixed rail above.
+   Keep them if you need fallback for < md screens. */
+.sidebar-left,.sidebar-right{
+  background:#000;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  scrollbar-width: thin;
+}
+
+/* MAIN: own scrollbar (desktop), accounting for the 84px fixed player */
+@media (min-width: 768px){
+  /* prevent the page itself from scrolling; let .main handle it */
+  body{ overflow: hidden; }
+
+  .main{
+    height: calc(100vh - 84px);   /* viewport height minus player */
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-bottom: 24px;          /* some breathing room above the player */
+
+    /* Firefox scrollbar */
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+    scrollbar-width: thin;
+  }
+
+  /* WebKit scrollbar (Chrome/Safari/Edge) */
+  .main::-webkit-scrollbar{ width:10px }
+  .main::-webkit-scrollbar-track{ background:var(--scrollbar-track) }
+  .main::-webkit-scrollbar-thumb{
+    background:var(--scrollbar-thumb);
+    border-radius:8px;
+    border:2px solid var(--scrollbar-track);
+  }
+  .main::-webkit-scrollbar-thumb:hover{ background:var(--scrollbar-thumb-hover) }
+}
+
+/* Mobile: fall back to normal page scroll */
+@media (max-width: 767.98px){
+  body{ overflow: auto; }
+  .main{
+    height: auto;
+    overflow: visible;
+  }
+}

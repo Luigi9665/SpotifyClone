@@ -1,0 +1,40 @@
+body {
+  font-family: "Circular", sans-serif;
+}
+h1 {
+  font-size: 6rem;
+}
+.buttonlogo {
+  width: 30px;
+  height: 30px;
+  font-size: x-large;
+}
+#menuBtn {
+  display: flex;
+}
+.side-left {
+  background-color: black;
+}
+.card-body {
+  font-size: 12px;
+}
+/* #trackId :hover {
+  background-color: #4e4f50;
+} */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 4.2rem;
+  }
+  h2,
+  h3 {
+    font-size: 1.2rem;
+  }
+
+  .trackList .row {
+    font-size: 1.1rem;
+  }
+}

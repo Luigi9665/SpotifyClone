@@ -1,0 +1,19 @@
+/* Mobile (default <768px) */
+.bg-dark1 {
+  background-color: #121212 !important;
+}
+
+.bg-black1 {
+  background-color: #121212 !important;
+}
+
+/* Da md in poi (>=768px) */
+@media (min-width: 768px) {
+  .bg-dark1 {
+    background-color: #212529 !important; /* colore standard Bootstrap */
+  }
+
+  .bg-black1 {
+    background-color: #000 !important; /* nero pieno */
+  }
+}
