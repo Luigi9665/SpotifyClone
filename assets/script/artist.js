@@ -241,8 +241,6 @@ const generateAlbum = (artist) => {
   p.className = "text-black fs-5 fw-semibold m-0";
   p.setAttribute("style", "letter-spacing: -1.1px; line-height:20px");
   p.innerText = titleAlbum;
-  p.className = "overflow-hidden";
-  p.style.maxHeight = "16px";
 
   // gli append
   cardBody.appendChild(p);
