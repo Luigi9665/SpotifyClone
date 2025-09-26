@@ -438,6 +438,15 @@ async function getTracklist() {
 
 getTracklist();
 
+// pausa del player al caricamento di una nuova pagina
+const pausePlayer = () => {
+  audio.pause();
+  iconPlayMobile.classList.remove("bi-pause-fill");
+  iconPlayMobile.classList.add("bi-play-fill");
+  iconPlayMedium.classList.remove("bi-pause-circle-fill");
+  iconPlayMedium.classList.add("bi-play-circle-fill");
+};
+
 window.addEventListener("DOMContentLoaded", () => {
   if (saved) {
     const track = JSON.parse(saved);
@@ -445,11 +454,13 @@ window.addEventListener("DOMContentLoaded", () => {
     audio.src = track.preview; // nuova traccia
     audio.currentTime = track.currentTime || 0;
     audio
+      .play()
       .then(() => {
         console.log("Riproduzione avviata");
         generateDuration();
         startMedium(track.linkImgTrack, track.title, track.artist);
         startMobile(track.title, track.linkImgTrack);
+        pausePlayer();
       })
       .catch((err) => console.warn("Riproduzione bloccata:", err));
   }
