@@ -297,9 +297,11 @@ const generateTrack = (track, index) => {
   img.src = imgTrack;
   // col title
   const colTitle = document.createElement("div");
-  colTitle.className = "col-4 p-0";
+  colTitle.className = "col-4 p-0 ";
   const pTitle = document.createElement("p");
   pTitle.innerText = trackTitle;
+  pTitle.className = "overflow-hidden";
+  pTitle.style.maxHeight = "40px";
   // col rank
   const colRank = document.createElement("div");
   colRank.className = "col-4 d-none d-md-block p-0";
@@ -355,7 +357,7 @@ const generateTrack = (track, index) => {
 
 // prendo dati per tracklist e le creo
 
-const urlT = `https://striveschool-api.herokuapp.com/api/deezer/artist/${appId}/top?limit=5`;
+const urlT = `https://striveschool-api.herokuapp.com/api/deezer/artist/${appId}/top?limit=10`;
 const optionsT = {
   method: "GET",
   headers: {
