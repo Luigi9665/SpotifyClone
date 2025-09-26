@@ -395,6 +395,14 @@ const generateTracks = (track, index) => {
     divGenerics.append(h2, linkArtist);
   }
 
+  linkArtist.addEventListener("mouseover", () => {
+    linkArtist.style.transform = "scale(1.05)";
+  });
+
+  linkArtist.addEventListener("mouseout", () => {
+    linkArtist.style.transform = "scale(1)";
+  });
+
   colTitle.appendChild(divGenerics);
 
   // colonna quante riproduzioni
@@ -428,6 +436,15 @@ const generateTracks = (track, index) => {
   rowTracks.appendChild(row);
 
   //   il Listener per mandare la traccia all'elemento audio
+
+  h2.addEventListener("mouseover", () => {
+    h2.style.transform = "scale(1.05)";
+  });
+
+  h2.addEventListener("mouseout", () => {
+    h2.style.transform = "scale(1)";
+  });
+
   h2.addEventListener("click", () => {
     audio.pause(); // stop eventuale brano in corso
     audio.src = preview; // nuova traccia

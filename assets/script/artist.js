@@ -224,19 +224,19 @@ const generateAlbum = (artist) => {
 
   // creazione della col
   const colAlbum = document.createElement("div");
-  colAlbum.className = "col-6 col-md-4 col-xl-2";
+  colAlbum.className = "col-6 col-md-4 col-xl-2 my-2";
 
   // creazione della card
   const card = document.createElement("div");
-  card.className = "card border-0 bg-transparent";
-  card.setAttribute("style", "width: 150p; font-size: 16px");
+  card.className = "card border-0 bg-white bg-opacity-50 h-100";
+  card.setAttribute("style", "font-size: 16px");
   const img = document.createElement("img");
   img.className = "card-img-top rounded";
   img.alt = "album Artist";
   img.src = imgAlbum;
 
   const cardBody = document.createElement("div");
-  cardBody.className = "card-body text-center pt-1";
+  cardBody.className = "card-body text-center  pt-1";
   const p = document.createElement("p");
   p.className = "text-black fs-5 fw-semibold m-0";
   p.setAttribute("style", "letter-spacing: -1.1px; line-height:20px");
